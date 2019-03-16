@@ -659,6 +659,11 @@ a.dotted-link:hover {
     margin-bottom: 15px;
   }
 }
+.avatar-profile{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
 
 @media (min-width: 1400px) {
   .container {
