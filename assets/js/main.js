@@ -64,7 +64,28 @@ jQuery(document).ready(function($) {
     
     
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
-    GitHubActivity.feed({ username: "LEMSantos", selector: "#ghfeed" });
-
 
 });
+
+async function getUser(){
+    const response = await fetch('https://api.github.com/users/lemsantos/repos');
+    const repos = await response.json();
+    return {repos};
+}
+
+getUser().then((data) => {
+    renderTemplate(data.repos);
+});
+
+function renderTemplate(gitHubRepos){
+    let template = '';
+    gitHubRepos = gitHubRepos.slice(1,4).concat(gitHubRepos.slice(6));
+    gitHubRepos.forEach((element,index) => {
+        template += `<div class="item">
+        <h3 class="title"><a href="${element.html_url}" target="_blank">${element.name}</a></h3>
+        <p class="summary">Linguagem: ${element.language}</p>
+    </div>`;
+    console.log(index);
+    });
+    document.getElementById('otherProjects').innerHTML = template;
+}
