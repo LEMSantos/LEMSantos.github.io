@@ -663,6 +663,7 @@ a.dotted-link:hover {
   width: 180px;
   height: 180px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 @media (min-width: 1400px) {
