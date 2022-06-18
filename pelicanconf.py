@@ -47,7 +47,7 @@ LOGO = 'avatar.png'
 FIRST_NAME = 'LEMSantos'
 FANCY_NAME = 'Lucas Eliaquim'
 ## google analytics (fake code commented out)
-# GOOGLE_ANALYTICS = 'UA-0011001-1'
+GOOGLE_ANALYTICS = 'G-SW1LL2DZZ5'
 ATTRIBUTION = True
 ## Other links can be added following the same tuple pattern
 MENUITEMS = [
