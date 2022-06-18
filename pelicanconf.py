@@ -1,6 +1,6 @@
 AUTHOR = 'Lucas Eliaquim'
 SITENAME = 'LEMSantos'
-SITEURL = 'https://lemsantos.github.io'
+SITEURL = ''
 
 PATH = 'content'
 
