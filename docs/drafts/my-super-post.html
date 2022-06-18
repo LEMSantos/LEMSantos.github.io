@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+          <title>LEMSantos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        <!-- twitter card metadata -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/avatar.png">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="React: JavaScript library">
+<meta name="twitter:description" content="">
+        <!-- OG Tags -->
+<meta property="og:url" content="/drafts/my-super-post.html"/>
+<meta property="og:title" content="LEMSantos | React: JavaScript library" />
+<meta property="og:description" content="" />
+        <!-- favicon -->
+        <link rel="icon" type="image/png" href="/images/pelly.png">
+        <!-- moment.js for date formatting -->
+        <script src="/theme/js/moment.js"></script>
+        <script>
+            moment.locale('pt-br')
+        </script>
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+		<script>
+
+                /*! grunt-grunticon Stylesheet Loader - v2.1.2 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
+
+    (function(e){function t(t,n,r,o){"use strict";function a(){for(var e,n=0;u.length>n;n++)u[n].href&&u[n].href.indexOf(t)>-1&&(e=!0);e?i.media=r||"all":setTimeout(a)}var i=e.document.createElement("link"),l=n||e.document.getElementsByTagName("script")[0],u=e.document.styleSheets;return i.rel="stylesheet",i.href=t,i.media="only x",i.onload=o||null,l.parentNode.insertBefore(i,l),a(),i}var n=function(r,o){"use strict";if(r&&3===r.length){var a=e.navigator,i=e.Image,l=!(!document.createElementNS||!document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||e.opera&&-1===a.userAgent.indexOf("Chrome")||-1!==a.userAgent.indexOf("Series40")),u=new i;u.onerror=function(){n.method="png",n.href=r[2],t(r[2])},u.onload=function(){var e=1===u.width&&1===u.height,a=r[e&&l?0:e?1:2];n.method=e&&l?"svg":e?"datapng":"png",n.href=a,t(a,null,null,o)},u.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",document.documentElement.className+=" grunticon"}};n.loadCSS=t,e.grunticon=n})(this);(function(e,t){"use strict";var n=t.document,r="grunticon:",o=function(e){if(n.attachEvent?"complete"===n.readyState:"loading"!==n.readyState)e();else{var t=!1;n.addEventListener("readystatechange",function(){t||(t=!0,e())},!1)}},a=function(e){return t.document.querySelector('link[href$="'+e+'"]')},c=function(e){var t,n,o,a,c,i,u={};if(t=e.sheet,!t)return u;n=t.cssRules?t.cssRules:t.rules;for(var l=0;n.length>l;l++)o=n[l].cssText,a=r+n[l].selectorText,c=o.split(");")[0].match(/US\-ASCII\,([^"']+)/),c&&c[1]&&(i=decodeURIComponent(c[1]),u[a]=i);return u},i=function(e){var t,o,a;o="data-grunticon-embed";for(var c in e)if(a=c.slice(r.length),t=n.querySelectorAll(a+"["+o+"]"),t.length)for(var i=0;t.length>i;i++)t[i].innerHTML=e[c],t[i].style.backgroundImage="none",t[i].removeAttribute(o);return t},u=function(t){"svg"===e.method&&o(function(){i(c(a(e.href))),"function"==typeof t&&t()})};e.embedIcons=i,e.getCSS=a,e.getIcons=c,e.ready=o,e.svgLoadedCallback=u,e.embedSVG=u})(grunticon,this);
+
+                grunticon(["/theme/css/icons.data.svg.css", "/theme/css/icons.data.png.css", "/theme/css/icons.fallback.css"]);
+            </script>
+        <noscript><link href="/theme/css/icons.fallback.css" rel="stylesheet"></noscript>
+        <!-- menu toggle javascript -->
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", initMenu);
+
+            function initMenu(){
+                var menu = document.getElementById("menu");
+                var menulink = document.getElementById("menu-link");
+                menulink.addEventListener("click", function toggleMenu(){
+                        window.event.preventDefault();
+                        menulink.classList.toggle('active');
+                        menu.classList.toggle('active');
+                    });
+            };
+        </script>
+
+
+    <meta name="tags" content="pelican" />
+    <meta name="tags" content="publishing" />
+
+</head>
+<body>
+    <div role="banner" id="masthead">
+        <header style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 266px;
+            overflow-y: auto;
+        ">
+                <a href="/" style="
+                    text-decoration: none;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                ">
+                    <img
+                        src="/images/avatar.png"
+                        alt="McManus Logo"
+                    >
+
+                    <h1 style="
+                        margin-top: 1em;
+                        font-size: 1.5em;
+                        display: inline-block;
+                    ">
+                        Lucas Eliaquim
+                    </h1>
+                </a>
+            <a href="#menu" id="menu-link">mais coisas</a>
+            <nav id="menu" style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            ">
+                <ul>
+                        <li><a href="/pages/resume.html">Currículo</a></li>
+                        <li><a href="/pages/portfolio.html">Portfólio</a></li>
+                </ul>
+
+                    <div style="
+                        text-align: center;
+                        margin-top: 3em;
+                        font-weight: bold;
+                    ">
+                        Categorias
+                        <hr style="width: 200px">
+                    </div>
+
+                    <ul>
+                    </ul>
+            </nav>
+        </header>
+    </div>
+        <div class="page" role="main">
+  <div class="article" role="article">
+    <article>
+        <footer>
+            <a name="top"></a>
+            <p>
+              <time datetime=" 2010-12-03 10:20:00-02:00">
+                <script>document.write(moment('2010-12-03 10:20:00-02:00').format('LL'));</script>
+              </time>
+            </p>
+        </footer>
+        <header>
+          <h2>
+            React: JavaScript library
+          </h2>
+        </header>
+      <div class="content">
+         <p><img alt="React: JavaScript library" src="images/react.webp"></p>
+<p>React is a JavaScript library for building user interfaces.</p>
+<ul>
+<li><strong>Declarative:</strong> React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.</li>
+<li><strong>Component-Based:</strong> Build encapsulated components that manage their state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep the state out of the DOM.</li>
+<li><strong>Learn Once, Write Anywhere:</strong> We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using <a href="https://reactnative.dev/">React Native</a>.</li>
+</ul>
+<p><a href="https://reactjs.org/docs/getting-started.html">Learn how to use React in your project</a>.</p>
+<h2>Installation</h2>
+<p>React has been designed for gradual adoption from the start, and <strong>you can use as little or as much React as you need</strong>:</p>
+<ul>
+<li>Use <a href="https://reactjs.org/docs/getting-started.html#online-playgrounds">Online Playgrounds</a> to get a taste of React.</li>
+<li><a href="https://reactjs.org/docs/add-react-to-a-website.html">Add React to a Website</a> as a <code>&lt;script&gt;</code> tag in one minute.</li>
+<li><a href="https://reactjs.org/docs/create-a-new-react-app.html">Create a New React App</a> if you're looking for a powerful JavaScript toolchain.</li>
+</ul>
+<p>You can use React as a <code>&lt;script&gt;</code> tag from a <a href="https://reactjs.org/docs/cdn-links.html">CDN</a>, or as a <code>react</code> package on <a href="https://www.npmjs.com/package/react">npm</a>.</p>
+<h2>Documentation</h2>
+<p>You can find the React documentation <a href="https://reactjs.org/">on the website</a>.</p>
+<p>Check out the <a href="https://reactjs.org/docs/getting-started.html">Getting Started</a> page for a quick overview.</p>
+<p>The documentation is divided into several sections:</p>
+<ul>
+<li><a href="https://reactjs.org/tutorial/tutorial.html">Tutorial</a></li>
+<li><a href="https://reactjs.org/docs/hello-world.html">Main Concepts</a></li>
+<li><a href="https://reactjs.org/docs/jsx-in-depth.html">Advanced Guides</a></li>
+<li><a href="https://reactjs.org/docs/react-api.html">API Reference</a></li>
+<li><a href="https://reactjs.org/community/support.html">Where to Get Support</a></li>
+<li><a href="https://reactjs.org/docs/how-to-contribute.html">Contributing Guide</a></li>
+</ul>
+<p>You can improve it by sending pull requests to <a href="https://github.com/reactjs/reactjs.org">this repository</a>.</p>
+<h2>Examples</h2>
+<p>We have several examples <a href="https://reactjs.org/">on the website</a>. Here is the first one to get you started:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="p">{</span> <span class="n">createRoot</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;react-dom/client&#39;</span><span class="p">;</span>
+
+<span class="n">function</span> <span class="n">HelloMessage</span><span class="p">({</span> <span class="n">name</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="n">Hello</span> <span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">const</span> <span class="n">root</span> <span class="o">=</span> <span class="n">createRoot</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;container&#39;</span><span class="p">));</span>
+<span class="n">root</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="o">&lt;</span><span class="n">HelloMessage</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Taylor&quot;</span> <span class="o">/&gt;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># save this as app.py</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, World!&quot;</span>
+</code></pre></div>
+
+<p>This example will render "Hello Taylor" into a container on the page.</p>
+<p>You'll notice that we used an HTML-like syntax; <a href="https://reactjs.org/docs/introducing-jsx.html">we call it JSX</a>. JSX is not required to use React, but it makes code more readable and writing it feels like writing HTML. If you're using React as a <code>&lt;script&gt;</code> tag, read <a href="https://reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx">this section</a> on integrating JSX; otherwise, the <a href="https://reactjs.org/docs/create-a-new-react-app.html">recommended JavaScript toolchains</a> handle it automatically.</p>
+<h2>Contributing</h2>
+<p>The main purpose of this repository is to continue evolving React core, making it faster and easier to use. Development of React happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving React.</p>
+<h3><a href="https://code.fb.com/codeofconduct">Code of Conduct</a></h3>
+<p>Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read <a href="https://code.fb.com/codeofconduct">the full text</a> so that you can understand what actions will and will not be tolerated.</p>
+<h3><a href="https://reactjs.org/docs/how-to-contribute.html">Contributing Guide</a></h3>
+<p>Read our <a href="https://reactjs.org/docs/how-to-contribute.html">contributing guide</a> to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React.</p>
+<h3>Good First Issues</h3>
+<p>To help you get your feet wet and get you familiar with our contribution process, we have a list of <a href="https://github.com/facebook/react/labels/good%20first%20issue">good first issues</a> that contain bugs that have a relatively limited scope. This is a great place to get started.</p>
+<h3>License</h3>
+<p>React is <a href="./LICENSE">MIT licensed</a>.</p>
+      </div>
+      <div class="back-to-top">
+          <a href="#top">voltar ao topo</a>
+      </div>
+    </article>
+  </div>
+<!-- end article -->
+                <footer>
+                    <div class="icons">
+                        <a href="https://github.com/lemsantos" target="_blank"><div class="icon-github icon"></div></a>
+                        <a href="https://www.linkedin.com/in/lucas-eliaquim/" target="_blank"><div class="icon-linkedin icon"></div></a>
+                        <a href="mailto:lemsantos.dev@gmail.com" target="_blank"><div class="icon-mail icon"></div></a>
+                    </div>
+                    <p>© <script>document.write(moment().format('YYYY'));</script> Lucas Eliaquim</p>
+                    <p><i>"Brutal"</i> Pelican Theme</p>
+                    <p>Designed and built by <a href="http://twitter.com/mcman_s">@mcman_s</a> in Denver</p>
+                </footer>
+        </div>
+</body>
+</html>
