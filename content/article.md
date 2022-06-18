@@ -9,7 +9,7 @@ Summary: Short version for index and feeds
 Status: draft
 
 
-![React: JavaScript library](images/react.webp)
+![React: JavaScript library](https://lemsantos.github.io/images/react.webp)
 
 
 React is a JavaScript library for building user interfaces.
