@@ -22,24 +22,54 @@ Faculdade de Ciências Aplicadas e Sociais de Petrolina - Facape
 Experiência
 ---
 
-**Sysvale Softgroup Tecnologia:**
+#### Sysvale Softgroup Tecnologia:
+
+3 anos e 3 meses
+
+> *Janeiro de 2021 - Atualmente (1 ano e 6 meses)*
+> :   **Desenvolvedor full stack**<br>
+> Juazeiro, Bahia, Brasil
+>
+> <br>
+> *Abril de 2019 - Janeiro de 2021 (1 ano e 10 meses)*
+> :   **Estagiário de desenvolvimento**<br>
+> Juazeiro, Bahia, Brasil
 
 
-
-Certificações
+Licenças e certificados
 ---
 
+<h4 style="display: flex; align-items: center; margin-left: 8px">
+    <img src="/images/udemy-logo.png" alt="udemy logo" width="18" style="display: inline-block; margin-right: 16px; margin-left: 0px"/>
+    Udemy
+</h4>
 
+> *Emitido em Junho de 2022*
+> :   **Data Science: Natural Language Processing (NLP) in Python**<br>
+> [Acesse o certificado](https://ude.my/UC-a58f71a0-70ea-4929-9540-065137b6fb5a)
+>
+> <br>
+> *Emitido em Maio de 2022*
+> :   **Complete SQL and Databases Bootcamp: Zero to Mastery \[2022\]**<br>
+> [Acesse o certificado](https://ude.my/UC-b05ba1f4-5429-4a58-b3ae-86fae8f2452a)
+>
+> <br>
+> *Emitido em Maio de 2021*
+> :   **Advanced REST APIs with Flask and Python**<br>
+> [Acesse o certificado](https://ude.my/UC-5e491e34-2b6b-49dd-be87-2c929c914c88)
+>
+> <br>
+> *Emitido em Abril de 2021*
+> :   **R Programming A-Z™: R For Data Science With Real Exercises!**<br>
+> [Acesse o certificado](http://ude.my/UC-d36f9053-3c59-4d1b-9fa2-7439db63e3ef)
+>
+> <br>
+> *Emitido em Março de 2021*
+> :   **REST APIs with Flask and Python**<br>
+> [Acesse o certificado](http://ude.my/UC-ddc53ede-360c-42d5-af7f-3a8ef2506fa8)
 
-Extra Section, Call it Whatever You Want
-----------------------------------------
+Idiomas
+---
 
-* Human Languages:
-
-     * English (native speaker)
-     * ???
-     * This is what a nested list looks like.
-
-* Random tidbit
-
-* Other sort of impressive-sounding thing you did
+* Inglês (Intermediário)
+* Português (Nativo)
