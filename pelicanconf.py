@@ -1,6 +1,6 @@
 AUTHOR = 'Lucas Eliaquim'
 SITENAME = 'LEMSantos'
-SITEURL = ''
+SITEURL = 'https://lemsantos.github.io'
 
 PATH = 'content'
 
@@ -59,5 +59,5 @@ LINKEDIN = 'https://www.linkedin.com/in/lucas-eliaquim/'
 MAIL='mailto:lemsantos.dev@gmail.com'
 ## Disqus Sitename for comments on posts
 ## Commenting mine out for this theme site
-# DISQUS_SITENAME = 'brutalistpelican'
+DISQUS_SITENAME = 'lemsantos-1'
 DISPLAY_PAGES_ON_MENU = False
