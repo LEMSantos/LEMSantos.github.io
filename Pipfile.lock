@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d3891ee3ab7c206a2d7a43e4e2e34cd92c469dd4f78c92c0a1baf314f07d67fa"
+            "sha256": "1ac7d69c537994d7999973fb951d9c7ca9169cba92d1eb525288fa5dd018de58"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -123,6 +123,14 @@
             "index": "pypi",
             "version": "==4.7.2"
         },
+        "pelican-resume": {
+            "hashes": [
+                "sha256:58d65534815ee4773876ad3f3a0a3853d05e1505928ea3622e5ca7f2d21f960d",
+                "sha256:9d6088621cc6c052f5655d38103caed64032014b47ebe70f3f414de90f0e81cb"
+            ],
+            "index": "pypi",
+            "version": "==0.1.0"
+        },
         "pygments": {
             "hashes": [
                 "sha256:5eb116118f9612ff1ee89ac96437bb6b49e8f04d8a13b514ba26f620208e26eb",
@@ -151,7 +159,7 @@
                 "sha256:4c586de507202505346f3e32d1363eb9ed6932f0c2f63184dea88983ff4971e2",
                 "sha256:d2bbd99c320a2532ac71ff6a3164867884357da3e3301f0240090c5d2fdac7ec"
             ],
-            "markers": "python_version < '4.0' and python_full_version >= '3.6.3'",
+            "markers": "python_full_version >= '3.6.3' and python_full_version < '4.0.0'",
             "version": "==12.4.4"
         },
         "six": {

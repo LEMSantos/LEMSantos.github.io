@@ -29,6 +29,12 @@ DEFAULT_PAGINATION = 10
 DELETE_OUTPUT_DIRECTORY = True
 OUTPUT_PATH = 'docs/'
 
+# PLUGINS = [
+#     "pelican_resume"
+# ]
+
+RESUME_PANDOC = '/bin/pandoc'
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
