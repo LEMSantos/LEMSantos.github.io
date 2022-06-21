@@ -58,7 +58,6 @@
 
 
     <meta name="tags" content="Chatterbot" />
-    <meta name="tags" content="Flask" />
     <meta name="tags" content="Telegram" />
     <meta name="tags" content="Python" />
     <meta name="tags" content="Chatbot" />
@@ -169,7 +168,6 @@
 
 ChatterBot
 chatterbot-corpus
-Flask
 telepot
 </code></pre></div>
 
@@ -199,19 +197,6 @@ user: You&#39;re welcome.
 bot:  Do you like hats?
 </code></pre></div>
 
-<h4>Flask</h4>
-<p>O Flask é um microframework, escrito em Python, para desenvolvimento de aplicações web. Ele é considerado <code>micro</code>, porque não precisa de ferramentas adicionais ou bibliotecas particulares, assim, se mantendo simples, mas com uma extensibilidade muito grande, tonando-o muito bom para o desenvolvimento de pequenas e médias aplicações, sem sacrificar a performance e a simplicidade.</p>
-<p>Um exemplo de aplicação mínima utilizando o Flask, é mencionado na própria documentação, e seria algo como:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;Hello, World!&lt;/p&gt;&quot;</span>
-</code></pre></div>
-
-<p>uma explicação mais detalhada do que como esse código de fato funciona pode ser encontrada nesse <a href="https://flask.palletsprojects.com/en/2.1.x/quickstart/">link</a>.</p>
 <h4>Telepot</h4>
 <p>Telepot é uma biblioteca que ajuda os desenvolvedores a construir softwares para se comunicar com a <a href="https://core.telegram.org/bots">API de bots do Telegram</a>. Ela possui versões que funcionam tanto com o Python 2.7, quanto com o Python 3. Segundo a própria <a href="https://telepot.readthedocs.io/en/latest/">documentação</a> da biblioteca a melhor forma de entender o seu funcionamente é lendo a parte principal da mesma e olhando para os <a href="https://github.com/nickoala/telepot/tree/master/examples">exemplos</a>.</p>
 <h2>Recaptulando...</h2>

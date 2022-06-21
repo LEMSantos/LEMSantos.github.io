@@ -2,10 +2,10 @@ Title: Primeiro chatbot em Python - Parte 1: Planejamento
 Date: 2022-06-20 19:00
 Modified: 2022-06-20 19:00
 Category: Python
-Tags: Chatterbot, Flask, Telegram, Python, Chatbot
+Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-1
 Authors: Lucas Eliaquim
-Summary: Artigo sobre a criação de um chatbot utilizando python com a biblioteca Chatterbot e deploy com Flask e Telegram.
+Summary: Artigo sobre a criação de um chatbot utilizando python com a biblioteca Chatterbot e deploy com o Telegram.
 Status: draft
 
 
@@ -66,7 +66,6 @@ Como você garantiu que atendeu os meus requisitos iniciais, acredito que já es
 
 ChatterBot
 chatterbot-corpus
-Flask
 telepot
 ```
 
@@ -112,24 +111,6 @@ bot:  I am doing very well, thank you for asking.
 user: You're welcome.
 bot:  Do you like hats?
 ```
-
-#### Flask
-
-O Flask é um microframework, escrito em Python, para desenvolvimento de aplicações web. Ele é considerado `micro`, porque não precisa de ferramentas adicionais ou bibliotecas particulares, assim, se mantendo simples, mas com uma extensibilidade muito grande, tonando-o muito bom para o desenvolvimento de pequenas e médias aplicações, sem sacrificar a performance e a simplicidade.
-
-Um exemplo de aplicação mínima utilizando o Flask, é mencionado na própria documentação, e seria algo como:
-
-```python
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-```
-
-uma explicação mais detalhada do que como esse código de fato funciona pode ser encontrada nesse [link](https://flask.palletsprojects.com/en/2.1.x/quickstart/).
 
 #### Telepot
 
