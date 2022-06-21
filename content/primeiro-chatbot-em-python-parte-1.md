@@ -1,4 +1,4 @@
-Title: Chatbot em Python - Parte 1: Planejamento
+Title: Primeiro chatbot em Python - Parte 1: Planejamento
 Date: 2022-06-20 19:00
 Modified: 2022-06-20 19:00
 Category: Python
