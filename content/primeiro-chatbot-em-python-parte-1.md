@@ -49,7 +49,11 @@ Apesar dessa definição estar particularmente boa, geralmente elas não são, m
 
 Podemos encontrar muitos tipos de chatbots no mercado, mas para simplificar vou citar apenas dois: O chatbot baseado em regras e o chatbot baseado em Inteligência Artificial.
 
+#### Chatbot baseado em regras
+
 Os chatbots baseados em regras só aceitam um número definido de solicitações e tem um vocabulário muito limitado, geralmente utilizam botões para restringir as respostas do usuário, mas mesmo tão limitados, eles conseguem resolver uma gama muito grande de problemas, e com sua simplicidade de implementação, acabam se tornando uma opção viável para muitas pessoas.
+
+#### Chatbot baseado em Inteligência Artificial
 
 Os chatbots baseados em IA geralmente são bem mais inteligentes e conseguem "entender" as intenções do usuário, conseguindo assim, tornar o chat mais dinâmico e talvez mais agradável. A sua complexidade de construção aumenta significativamente e isso talvez seja uma desvantagem de utilizar esse tipo de abordadem.
 
@@ -97,7 +101,7 @@ As pasta **`data`** servirá para colocarmos os dados de treinamento do chatbot 
 ## Pacotes que serão utilizados
 
 
-Para desenvolver a nossa aplicação, além dos pacotes da biblioteca padrão do Python, vamos precisar de 3 pacotes adicionais, são eles:
+Para desenvolver a nossa aplicação, além dos pacotes da biblioteca padrão do Python, vamos precisar de 2 pacotes adicionais, são eles:
 
 #### Chatterbot
 
