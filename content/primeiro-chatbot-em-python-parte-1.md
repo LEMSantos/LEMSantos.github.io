@@ -65,6 +65,7 @@ Como você garantiu que atendeu os meus requisitos iniciais, acredito que já es
 # requirements.txt
 
 ChatterBot
+chatterbot-corpus
 Flask
 telepot
 ```
