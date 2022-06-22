@@ -14,7 +14,7 @@ Status: draft
 ![React: JavaScript library](/images/chatbot-banner.jpg)
 
 
-Bom dia, Boa tarde ou Boa noite, nesta série de artigos vamos construir o nosso chatbot utilizando a linguagem Python. O nosso projeto, vai desde o planejamento até o que ele esteja respondendo para os nossos usuários, ou para nós mesmos, porque não?!
+Bom dia, Boa tarde ou Boa noite, nesta série de artigos vamos construir o nosso chatbot utilizando a linguagem Python. O nosso projeto, vai desde o planejamento até o ponto em que ele esteja respondendo para os nossos usuários, ou para nós mesmos, porque não?!
 
 Antes de iniciarmos a nossa jornada, é interessante que você, meu querido leitor, cumpra alguns requisitos básicos para que o seu aprendizado seja satisfatório, são eles:
 
@@ -51,7 +51,7 @@ Podemos encontrar muitos tipos de chatbots no mercado, mas para simplificar vou 
 
 #### Chatbot baseado em regras
 
-Os chatbots baseados em regras só aceitam um número definido de solicitações e tem um vocabulário muito limitado, geralmente utilizam botões para restringir as respostas do usuário, mas mesmo tão limitados, eles conseguem resolver uma gama muito grande de problemas, e com sua simplicidade de implementação, acabam se tornando uma opção viável para muitas pessoas.
+Os chatbots baseados em regras só aceitam um número definido de solicitações e tem um vocabulário muito limitado, geralmente utilizam botões para restringir as respostas do usuário, mas mesmo tão limitados, eles conseguem resolver uma gama muito grande de problemas, e com sua simplicidade de implementação, acabam se tornando uma opção viável para muitas aplicações.
 
 #### Chatbot baseado em Inteligência Artificial
 
@@ -63,7 +63,7 @@ Mas chega de falatório, porque com certeza você não chegou até aqui para apr
 ## Requirements do projeto
 
 
-Como você garantiu que atendeu os meus requisitos iniciais, acredito que já esteja familiarizado com o `pip`, o gerenciador de pacotes do python, caso não esteja não se preocupe, esse [artigo](https://realpython.com/what-is-pip/) pode te ajudar. Os pacotes necessários que serão utilizados encontram-se logo abaixo
+Como você garantiu que atendeu os meus requisitos iniciais, acredito que já esteja familiarizado com o `pip`, o gerenciador de pacotes do python, caso não esteja, não se preocupe, o artigo encontrado nesse [link](https://realpython.com/what-is-pip/) pode te ajudar. Os pacotes necessários que serão utilizados encontram-se logo abaixo
 
 ```bash
 # requirements.txt
@@ -85,7 +85,7 @@ $ pip install -r requirements.txt
 ## Estrutura do projeto
 
 
-Quem trabalha com programação a um pouco mais de tempo, já deve ter notado que para uma projeto bem sucedido uma estrutura de organização é de extrema importância e pode facilitar ou dificultar o desenvolvimento. No nosso caso, como o projeto é relativamente simples a nossa estrutura também será.
+Quem trabalha com programação a um pouco mais de tempo, já deve ter notado que para uma projeto bem sucedido uma estrutura de organização é de extrema importância e pode facilitar ou dificultar o desenvolvimento. No nosso caso, como o projeto é relativamente simples, a nossa estrutura também será.
 
 ```
 .
@@ -105,7 +105,7 @@ Para desenvolver a nossa aplicação, além dos pacotes da biblioteca padrão do
 
 #### Chatterbot
 
-Chatterbot é uma biblioteca que torna mais fácil gerar respostas automatizadas para as solicitações do usuário. O chatterbot utiliza uma seleção de algoritmos de Machine Learning para produzir diferentes tipos de respostas. Isto facilita para os desenvolvedores criarem chatbots e automatizar conversas com o usuário. Caso tenha interesse em estudar em mais detalhes como essa biblioteca, segue o link para a [documentação](https://chatterbot.readthedocs.io/en/stable/).
+Chatterbot é uma biblioteca que torna mais fácil gerar respostas automatizadas para as solicitações do usuário. Ela utiliza uma seleção de algoritmos de Machine Learning para produzir diferentes tipos de respostas. Isto facilita para os desenvolvedores criarem chatbots e automatizar conversas com o usuário. Caso tenha interesse em estudar em mais detalhes essa biblioteca, segue o link para a [documentação](https://chatterbot.readthedocs.io/en/stable/).
 
 Um exemplo de interação mecionado na própria documentação seria:
 
