@@ -9,7 +9,7 @@ Summary: Artigo sobre a criação de um chatbot utilizando python com a bibliote
 Status: draft
 
 
-<a href="https://br.freepik.com/fotos-vetores-gratis/chatbot" style="font-size: .875em">Chatbot vetor criado por vectorjuice - br.freepik.com</a>
+<a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a>
 
 ![React: JavaScript library](/images/chatbot-banner.jpg)
 
