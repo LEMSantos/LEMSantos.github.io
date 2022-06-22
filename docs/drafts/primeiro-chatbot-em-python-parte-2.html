@@ -135,14 +135,130 @@
       <div class="content">
          <p><a href="https://br.freepik.com/fotos-vetores-gratis/fundo">Fundo vetor criado por pch.vector - br.freepik.com</a></p>
 <p><img alt="React: JavaScript library" src="/images/coding-banner.jpg"></p>
+<p>Bom dia, Boa tarde ou Boa noite, voltamos para continuar a empreitada que começamos no <a href="/drafts/primeiro-chatbot-em-python-parte-1.html">artigo anterior</a>, de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.</p>
+<p>Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco mais em como a biblioteca Chatterbot vai nos ajudar a desenvolver o nosso bot.</p>
+<h2>Chatterbot</h2>
+<p>Chatterbot é uma biblioteca que torna mais fácil gerar respostas automatizadas para as solicitações do usuário. Ela utiliza uma seleção de algoritmos de Machine Learning para produzir diferentes tipos de respostas. Isto facilita para os desenvolvedores criarem chatbots e automatizar conversas com o usuário.</p>
+<h2>Implementação</h2>
+<p>Bom, depois de toda essa teoria estamos prontos para realizar a nossa implementação. Vamos nos concentrar inteiramente no arquivo <strong><code>chatbot.py</code></strong>, nele vamos implementar toda a lógica de treinamento para o nosso bot, e por fim, construir um mecanismo para que possamos testar o seu funcionamento antes de disponibiliza-lo para os usuários.</p>
+<p>Para aqueles que são mais apressados, o código final do nosso bot seria algo como:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Arquivo: chatbot.py</span>
+
+<span class="kn">from</span> <span class="nn">chatterbot</span> <span class="kn">import</span> <span class="n">ChatBot</span>
+<span class="kn">from</span> <span class="nn">chatterbot.trainers</span> <span class="kn">import</span> <span class="n">ChatterBotCorpusTrainer</span>
+
+<span class="n">chatbot</span> <span class="o">=</span> <span class="n">ChatBot</span><span class="p">(</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">ChatterBotCorpusTrainer</span><span class="p">(</span><span class="n">chatbot</span><span class="p">)</span>
+
+<span class="n">trainer</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="s1">&#39;chatterbot.corpus.portuguese&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;./data&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Usuário: &#39;</span><span class="p">)</span>
+            <span class="n">bot_response</span> <span class="o">=</span> <span class="n">chatbot</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Chatbot:&#39;</span><span class="p">,</span> <span class="n">bot_response</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">EOFError</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">):</span>
+            <span class="k">break</span>
+</code></pre></div>
+
+<p>A partir de agora vamos verificar, parte por parte da implementação e entender como o bot está funcionando e como podemos testa-lo.</p>
+<p>Antes de mais nada, precisamos importar as bibliotecas que vamos utilziar para começar o nosso código:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">chatterbot</span> <span class="kn">import</span> <span class="n">ChatBot</span>
+<span class="kn">from</span> <span class="nn">chatterbot.trainers</span> <span class="kn">import</span> <span class="n">ChatterBotCorpusTrainer</span>
+</code></pre></div>
+
+<p>Importamos tanto o <strong><code>ChatBot</code></strong>, responsável por criar a instância do nosso bot, para que possamos treinar e gerar as respostas para as solicitações do usuário, quanto o <strong><code>ChatterBotCorpusTrainer</code></strong> que é responsável por criar o mecanismo que vamos utilizar para treinar o nosso bot, com os arquivos que vamos definir.</p>
+<p>Após as importações, podemos enfim, criar o nosso chatbot com um nome extremamente original (kkkkkk).</p>
+<div class="highlight"><pre><span></span><code><span class="n">chatbot</span> <span class="o">=</span> <span class="n">ChatBot</span><span class="p">(</span><span class="s1">&#39;Jarvis&#39;</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A opção <strong><code>read_only=True</code></strong> foi utilizada para garantir que o nosso bot aprenderá apenas o que nós vamos ensinar a ele, e vai descartar como possibilidade de aprendizado as respostas que o usuário vai inserir.</p>
+<p>O treinamento está a cargo do nosso <strong><code>trainer</code></strong>, que é responsável por gerar o conhecimento do nosso bot, para que ele possa selecionar a melhor resposta, de acordo com o que ele aprendeu, para oferecer de acordo com a solicitação do usuário.</p>
+<div class="highlight"><pre><span></span><code><span class="n">trainer</span> <span class="o">=</span> <span class="n">ChatterBotCorpusTrainer</span><span class="p">(</span><span class="n">chatbot</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O nosso <strong><code>trainer</code></strong> é do tipo <strong><code>ChatterBotCorpusTrainer</code></strong>, que basicamente vai permitir que possamos definir o conhecimento que queremos passar para o nosso bot a partir de arquivos com a extensão <code>.yml</code>, que vão ter um formato específico, que mais a frente eu detalharei.</p>
+<p>Em seguida podemos finalmente treinar o nosso bot com o trecho de código:</p>
+<div class="highlight"><pre><span></span><code><span class="n">trainer</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="s1">&#39;chatterbot.corpus.portuguese&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;./data&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Em resumo, temos duas linhas importantes que precisamos detalhar: <code>'chatterbot.corpus.portuguese'</code> e <code>'./data'</code>. A primeira linha diz respeito, a utilização de dados padrão que a biblioteca nos disponibiliza, esses dados estão em português e podemos utilizar para obter as primeiras respostas do nosso bot e testar o seu funcionamento. Essa primeira linha pode ser removida posteriormente quando você tiver construido um banco de conhecimento interessante.</p>
+<p>A segunda linha <code>'./data'</code> especifica o caminho para a nossa pasta onde colocaremos os nosso arquivos para treinamento, esse caminho não precisa necessariamente ser esse, ele pode ser qualquer caminho válido no seu computador.</p>
+<p>Por último, mas não menos importante, chegamos a última parte do nosso código:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Usuário: &#39;</span><span class="p">)</span>
+            <span class="n">bot_response</span> <span class="o">=</span> <span class="n">chatbot</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Chatbot:&#39;</span><span class="p">,</span> <span class="n">bot_response</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">EOFError</span><span class="p">,</span> <span class="ne">SystemExit</span><span class="p">):</span>
+            <span class="k">break</span>
+</code></pre></div>
+
+<p>Com esse trecho, adicionamos efetivamente a possibilidade de testar a nossa implementação do chatbot. Basicamente ele define um loop infinito para receber as entradas do usuário a partir do console. Esse loop será quebrado quando o usuário inserir <code>CTRL + C</code> ou <code>CTRL + D</code>, finalizando o programa. Dentro, estamos recebendo a solicitação do usuário através da entrada padrão e devolvendo a resposta que o bot gera com o trecho:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bot_response</span> <span class="o">=</span> <span class="n">chatbot</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Pronto, finalizamos a implementação do nosso bot, podemos agora executar o código utilizando o comando:</p>
+<div class="highlight"><pre><span></span><code>$ python chatbot.py
+</code></pre></div>
+
+<p>A execução, seria algo parecido com:</p>
+<div class="highlight"><pre><span></span><code><span class="go">[nltk_data] Downloading package averaged_perceptron_tagger to</span>
+<span class="go">[nltk_data]     /home/sysvale/nltk_data...</span>
+<span class="go">[nltk_data]   Package averaged_perceptron_tagger is already up-to-</span>
+<span class="go">[nltk_data]       date!</span>
+<span class="go">[nltk_data] Downloading package stopwords to</span>
+<span class="go">[nltk_data]     /home/sysvale/nltk_data...</span>
+<span class="go">[nltk_data]   Package stopwords is already up-to-date!</span>
+<span class="go">/home/sysvale/Área de Trabalho/Personal/chatbot-com-python/.venv/lib/python3.8/site-packages/chatterbot/corpus.py:38: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.</span>
+<span class="go">  return yaml.load(data_file)</span>
+<span class="go">Training compliment.yml: [####################] 100%</span>
+<span class="go">Training conversations.yml: [####################] 100%</span>
+<span class="go">Training greetings.yml: [####################] 100%</span>
+<span class="go">Training linguistic_knowledge.yml: [####################] 100%</span>
+<span class="go">Training proverbs.yml: [####################] 100%</span>
+<span class="go">Training suggestions.yml: [####################] 100%</span>
+<span class="go">Training trivia.yml: [####################] 100%</span>
+<span class="go">Training unilab.yml: [####################] 100%</span>
+<span class="go">Usuário:</span>
+</code></pre></div>
+
+<p>O console fica esperando a entrada do usuário para gerar uma resposta do bot.</p>
+<p>Com tudo lindo e bonito, precisamos escrever os arquivos que vão compor o banco de conhecimento do nosso bot. Esses aquivos tem um formato simples:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Arquivo: general.yml ou general.yaml</span><span class="w"></span>
+
+<span class="nt">categories</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geral</span><span class="w"></span>
+<span class="nt">conversations</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bom Dia como você está?</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Eu estou bem, e você?</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Eu também estou.</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Que bom.</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sim.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Olá, tá tudo bem com você?</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Está tudo bem, obrigado por perguntar.</span><span class="w"></span>
+</code></pre></div>
+
+<p>Podemos definir categorias para as conversas e cada uma delas é definida a partir do marcador <code>- -</code> e segue o fluxo. Cada conversa deve ter uma sequencia lógica para que o bot saiba a sequencia em que ele deve utilizar a base de conhecimento.</p>
+<p>Com tudo finalizado, você pode agora se divertir criando o seu banco de conhecimento, separado em um ou mais arquivos, com uma ou mais categorias, e por fim, tentar conversar com ele para saber como ele responde.</p>
 <h2>Recaptulando...</h2>
-<p>O que aprendemos hoje:</p>
+<p>O que fizemos hoje:</p>
 <ul>
-<li>O que são chatbots e os seus tipos</li>
-<li>Definimos os pacotes que vamos utilizar para desenvolver o nosso software</li>
-<li>Definimos a organização do nosso projeto</li>
+<li>Implementamos o nosso chatbot</li>
+<li>Criamos arquivos de treinamento para o nosso bot</li>
+<li>Testamos o funcionamento</li>
 </ul>
-<p>No próximo artigo vamos de fato desenvolver o nosso chatbot e torna-lo funcional.</p>
+<p>No próximo artigo vamos ver como podemos disponibilizar o chatbot através do telegram e finalizar a nossa construção do nosso primeiro chatbot em python.</p>
 <p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
       </div>
       <div class="back-to-top">
