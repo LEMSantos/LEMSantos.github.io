@@ -3,13 +3,11 @@ Slug: resume
 
 <h1 style="font-size:2em; margin-bottom: 1em;">Lucas Eliaquim</h1>
 
-Estudante de Engenharia da Computação na UNIVASF, fascinado
-pelas áreas de Data Science e Data Engineering, além de gostar
-de qualquer coisa relacionada com Inteligência Artificial. Almeja
-alcançar altas posições na área que gosta e viajar pelo mundo
-inteiro. Bem humorado e Enérgico, mas muito chato, principalmente
-quando o assunto é R vs Python ou como a Inteligência Artificial vai
-dominar o mundo.
+Me chamo Lucas Eliaquim, sou natural do interior da Bahia, cientista de dados
+em formação, e curioso nas horas vagas. Acredito que os dados podem mudar o
+mundo e gostaria de participar dessa empreitada na linha de frente do estado
+da arte, e além disso, prestar minhas contribuições para o avanço da ciência e
+da tecnologia, de forma ética e sustentável.
 
 Formação acadêmica
 ---
