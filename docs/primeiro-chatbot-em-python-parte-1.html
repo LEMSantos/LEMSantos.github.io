@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Primeiro chatbot em Python - Parte 1: Planejamento">
 <meta name="twitter:description" content="">
         <!-- OG Tags -->
-<meta property="og:url" content="/drafts/primeiro-chatbot-em-python-parte-1.html"/>
+<meta property="og:url" content="/primeiro-chatbot-em-python-parte-1.html"/>
 <meta property="og:title" content="LEMSantos | Primeiro chatbot em Python - Parte 1: Planejamento" />
 <meta property="og:description" content="" />
         <!-- favicon -->
@@ -112,6 +112,7 @@
                     </div>
 
                     <ul>
+                            <li class="active"><a href="/category/chatbot.html">Chatbot</a></li>
                     </ul>
             </nav>
         </header>
@@ -122,8 +123,8 @@
         <footer>
             <a name="top"></a>
             <p>
-              <time datetime=" 2022-06-20 19:00:00-03:00">
-                <script>document.write(moment('2022-06-20 19:00:00-03:00').format('LL'));</script>
+              <time datetime=" 2022-06-23 08:36:00-03:00">
+                <script>document.write(moment('2022-06-23 08:36:00-03:00').format('LL'));</script>
               </time>
             </p>
         </footer>
@@ -135,8 +136,8 @@
       <div class="content">
          <p><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a></p>
 <p><img alt="React: JavaScript library" src="/images/chatbot-banner.jpg"></p>
-<p>Bom dia, Boa tarde ou Boa noite, nesta série de artigos vamos construir o nosso chatbot utilizando a linguagem Python. O nosso projeto, vai desde o planejamento até o ponto em que ele esteja respondendo para os nossos usuários, ou para nós mesmos, porque não?!</p>
-<p>Antes de iniciarmos a nossa jornada, é interessante que você, meu querido leitor, cumpra alguns requisitos básicos para que o seu aprendizado seja satisfatório, são eles:</p>
+<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesta série, vamos construir o nosso chatbot utilizando a linguagem <strong>Python</strong>. O nosso projeto, vai desde o planejamento até o ponto em que ele esteja respondendo para os nossos usuários, ou para nós mesmos, porque não?!</p>
+<p>Antes de iniciarmos a nossa jornada, é interessante que você, meu querido leitor, minha querida leitora, cumpra alguns requisitos básicos para que o seu aprendizado seja satisfatório, são eles:</p>
 <ol>
 <li>Ter o interpretador de Python instalado no seu computador (<strong>Importante!!</strong>)</li>
 <li>Ter um conhecimento básico da linguagem python:<ul>
@@ -149,23 +150,23 @@
 </ol>
 <p><strong>Obs: Para tudo o que eu fiz ou fizer nos proximos artigos, eu utilizei/utilizarei o sistema operacional Ubuntu, mas não se sinta desencorajado por causa disso, caso você seja usuário de Mac ou Windows, todos os códigos funcionarão perfeitamente nestes outros sistemas operacionais.</strong></p>
 <p>Esses requisitos citados acima são os mais básicos que precisamos para desenvolver o nosso projeto, a medida que o projeto avança, caso seja necessário que você possua mais algum tipo de conhecimento específico eu avisarei, com toda a certeza, ai caso você não entenda muito sobre o tópico, eu também colocarei algumas referencias para facilitar o entendimento.</p>
-<p>Com tudo certo para dar errado (kkkkk) vamos iniciar o nosso projeto. Antes de mais nada é importante saber o que é um chatbot, quais os tipos, o que fazem, como vivem, o que comem...</p>
+<p>Com tudo certo para dar errado (hehehehehe) vamos iniciar o nosso projeto. Antes de mais nada é importante saber <strong>o que é um chatbot</strong>, quais os tipos, o que fazem, como vivem, o que comem...</p>
 <h2>Chatbots fantásticos e onde habitam</h2>
-<p>O chatbots são existências interessantes, mágicos para alguns, intrigantes para outros e até mesmo irritantes as vezes (Quantas vezes já falamos com uma central de atendimento, muito irritados, e nos deparamos com uma máquina "burra"). Eles, no entanto, não são magia, apenas tecnologia.</p>
-<p>Podemos encontrar muitas definições formais para o que seria um chatbot, mas gostaria de destacar uma delas para você meu querido leitor:</p>
+<p>O chatbots são existências interessantes; mágicos para alguns, intrigantes para outros e até mesmo irritantes às vezes (Quantas vezes já falamos com uma central de atendimento, muito irritados, e nos deparamos com uma máquina "burra"?). Eles, no entanto, <strong>não são magia</strong>, apenas <strong>tecnologia</strong>.</p>
+<p>Podemos encontrar muitas definições formais para o que seria um chatbot, mas gostaria de destacar uma delas para você:</p>
 <blockquote>
 <p><em>Um chatbot é um software capaz de manter uma conversa com um usuário humano em linguagem natural, por meio de aplicativos de mensagens, sites, e outras plataformas digitais. Eles são sistemas que usam uma interface conversacional para entregar um produto, serviço ou experiência.</em></p>
 </blockquote>
 <p><br></p>
-<p>Apesar dessa definição estar particularmente boa, geralmente elas não são, mas para resumir, um chatbot é um software/agente/programa, como queira chamar, que simula uma conversa humana, de preferência de uma forma que o ser humano que conversa com ele não consiga saber se está falando com uma máquina ou não (Ainda ta difícil...).</p>
+<p>Apesar dessa definição estar particularmente boa, geralmente elas não são. Mas para resumir, um chatbot é um <strong>software/agente/programa</strong>, como queira chamar, que simula uma conversa humana, de preferência de uma forma que o ser humano que conversa com ele não consiga saber se está falando com uma máquina ou não (Ainda está difícil).</p>
 <p>Podemos encontrar muitos tipos de chatbots no mercado, mas para simplificar vou citar apenas dois: O chatbot baseado em regras e o chatbot baseado em Inteligência Artificial.</p>
 <h4>Chatbot baseado em regras</h4>
-<p>Os chatbots baseados em regras só aceitam um número definido de solicitações e tem um vocabulário muito limitado, geralmente utilizam botões para restringir as respostas do usuário, mas mesmo tão limitados, eles conseguem resolver uma gama muito grande de problemas, e com sua simplicidade de implementação, acabam se tornando uma opção viável para muitas aplicações.</p>
+<p>Os chatbots baseados em regras só aceitam <strong>um número definido de solicitações</strong> e tem um <strong>vocabulário muito limitado</strong>, geralmente utilizam botões para restringir as respostas do usuário, mas mesmo tão limitados, eles conseguem resolver uma gama muito grande de problemas, e com sua simplicidade de implementação, acabam se tornando uma opção viável para muitas pessoas.</p>
 <h4>Chatbot baseado em Inteligência Artificial</h4>
 <p>Os chatbots baseados em IA geralmente são bem mais inteligentes e conseguem "entender" as intenções do usuário, conseguindo assim, tornar o chat mais dinâmico e talvez mais agradável. A sua complexidade de construção aumenta significativamente e isso talvez seja uma desvantagem de utilizar esse tipo de abordadem.</p>
 <p>Mas chega de falatório, porque com certeza você não chegou até aqui para aprender somente conceitos, então vamos para o nosso planejamento.</p>
 <h2>Requirements do projeto</h2>
-<p>Como você garantiu que atendeu os meus requisitos iniciais, acredito que já esteja familiarizado com o <code>pip</code>, o gerenciador de pacotes do python, caso não esteja, não se preocupe, o artigo encontrado nesse <a href="https://realpython.com/what-is-pip/">link</a> pode te ajudar. Os pacotes necessários que serão utilizados encontram-se logo abaixo</p>
+<p>Como você garantiu que atendeu os meus requisitos iniciais, acredito que já esteja familiarizado com o <code>pip</code>, o gerenciador de pacotes do python, caso não esteja não se preocupe, esse <a href="https://realpython.com/what-is-pip/">artigo</a> pode te ajudar. Os pacotes necessários que serão utilizados encontram-se logo abaixo:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># requirements.txt</span>
 
 ChatterBot
@@ -173,7 +174,7 @@ chatterbot-corpus
 telepot
 </code></pre></div>
 
-<p>Todos eles podem ser instalados individualmente, mas para uma melhor praticidade, podemos colocar todos em um arquivo <code>requirements.txt</code> e executar o comando abaixo para instalar todos de uma só vez</p>
+<p>Todos eles podem ser instalados individualmente, mas para uma maior praticidade, podemos colocar todos em um arquivo <code>requirements.txt</code> e executar o comando abaixo para instalar todos de uma só vez</p>
 <div class="highlight"><pre><span></span><code>$ pip install -r requirements.txt
 </code></pre></div>
 
@@ -204,9 +205,9 @@ bot:  Do you like hats?
 <h2>Recaptulando...</h2>
 <p>O que aprendemos hoje:</p>
 <ul>
-<li>O que são chatbots e os seus tipos</li>
-<li>Definimos os pacotes que vamos utilizar para desenvolver o nosso software</li>
-<li>Definimos a organização do nosso projeto</li>
+<li>O que são chatbots e os seus tipos;</li>
+<li>Definimos os pacotes que vamos utilizar para desenvolver o nosso software;</li>
+<li>Definimos a organização do nosso projeto.</li>
 </ul>
 <p>No próximo artigo vamos de fato desenvolver o nosso chatbot e torna-lo funcional.</p>
 <p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
