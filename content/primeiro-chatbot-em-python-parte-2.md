@@ -13,7 +13,7 @@ Status: draft
 
 ![React: JavaScript library](/images/coding-banner.jpg)
 
-Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no [artigo anterior](/drafts/primeiro-chatbot-em-python-parte-1.html), de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.
+Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no [artigo anterior](/primeiro-chatbot-em-python-parte-1.html), de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.
 
 Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco mais em como a biblioteca Chatterbot vai nos ajudar a desenvolver o nosso bot.
 
