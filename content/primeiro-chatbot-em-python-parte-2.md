@@ -18,11 +18,11 @@ Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco m
 
 ## Chatterbot
 
-Muita da explicação que vou dar sobre a biblioteca, está descrita em mais detalhes na [documentação](https://chatterbot.readthedocs.io/en/stable/), então quando tiver um tempinho, quando der, quando puder, passa lá e dá uma conferida, garanto que você não vai se arrepender.
+Muita da explicação que vou dar sobre a biblioteca, está descrita em mais detalhes na [documentação](https://chatterbot.readthedocs.io/en/stable/), então quando tiver um tempinho, quando der, se puder, passa lá e dá uma conferida, garanto que você não vai se arrepender.
 
 Chatterbot é uma biblioteca que torna mais fácil gerar respostas automatizadas para as solicitações do usuário. Ela utiliza uma seleção de algoritmos de Machine Learning para produzir diferentes tipos de respostas. Isto facilita para os desenvolvedores criarem chatbots e automatizar conversas com o usuário.
 
-Em seu funcionamento normal, uma instância não treinada de um bot, não possui nenhum conhecimento, e por padrão, todas as entradas enviadas pelo usuário são aprendidas e colocadas no banco de conhecimento para servir como resposta para perguntas funturas. Esse comportamento de auto-aprendizado pode ser desativado, e o bot apenas saberá o que for ensinado a ele na etapa de treinamento.
+Em seu funcionamento normal uma instância não treinada de um bot não possui nenhum conhecimento, e por padrão, todas as entradas enviadas pelo usuário são aprendidas e colocadas no banco de conhecimento para servir como resposta para perguntas futuras. Esse comportamento de auto-aprendizado pode ser desativado, e o bot apenas saberá o que for ensinado a ele na etapa de treinamento.
 
 A Chatterbot possui alguns mecanismos chamados de **Adaptadores Lógicos**, que são responsáveis por selecionar a resposta que mais se adequa a solicitação do usuário. Muitos adaptadores lógicos podem ser utilizados de uma vez, e a resposta com o maior nível de confiança será escolhida. Um diagrama que representa esse fluxo pode ser encontrado abaixo:
 
@@ -122,7 +122,7 @@ if __name__ == '__main__':
             break
 ```
 
-Com esse trecho, adicionamos efetivamente a possibilidade de testar a nossa implementação do chatbot. Basicamente ele define um loop infinito para receber as entradas do usuário a partir do console. Esse loop será quebrado quando o usuário inserir `CTRL + C` ou `CTRL + D`, finalizando o programa. Dentro, estamos recebendo a solicitação do usuário através da entrada padrão e devolvendo a resposta que o bot gera com o trecho:
+Com esse trecho, adicionamos efetivamente a possibilidade de testar a nossa implementação do chatbot. Basicamente ele define um loop infinito para receber as entradas do usuário a partir do console. Esse loop será quebrado quando o usuário inserir `CTRL + C` ou `CTRL + D`, finalizando o programa. Dentro do laço, estamos recebendo a solicitação do usuário através da entrada padrão e devolvendo a resposta que o bot gera, com o trecho:
 
 ```python
 bot_response = chatbot.get_response(user_input)

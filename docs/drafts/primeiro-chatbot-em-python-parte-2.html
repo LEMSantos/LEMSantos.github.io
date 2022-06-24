@@ -140,9 +140,9 @@
 <p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no <a href="/primeiro-chatbot-em-python-parte-1.html">artigo anterior</a>, de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.</p>
 <p>Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco mais em como a biblioteca Chatterbot vai nos ajudar a desenvolver o nosso bot.</p>
 <h2>Chatterbot</h2>
-<p>Muita da explicação que vou dar sobre a biblioteca, está descrita em mais detalhes na <a href="https://chatterbot.readthedocs.io/en/stable/">documentação</a>, então quando tiver um tempinho, quando der, quando puder, passa lá e dá uma conferida, garanto que você não vai se arrepender.</p>
+<p>Muita da explicação que vou dar sobre a biblioteca, está descrita em mais detalhes na <a href="https://chatterbot.readthedocs.io/en/stable/">documentação</a>, então quando tiver um tempinho, quando der, se puder, passa lá e dá uma conferida, garanto que você não vai se arrepender.</p>
 <p>Chatterbot é uma biblioteca que torna mais fácil gerar respostas automatizadas para as solicitações do usuário. Ela utiliza uma seleção de algoritmos de Machine Learning para produzir diferentes tipos de respostas. Isto facilita para os desenvolvedores criarem chatbots e automatizar conversas com o usuário.</p>
-<p>Em seu funcionamento normal, uma instância não treinada de um bot, não possui nenhum conhecimento, e por padrão, todas as entradas enviadas pelo usuário são aprendidas e colocadas no banco de conhecimento para servir como resposta para perguntas funturas. Esse comportamento de auto-aprendizado pode ser desativado, e o bot apenas saberá o que for ensinado a ele na etapa de treinamento.</p>
+<p>Em seu funcionamento normal uma instância não treinada de um bot não possui nenhum conhecimento, e por padrão, todas as entradas enviadas pelo usuário são aprendidas e colocadas no banco de conhecimento para servir como resposta para perguntas futuras. Esse comportamento de auto-aprendizado pode ser desativado, e o bot apenas saberá o que for ensinado a ele na etapa de treinamento.</p>
 <p>A Chatterbot possui alguns mecanismos chamados de <strong>Adaptadores Lógicos</strong>, que são responsáveis por selecionar a resposta que mais se adequa a solicitação do usuário. Muitos adaptadores lógicos podem ser utilizados de uma vez, e a resposta com o maior nível de confiança será escolhida. Um diagrama que representa esse fluxo pode ser encontrado abaixo:</p>
 <p><img alt="Fluxo de processo da Chatterbot" src="/images/chatterbot-process-flow.svg" width="60%"></p>
 <p style="text-align: center; margin-top: -27px"><em>(imagem retirada da documentação)</em></p>
@@ -215,7 +215,7 @@
             <span class="k">break</span>
 </code></pre></div>
 
-<p>Com esse trecho, adicionamos efetivamente a possibilidade de testar a nossa implementação do chatbot. Basicamente ele define um loop infinito para receber as entradas do usuário a partir do console. Esse loop será quebrado quando o usuário inserir <code>CTRL + C</code> ou <code>CTRL + D</code>, finalizando o programa. Dentro, estamos recebendo a solicitação do usuário através da entrada padrão e devolvendo a resposta que o bot gera com o trecho:</p>
+<p>Com esse trecho, adicionamos efetivamente a possibilidade de testar a nossa implementação do chatbot. Basicamente ele define um loop infinito para receber as entradas do usuário a partir do console. Esse loop será quebrado quando o usuário inserir <code>CTRL + C</code> ou <code>CTRL + D</code>, finalizando o programa. Dentro do laço, estamos recebendo a solicitação do usuário através da entrada padrão e devolvendo a resposta que o bot gera, com o trecho:</p>
 <div class="highlight"><pre><span></span><code><span class="n">bot_response</span> <span class="o">=</span> <span class="n">chatbot</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
 </code></pre></div>
 

@@ -27,7 +27,7 @@ Antes de iniciarmos a nossa jornada, é interessante que você, meu querido leit
 
 **Obs: Para tudo o que eu fiz ou fizer nos proximos artigos, eu utilizei/utilizarei o sistema operacional Ubuntu, mas não se sinta desencorajado por causa disso, caso você seja usuário de Mac ou Windows, todos os códigos funcionarão perfeitamente nestes outros sistemas operacionais.**
 
-Esses requisitos citados acima são os mais básicos que precisamos para desenvolver o nosso projeto, a medida que o projeto avança, caso seja necessário que você possua mais algum tipo de conhecimento específico eu avisarei, com toda a certeza, ai caso você não entenda muito sobre o tópico, eu também colocarei algumas referencias para facilitar o entendimento.
+Esses requisitos citados acima são os mais básicos que precisamos para desenvolver o nosso projeto, a medida que o projeto avança, caso seja necessário que você possua mais algum tipo de conhecimento específico eu avisarei, com toda a certeza, ai caso você não entenda muito sobre o tópico, eu também colocarei algumas referências para facilitar o entendimento.
 
 Com tudo certo para dar errado (hehehehehe) vamos iniciar o nosso projeto. Antes de mais nada é importante saber **o que é um chatbot**, quais os tipos, o que fazem, como vivem, o que comem...
 
@@ -85,7 +85,7 @@ $ pip install -r requirements.txt
 ## Estrutura do projeto
 
 
-Quem trabalha com programação a um pouco mais de tempo, já deve ter notado que para uma projeto bem sucedido uma estrutura de organização é de extrema importância e pode facilitar ou dificultar o desenvolvimento. No nosso caso, como o projeto é relativamente simples, a nossa estrutura também será.
+Quem trabalha com programação há um pouco mais de tempo, já deve ter notado que para uma projeto bem sucedido uma estrutura de organização é de extrema importância e pode facilitar ou dificultar o desenvolvimento. No nosso caso, como o projeto é relativamente simples, a nossa estrutura também será.
 
 ```
 .
@@ -95,7 +95,7 @@ Quem trabalha com programação a um pouco mais de tempo, já deve ter notado qu
 └── requirements.txt
 ```
 
-As pasta **`data`** servirá para colocarmos os dados de treinamento do chatbot (não se preocupe com isso no momento), o arquivo **`chatbot.py`** será aquele em que vamos definir o nosso chatbot e como ele vai se comportar, temos ainda o arquivo **`requirements.txt`** que já foi citado acima, e por último, mas não menos importante o arquivo **`main.py`** que será o arquivo principal do nosso programa e nele vamos definir tudo o que precisamos para que chatbot consiga dar as respostas para as solicitações.
+A pasta **`data`** servirá para colocarmos os dados de treinamento do chatbot (não se preocupe com isso no momento), o arquivo **`chatbot.py`** será aquele em que vamos definir o nosso chatbot e como ele vai se comportar, temos ainda o arquivo **`requirements.txt`** que já foi citado acima, e por último, mas não menos importante o arquivo **`main.py`** que será o arquivo principal do nosso programa e nele vamos definir tudo o que precisamos para que o chatbot consiga dar as respostas para as solicitações.
 
 
 ## Pacotes que serão utilizados
