@@ -13,14 +13,29 @@ Status: draft
 
 ![React: JavaScript library](/images/coding-banner.jpg)
 
-
-Bom dia, Boa tarde ou Boa noite, voltamos para continuar a empreitada que começamos no [artigo anterior](/drafts/primeiro-chatbot-em-python-parte-1.html), de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.
+Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no [artigo anterior](/drafts/primeiro-chatbot-em-python-parte-1.html), de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.
 
 Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco mais em como a biblioteca Chatterbot vai nos ajudar a desenvolver o nosso bot.
 
 ## Chatterbot
 
+Muita da explicação que vou dar sobre a biblioteca, está descrita em mais detalhes na [documentação](https://chatterbot.readthedocs.io/en/stable/), então quando tiver um tempinho, quando der, quando puder, passa lá e dá uma conferida, garanto que você não vai se arrepender.
+
 Chatterbot é uma biblioteca que torna mais fácil gerar respostas automatizadas para as solicitações do usuário. Ela utiliza uma seleção de algoritmos de Machine Learning para produzir diferentes tipos de respostas. Isto facilita para os desenvolvedores criarem chatbots e automatizar conversas com o usuário.
+
+Em seu funcionamento normal, uma instância não treinada de um bot, não possui nenhum conhecimento, e por padrão, todas as entradas enviadas pelo usuário são aprendidas e colocadas no banco de conhecimento para servir como resposta para perguntas funturas. Esse comportamento de auto-aprendizado pode ser desativado, e o bot apenas saberá o que for ensinado a ele na etapa de treinamento.
+
+A Chatterbot possui alguns mecanismos chamados de **Adaptadores Lógicos**, que são responsáveis por selecionar a resposta que mais se adequa a solicitação do usuário. Muitos adaptadores lógicos podem ser utilizados de uma vez, e a resposta com o maior nível de confiança será escolhida. Um diagrama que representa esse fluxo pode ser encontrado abaixo:
+
+![Fluxo de processo da Chatterbot](/images/chatterbot-process-flow.svg){ width=60% }
+<p style="text-align: center; margin-top: -27px"><em>(imagem retirada da documentação)</em></p>
+
+
+A bilbioteca já disponibiliza algums adaptadores lógicos por padrão, e vale a pena dar uma olhada na documentação para conferir o que cada um deles é capaz de nos oferecer.
+
+Além disso tudo, o design da bilbioteca permite que os bots possam ser treinados da mesma forma, independente do idioma que será utilizado.
+
+Segue alguns [exemplos](https://chatterbot.readthedocs.io/en/stable/examples.html) disponíveis para ajudar a entender melhor os conceitos.
 
 ## Implementação
 
@@ -65,7 +80,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 
 Importamos tanto o **`ChatBot`**, responsável por criar a instância do nosso bot, para que possamos treinar e gerar as respostas para as solicitações do usuário, quanto o **`ChatterBotCorpusTrainer`** que é responsável por criar o mecanismo que vamos utilizar para treinar o nosso bot, com os arquivos que vamos definir.
 
-Após as importações, podemos enfim, criar o nosso chatbot com um nome extremamente original (kkkkkk).
+Após as importações, podemos enfim, criar o nosso chatbot com um nome extremamente original (hehehehe).
 
 ```python
 chatbot = ChatBot('Jarvis', read_only=True)
@@ -73,13 +88,13 @@ chatbot = ChatBot('Jarvis', read_only=True)
 
 A opção **`read_only=True`** foi utilizada para garantir que o nosso bot aprenderá apenas o que nós vamos ensinar a ele, e vai descartar como possibilidade de aprendizado as respostas que o usuário vai inserir.
 
-O treinamento está a cargo do nosso **`trainer`**, que é responsável por gerar o conhecimento do nosso bot, para que ele possa selecionar a melhor resposta, de acordo com o que ele aprendeu, para oferecer de acordo com a solicitação do usuário.
+O treinamento está a cargo do nosso **`trainer`**, que é responsável por gerar o conhecimento do nosso bot, para que ele possa selecionar a melhor resposta, de acordo com o que ele aprendeu, para oferecer ao usuário.
 
 ```python
 trainer = ChatterBotCorpusTrainer(chatbot)
 ```
 
-O nosso **`trainer`** é do tipo **`ChatterBotCorpusTrainer`**, que basicamente vai permitir que possamos definir o conhecimento que queremos passar para o nosso bot a partir de arquivos com a extensão `.yml`, que vão ter um formato específico, que mais a frente eu detalharei.
+O nosso **`trainer`** é do tipo **`ChatterBotCorpusTrainer`**, que basicamente vai permitir que possamos definir o conhecimento que queremos passar para o nosso bot a partir de arquivos com a extensão `.yml` ou `.yaml`, que vão ter um formato específico, que mais a frente eu detalharei.
 
 Em seguida podemos finalmente treinar o nosso bot com o trecho de código:
 
@@ -162,7 +177,7 @@ conversations:
   - Está tudo bem, obrigado por perguntar.
 ```
 
-Podemos definir categorias para as conversas e cada uma delas é definida a partir do marcador `- -` e segue o fluxo. Cada conversa deve ter uma sequencia lógica para que o bot saiba a sequencia em que ele deve utilizar a base de conhecimento.
+Podemos definir categorias para as conversas e cada uma delas é definida a partir do marcador **`- -`**. Cada conversa deve ter uma sequencia lógica para que o bot saiba a sequencia em que ele deve utilizar a base de conhecimento.
 
 Com tudo finalizado, você pode agora se divertir criando o seu banco de conhecimento, separado em um ou mais arquivos, com uma ou mais categorias, e por fim, tentar conversar com ele para saber como ele responde.
 
@@ -175,6 +190,6 @@ O que fizemos hoje:
 - Criamos arquivos de treinamento para o nosso bot
 - Testamos o funcionamento
 
-No próximo artigo vamos ver como podemos disponibilizar o chatbot através do telegram e finalizar a nossa construção do nosso primeiro chatbot em python.
+No próximo artigo vamos ver como podemos disponibilizar o chatbot através do telegram e finalizar a construção do nosso primeiro chatbot em python.
 
 Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye
