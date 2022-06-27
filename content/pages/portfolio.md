@@ -2,7 +2,7 @@ Title: Portfólio
 Slug: portfolio
 
 
-![Banner do portfólio](/images/portfolio-banner.svg)
+![Banner do portfólio](/images/portfolio-banner.webp)
 
 
 |     |     |

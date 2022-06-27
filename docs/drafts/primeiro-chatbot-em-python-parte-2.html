@@ -15,7 +15,7 @@
         <meta charset="utf-8" />
         <!-- twitter card metadata -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="/images/avatar.png">
+<meta name="twitter:image" content="/images/avatar.webp">
 <meta name="twitter:site" content="">
 <meta name="twitter:title" content="Primeiro chatbot em Python - Parte 2: Implementação">
 <meta name="twitter:description" content="">
@@ -79,7 +79,7 @@
                     align-items: center;
                 ">
                     <img
-                        src="/images/avatar.png"
+                        src="/images/avatar.webp"
                         alt="McManus Logo"
                     >
 
@@ -134,7 +134,7 @@
           </h2>
         </header>
       <div class="content">
-         <p><img alt="React: JavaScript library" src="/images/coding-banner.jpg"></p>
+         <p><img alt="React: JavaScript library" src="/images/coding-banner.webp"></p>
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/fundo">Fundo vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 <p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no <a href="/primeiro-chatbot-em-python-parte-1.html">artigo anterior</a>, de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.</p>
@@ -151,7 +151,7 @@
 <p>Além disso tudo, o design da bilbioteca permite que os bots possam ser treinados da mesma forma, independente do idioma que será utilizado.</p>
 <p>Segue alguns <a href="https://chatterbot.readthedocs.io/en/stable/examples.html">exemplos</a> disponíveis para ajudar a entender melhor os conceitos.</p>
 <h2>Implementação</h2>
-<p>Bom, depois de toda essa teoria estamos prontos para realizar a nossa implementação. Vamos nos concentrar inteiramente no arquivo <strong><code>chatbot.py</code></strong>, nele vamos implementar toda a lógica de treinamento para o nosso bot, e por fim, construir um mecanismo para que possamos testar o seu funcionamento antes de disponibiliza-lo para os usuários.</p>
+<p>Bom, depois de toda essa teoria estamos prontos para realizar a nossa implementação. Vamos nos concentrar inteiramente no arquivo <strong><code>chatbot.py</code></strong>, nele vamos implementar toda a lógica de treinamento para o nosso bot, e por fim, construir um mecanismo para que possamos testar o seu funcionamento antes de disponibilizá-lo para os usuários.</p>
 <p>Para aqueles que são mais apressados, o código final do nosso bot seria algo como:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Arquivo: chatbot.py</span>
 
@@ -178,7 +178,7 @@
 </code></pre></div>
 
 <p>A partir de agora vamos verificar, parte por parte da implementação e entender como o bot está funcionando e como podemos testa-lo.</p>
-<p>Antes de mais nada, precisamos importar as bibliotecas que vamos utilziar para começar o nosso código:</p>
+<p>Antes de mais nada, precisamos importar as bibliotecas que vamos utilizar para começar o nosso código:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">chatterbot</span> <span class="kn">import</span> <span class="n">ChatBot</span>
 <span class="kn">from</span> <span class="nn">chatterbot.trainers</span> <span class="kn">import</span> <span class="n">ChatterBotCorpusTrainer</span>
 </code></pre></div>

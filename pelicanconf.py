@@ -50,7 +50,7 @@ SITEIMAGE = 'site-cover.jpg'
 SITEDESCRIPTION = 'A simple, accessible, content-first Pelican theme inspired by David Bryant Copeland\'s https://brutalist-web.design/'
 
 FAVICON = 'pelly.png'
-LOGO = 'avatar.png'
+LOGO = 'avatar.webp'
 FIRST_NAME = 'LEMSantos'
 FANCY_NAME = 'Lucas Eliaquim'
 ## google analytics (fake code commented out)

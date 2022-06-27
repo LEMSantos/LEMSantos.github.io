@@ -9,7 +9,7 @@ Summary: Artigo sobre a criação de um chatbot utilizando python com a bibliote
 Status: draft
 
 
-![React: JavaScript library](/images/coding-banner.jpg)
+![React: JavaScript library](/images/coding-banner.webp)
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/fundo">Fundo vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no [artigo anterior](/primeiro-chatbot-em-python-parte-1.html), de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.
@@ -38,7 +38,7 @@ Segue alguns [exemplos](https://chatterbot.readthedocs.io/en/stable/examples.htm
 
 ## Implementação
 
-Bom, depois de toda essa teoria estamos prontos para realizar a nossa implementação. Vamos nos concentrar inteiramente no arquivo **`chatbot.py`**, nele vamos implementar toda a lógica de treinamento para o nosso bot, e por fim, construir um mecanismo para que possamos testar o seu funcionamento antes de disponibiliza-lo para os usuários.
+Bom, depois de toda essa teoria estamos prontos para realizar a nossa implementação. Vamos nos concentrar inteiramente no arquivo **`chatbot.py`**, nele vamos implementar toda a lógica de treinamento para o nosso bot, e por fim, construir um mecanismo para que possamos testar o seu funcionamento antes de disponibilizá-lo para os usuários.
 
 Para aqueles que são mais apressados, o código final do nosso bot seria algo como:
 
@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
 A partir de agora vamos verificar, parte por parte da implementação e entender como o bot está funcionando e como podemos testa-lo.
 
-Antes de mais nada, precisamos importar as bibliotecas que vamos utilziar para começar o nosso código:
+Antes de mais nada, precisamos importar as bibliotecas que vamos utilizar para começar o nosso código:
 
 ```python
 from chatterbot import ChatBot

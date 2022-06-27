@@ -9,7 +9,7 @@ Summary: Artigo sobre a criação de um chatbot utilizando python com a bibliote
 Status: published
 
 
-![React: JavaScript library](/images/chatbot-banner.jpg)
+![React: JavaScript library](/images/chatbot-banner.webp)
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 
