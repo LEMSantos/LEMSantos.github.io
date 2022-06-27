@@ -1,6 +1,6 @@
 Title: Primeiro chatbot em Python - Parte 1: Planejamento
 Date: 2022-06-23 08:36
-Modified: 2022-06-23 08:36
+Modified: 2022-06-27 08:24
 Category: Chatbot
 Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-1
@@ -9,9 +9,8 @@ Summary: Artigo sobre a criação de um chatbot utilizando python com a bibliote
 Status: published
 
 
-<a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a>
-
 ![React: JavaScript library](/images/chatbot-banner.jpg)
+<p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 
 Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesta série, vamos construir o nosso chatbot utilizando a linguagem **Python**. O nosso projeto, vai desde o planejamento até o ponto em que ele esteja respondendo para os nossos usuários, ou para nós mesmos, porque não?!
