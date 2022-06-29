@@ -120,7 +120,7 @@ bot:  Do you like hats?
 Telepot é uma biblioteca que ajuda os desenvolvedores a construir softwares para se comunicar com a [API de bots do Telegram](https://core.telegram.org/bots). Ela possui versões que funcionam tanto com o Python 2.7, quanto com o Python 3. Segundo a própria [documentação](https://telepot.readthedocs.io/en/latest/) da biblioteca a melhor forma de entender o seu funcionamente é lendo a parte principal da mesma e olhando para os [exemplos](https://github.com/nickoala/telepot/tree/master/examples).
 
 
-## Recaptulando...
+## Recapitulando...
 
 
 O que aprendemos hoje:
