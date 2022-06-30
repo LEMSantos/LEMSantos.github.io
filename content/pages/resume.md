@@ -38,6 +38,15 @@ Licenças e certificados
 ---
 
 <h4 style="display: flex; align-items: center; margin-left: 8px">
+    <img src="/images/alura-logo.jpeg" alt="udemy logo" width="31" style="display: inline-block; margin-right: 16px; margin-left: 0px"/>
+    Alura
+</h4>
+
+> *Emitido em Junho de 2022*
+> :   **Formação Engenharia de software**<br>
+> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/64592457-0c0d-4571-bcc4-788405e65391)
+
+<h4 style="display: flex; align-items: center; margin-left: 8px">
     <img src="/images/udemy-logo.png" alt="udemy logo" width="18" style="display: inline-block; margin-right: 16px; margin-left: 0px"/>
     Udemy
 </h4>
