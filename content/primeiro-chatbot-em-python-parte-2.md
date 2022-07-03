@@ -5,7 +5,7 @@ Category: Chatbot
 Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-2
 Authors: Lucas Eliaquim
-Summary: Artigo sobre a criação de um chatbot utilizando python com a biblioteca Chatterbot e deploy com o Telegram.
+Description: Continuando a nossa série de artigos sobre o primeiro chatbot em python, agora é a vez de implementar o nosso bot utilizando a biblioteca Chatterbot e testar os primeiros comportamentos.
 Status: published
 
 
