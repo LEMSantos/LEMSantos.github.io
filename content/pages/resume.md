@@ -42,6 +42,11 @@ Licenças e certificados
     Alura
 </h4>
 
+> *Emitido em Julho de 2022*
+> :   **Formação Machine Learning**<br>
+> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/51b5894c-9c8e-438d-8a40-cd4cace71122)
+>
+> <br>
 > *Emitido em Junho de 2022*
 > :   **Formação Engenharia de software**<br>
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/64592457-0c0d-4571-bcc4-788405e65391)
