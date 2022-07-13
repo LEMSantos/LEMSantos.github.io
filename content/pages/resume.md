@@ -43,6 +43,11 @@ Licenças e certificados
 </h4>
 
 > *Emitido em Julho de 2022*
+> :   **Formação Técnicas de processamento de linguagem natural**<br>
+> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/ec743417-fa5e-45b4-8a2c-c4d6de945f42)
+>
+> <br>
+> *Emitido em Julho de 2022*
 > :   **Formação Machine Learning**<br>
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/51b5894c-9c8e-438d-8a40-cd4cace71122)
 >
