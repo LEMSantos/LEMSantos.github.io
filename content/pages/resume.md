@@ -12,7 +12,7 @@ da tecnologia, de forma ética e sustentável.
 Formação acadêmica
 ---
 
-*Junho de 2021 - Dezembro de 2022 (expectativa)*
+*Junho de 2021 - Julho de 2023 (expectativa)*
 :   **Bacharelado em Ciência da Computação**<br>
 Faculdade de Ciências Aplicadas e Sociais de Petrolina - Facape
 
