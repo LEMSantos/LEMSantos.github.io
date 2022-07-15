@@ -1,7 +1,7 @@
 Title: Primeiro chatbot em Python - Parte 1: Planejamento
 Date: 2022-06-23 08:36
 Modified: 2022-06-27 08:24
-Category: Chatbot
+Category: NLP
 Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-1
 Authors: Lucas Eliaquim

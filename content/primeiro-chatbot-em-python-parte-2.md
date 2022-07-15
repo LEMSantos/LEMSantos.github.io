@@ -1,7 +1,7 @@
 Title: Primeiro chatbot em Python - Parte 2: Implementação
 Date: 2022-06-29 13:36
 Modified: 2022-06-29 13:36
-Category: Chatbot
+Category: NLP
 Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-2
 Authors: Lucas Eliaquim
