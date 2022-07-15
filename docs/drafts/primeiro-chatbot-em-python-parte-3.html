@@ -18,11 +18,11 @@
 <meta name="twitter:image" content="/images/avatar.webp">
 <meta name="twitter:site" content="">
 <meta name="twitter:title" content="Primeiro chatbot em Python - Parte 3: Provisionamento">
-<meta name="twitter:description" content="Artigo sobre a criação de um chatbot utilizando python com a biblioteca Chatterbot e deploy com o Telegram.">
+<meta name="twitter:description" content="Chegamos a última parte do nosso projeto de construção do primeiro chatbot em Python. Agora vamos finalmente construir uma estrutura que nos permita compartilhar ele com o mundo.">
         <!-- OG Tags -->
 <meta property="og:url" content="/drafts/primeiro-chatbot-em-python-parte-3.html"/>
 <meta property="og:title" content="LEMSantos | Primeiro chatbot em Python - Parte 3: Provisionamento" />
-<meta property="og:description" content="Artigo sobre a criação de um chatbot utilizando python com a biblioteca Chatterbot e deploy com o Telegram." />
+<meta property="og:description" content="Chegamos a última parte do nosso projeto de construção do primeiro chatbot em Python. Agora vamos finalmente construir uma estrutura que nos permita compartilhar ele com o mundo." />
         <!-- favicon -->
         <link rel="icon" type="image/png" href="/images/pelly.png">
         <!-- moment.js for date formatting -->
@@ -56,7 +56,7 @@
             };
         </script>
 
-    <meta name="description" content="Artigo sobre a criação de um chatbot utilizando python com a biblioteca Chatterbot e deploy com o Telegram." />
+    <meta name="description" content="Chegamos a última parte do nosso projeto de construção do primeiro chatbot em Python. Agora vamos finalmente construir uma estrutura que nos permita compartilhar ele com o mundo." />
 
     <meta name="tags" content="Chatterbot" />
     <meta name="tags" content="Telegram" />
@@ -124,8 +124,8 @@
         <footer>
             <a name="top"></a>
             <p>
-              <time datetime=" 2022-07-03 14:06:00-03:00">
-                <script>document.write(moment('2022-07-03 14:06:00-03:00').format('LL'));</script>
+              <time datetime=" 2022-07-15 14:06:00-03:00">
+                <script>document.write(moment('2022-07-15 14:06:00-03:00').format('LL'));</script>
               </time>
             </p>
         </footer>
@@ -138,10 +138,91 @@
          <p><img alt="React: JavaScript library" src="/images/telegram-banner.webp"></p>
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
 
-<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no <a href="/primeiro-chatbot-em-python-parte-1.html">artigo anterior</a>, de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.</p>
-<p>Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco mais em como a biblioteca Chatterbot vai nos ajudar a desenvolver o nosso bot.</p>
+<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), vamos, em fim, terminar o projeto que começamos na <a href="/primeiro-chatbot-em-python-parte-1.html">Parte 1</a> e na <a href="/primeiro-chatbot-em-python-parte-2.html">Parte 2</a> dessa série. Depois do planejamento que fizemos e da implementação efetiva do nosso chatbot, temos que mostrá-lo ao mundo, ou quem sabe só a parentes próximos (hehehe). Para tal, vamos utilizar o Telegram, dado que permite disponibilizar os nossos bots gratuitamente.</p>
+<p>Antes de iniciarmos a implementação, é interessante nos aprofundar um pouco mais em como a biblioteca Telepot pode nos ajudar a realizar essa conexão entre o nosso código em Python e o Telegram.</p>
 <h2>Telepot</h2>
+<p>Sobre a biblioteca telepot, não temos muito o que dizer. Apenas para resumir, ela é um forma de construir uma comunicação com a <a href="https://core.telegram.org/bots">API de bots do Telegram</a>. Essa biblioteca funciona tanto com Python 2.7 e Python 3, além de que para Python 3.5+ ela ainda disponibiliza a possibilidade de versões de comunicação assíncrona.</p>
+<p>De acordo com o próprio autor da <a href="https://telepot.readthedocs.io/en/latest/">documentação</a> seria complicado listar todas as features que a bilbioteca oferece, então ele desistiu (hehehe). Assim, a melhor forma de entender como ela funciona seria ler a primeira página de introdução e depois conferir todos os exemplos que são listados.</p>
+<p>O motivo para utilizarmos essa biblioteca é que ela facilita o nosso trabalho, além de ser bem simples de entender, e com poucas linhas já conseguiremos resolver o nosso problema.</p>
+<p>Dito isto, sigamos para a nossa tão esperada implementação...</p>
 <h2>Implementação</h2>
+<p>Bom, antes de qualquer coisa é importante criar um bot no telegram, para que possamos conectar com ele. Está fora do escopo desse artigo como você pode fazer isso, mas acredito que esse <a href="https://tecnoblog.net/responde/como-criar-um-bot-no-telegram/">artigo</a> pode ajudar.</p>
+<p>Nesse ponto, vou assumir que você já passou pelos artigos anteriores e já conseguiu deixar o chatbot funcional. A partir de agora vamos trabalhar apenas no arquivo <strong><code>main.py</code></strong>.</p>
+<p>Como sempre para as pessoas mais apressadinhas segue o código final. Você pode testá-lo, e qualquer problema deixe nos comentários que vamos resolver o mais rápido possível. Mesmo depois de testar é importante que você veja também a explicação passo a passo para que o aprendizado seja melhor fixado.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Arquivo: main.py</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">telepot</span>
+<span class="kn">from</span> <span class="nn">telepot.loop</span> <span class="kn">import</span> <span class="n">MessageLoop</span>
+
+<span class="kn">from</span> <span class="nn">chatbot</span> <span class="kn">import</span> <span class="n">chatbot</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="n">telepot</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="s1">&#39;&lt;TOKEN-BOLADÃO-DO-TELEGRAM&gt;&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">handle_telegram_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">content_type</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">chat_id</span> <span class="o">=</span> <span class="n">telepot</span><span class="o">.</span><span class="n">glance</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">content_type</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="n">chatbot_response</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chatbot</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)))</span>
+        <span class="n">bot</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">chat_id</span><span class="p">,</span> <span class="n">chatbot_response</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">MessageLoop</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">handle_telegram_message</span><span class="p">)</span><span class="o">.</span><span class="n">run_as_thread</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Escutando mensagens do Telegram...&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A primeira coisa que precisamos fazer são as importações. De início precisamos da biblioteca <strong><code>time</code></strong>, que já vem no core do Python.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+</code></pre></div>
+
+<p>Essa bilbioteca vai nos ajudar a manter o nosso programa rodando já que a comunicação com o telegram será feita de forma assíncrona. Logo em seguida fazemos as importações necessárias da bilbioteca <strong><code>telepot</code></strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">telepot</span>
+<span class="kn">from</span> <span class="nn">telepot.loop</span> <span class="kn">import</span> <span class="n">MessageLoop</span>
+</code></pre></div>
+
+<p>E por fim, temos que importar o chatbot que criamos na parte 2 dessa série com o seguinte trecho de código:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">chatbot</span> <span class="kn">import</span> <span class="n">chatbot</span>
+</code></pre></div>
+
+<p>Em seguida precisamos criar a conexão entre o Telegram e o nosso código. A biblioteca telepot nos ajuda com isso.
+Precisamos apenas instânciar o nosso bot passando o <strong>token</strong> que pegamos ao utilizar o botfather. Isso pode ser exemplificado com o trecho de código:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">telepot</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="s1">&#39;&lt;TOKEN-BOLADÃO-DO-TELEGRAM&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ai precisamos só substituir <strong><code>&lt;TOKEN-BOLADÃO-DO-TELEGRAM&gt;</code></strong> pelo token correto e a conexão já será estabelecida. Não esqueça o token é secreto e não pode ser repassado.</p>
+<p>Seguindo, agora é hora de definir como o nosso bot vai se comportar quando alguém mandar uma mensagem para ele. Podemos fazer isso definindo uma função.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">handle_telegram_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">content_type</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">chat_id</span> <span class="o">=</span> <span class="n">telepot</span><span class="o">.</span><span class="n">glance</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">content_type</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="n">chatbot_response</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chatbot</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)))</span>
+        <span class="n">bot</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">chat_id</span><span class="p">,</span> <span class="n">chatbot_response</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Essa função será chamada todas as vezes que uma mensagem nova chegar. Basicamente precisamos recuperar da mensagem o tipo da mensagem enviada (<strong><code>content_type</code></strong>), e o id de quem enviou a mensagem (<strong><code>chat_id</code></strong>). Precisamos saber o tipo da mensagem para filtrar caso venha algo diferente de texto, dado que o nosso bot não está preparado para responder. O id serve para que possamos encaminhar a resposta para a pessoa correta.</p>
+<p>Logo em seguida temos a última parte do nosso código.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">MessageLoop</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">handle_telegram_message</span><span class="p">)</span><span class="o">.</span><span class="n">run_as_thread</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Escutando mensagens do Telegram...&#39;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Nessa etapa vamos definir o loop de mensagem para rodar cada vez que uma nova mensagem chega. Como esse loop roda de forma assíncrona, caso deixássemos sem mais nenhum trecho de código, o programa simplesmente finalizaria e o nosso bot não poderia responder. Por isso, deixamos o loop infinito.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ele vai garantir que o nosso programa não será finalizado.</p>
+<p>Com tudo definido, você já pode rodar o código e falar com o seu bot através do telegram.</p>
+<p><img alt="Exemplo de conversa no Telegram" height="500px" src="/images/telegram-example.jpeg"></p>
 <h2>Recapitulando...</h2>
 <p>O que fizemos hoje:</p>
 <ul>
@@ -149,7 +230,7 @@
 <li>Implementamos a conexão do nosso chatbot com a interface do telegram</li>
 <li>Finalizamos o nosso projeto :)</li>
 </ul>
-<p>Finalmente o nosso chatbot está no ar respondendo através do telegram. E agora meu caro leitor, fica por sua conta construir o conhecimento do seu bot. Divirta-se conversando com ele e quem sabe melhorando o projeto para que o bot fique cada vez mais inteligente.</p>
+<p>Finalmente o nosso chatbot está no ar respondendo através do telegram. E agora, fica por sua conta construir o conhecimento do seu bot. Divirta-se conversando com ele e quem sabe melhorando o projeto para que o bot fique cada vez mais inteligente.</p>
 <p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
       </div>
       <div class="back-to-top">
