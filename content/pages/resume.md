@@ -12,10 +12,15 @@ da tecnologia, de forma ética e sustentável.
 Formação acadêmica
 ---
 
-*Junho de 2021 - Julho de 2023 (expectativa)*
+*Junho de 2021 - Julho de 2023 (**expectativa**)*
 :   **Bacharelado em Ciência da Computação**<br>
-Faculdade de Ciências Aplicadas e Sociais de Petrolina - Facape
+Faculdade de Ciências Aplicadas e Sociais de Petrolina - FACAPE
 
+<br>
+
+*Setembro de 2014 - Junho de 2021 (**curso pausado**)*
+:   **Bacharelado em Engenharia de Computação**<br>
+Universidade Federal do Vale do São Francisco - UNIVASF
 
 Experiência
 ---
