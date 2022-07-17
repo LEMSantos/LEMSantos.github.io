@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SW1LL2DZZ5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,7 +14,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
         <!-- twitter card metadata -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/avatar.webp">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="Jogo da velha com o Minimax">
+<meta name="twitter:description" content="Nesse artigo vamos aprender a construir o algorítimo minimax para jogar o jogo da velha, e além disso, vamos aprender como otimizar a abordagem ingênua através da poda alfa-beta e da utilização de heurísticas.">
         <!-- OG Tags -->
+<meta property="og:url" content="/drafts/jogo-da-velha-utilizando-minimax.html"/>
+<meta property="og:title" content="LEMSantos | Jogo da velha com o Minimax" />
+<meta property="og:description" content="Nesse artigo vamos aprender a construir o algorítimo minimax para jogar o jogo da velha, e além disso, vamos aprender como otimizar a abordagem ingênua através da poda alfa-beta e da utilização de heurísticas." />
         <!-- favicon -->
         <link rel="icon" type="image/png" href="/images/pelly.png">
         <!-- moment.js for date formatting -->
@@ -47,6 +55,14 @@
                     });
             };
         </script>
+
+    <meta name="description" content="Nesse artigo vamos aprender a construir o algorítimo minimax para jogar o jogo da velha, e além disso, vamos aprender como otimizar a abordagem ingênua através da poda alfa-beta e da utilização de heurísticas." />
+
+    <meta name="tags" content="Minimax" />
+    <meta name="tags" content="Python" />
+    <meta name="tags" content="Busca" />
+    <meta name="tags" content="Inteligência Artificial" />
+
 </head>
 <body>
     <div role="banner" id="masthead">
@@ -103,77 +119,74 @@
         </header>
     </div>
         <div class="page" role="main">
-<div class="page-title">
-        <h1>archives</h1>
-    </div>
-<div class="articles">
-    <ol>
-        <li>
-            <article>
-                <footer>
-                        <p>
-                        <time datetime="2022-06-29 13:36:00-03:00">
-                            <script>document.write(moment('2022-06-29 13:36:00-03:00').format('LL'));</script>
-                        </time>
-                                em <a href="/category/nlp.html"><span class="category-tag">NLP</span></a>
-                    </p>
-                </footer>
-                <header>
-                    <a href="/primeiro-chatbot-em-python-parte-2.html">
-                        <h2>Primeiro chatbot em Python - Parte 2: Implementação</h2>
-                    </a>
-                </header>
-                <div class="summary"><p><img alt="React: JavaScript library" src="/images/coding-banner.webp"></p>
-<p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/fundo" target="_blank">Fundo vetor criado por pch.vector - br.freepik.com</a></em></p>
+  <div class="article" role="article">
+    <article>
+        <footer>
+            <a name="top"></a>
+            <p>
+              <time datetime=" 2022-07-17 09:03:00-03:00">
+                <script>document.write(moment('2022-07-17 09:03:00-03:00').format('LL'));</script>
+              </time>
+            </p>
+        </footer>
+        <header>
+          <h2>
+            Jogo da velha com o Minimax
+          </h2>
+        </header>
+      <div class="content">
+         <p><img alt="React: JavaScript library" src="/images/tictactoe.png"></p>
+<p style="text-align: center; margin-top: -27px"><em><a href="https://www.freepik.com/vectors/robot-chatbot" target="_blank">Robot chatbot vector created by upklyak - www.freepik.com</a></em></p>
 
-<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no <a href="/primeiro-chatbot-em-python-parte-1.html">artigo anterior</a>, de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso …</p> </div>
-                <div class="tags">
-                    <ul class="tags">
-                        <li><a href="/tag/chatterbot.html" class="tag">Chatterbot</a></li>
-                        <li><a href="/tag/telegram.html" class="tag">Telegram</a></li>
-                        <li><a href="/tag/python.html" class="tag">Python</a></li>
-                        <li><a href="/tag/chatbot.html" class="tag">Chatbot</a></li>
-                    </ul>
-                </div>
-                <a href="/primeiro-chatbot-em-python-parte-2.html">
-                    <p class="readmore">Ler mais...</p>
-                </a>
-            </article>
-        </li>
-        <li>
-            <article>
-                <footer>
-                        <p>
-                        <time datetime="2022-06-23 08:36:00-03:00">
-                            <script>document.write(moment('2022-06-23 08:36:00-03:00').format('LL'));</script>
-                        </time>
-                                em <a href="/category/nlp.html"><span class="category-tag">NLP</span></a>
-                    </p>
-                </footer>
-                <header>
-                    <a href="/primeiro-chatbot-em-python-parte-1.html">
-                        <h2>Primeiro chatbot em Python - Parte 1: Planejamento</h2>
-                    </a>
-                </header>
-                <div class="summary"><p><img alt="React: JavaScript library" src="/images/chatbot-banner.webp"></p>
-<p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot" target="_blank">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
-
-<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesta série, vamos construir o nosso chatbot utilizando a linguagem <strong>Python</strong>. O nosso projeto, vai desde o planejamento até o ponto em que ele esteja …</p> </div>
-                <div class="tags">
-                    <ul class="tags">
-                        <li><a href="/tag/chatterbot.html" class="tag">Chatterbot</a></li>
-                        <li><a href="/tag/telegram.html" class="tag">Telegram</a></li>
-                        <li><a href="/tag/python.html" class="tag">Python</a></li>
-                        <li><a href="/tag/chatbot.html" class="tag">Chatbot</a></li>
-                    </ul>
-                </div>
-                <a href="/primeiro-chatbot-em-python-parte-1.html">
-                    <p class="readmore">Ler mais...</p>
-                </a>
-            </article>
-        </li>
-    </ol>
-</div>
+<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo),</p>
+<h2>Vá direto ao assunto...</h2>
+<ul>
+<li><a href="#preparando-o-jogo-da-velha">Preparando o jogo da velha</a></li>
+<li><a href="#o-minimax">O Minimax</a><ul>
+<li><a href="#implementando-a-abordagem-ingenua">Implementando a abordagem ingênua</a></li>
+<li><a href="#otimizando-com-a-poda-alfa-beta">Otimizando com a poda Alfa-Beta</a></li>
+<li><a href="#aprimorando-ainda-mais-com-heuristicas">Aprimorando ainda mais com heurísticas</a></li>
+</ul>
+</li>
+<li><a href="#recapitulando">Recapitulando</a></li>
+</ul>
+<p><a id="preparando-o-jogo-da-velha"></a></p>
+<h2>Preparando o jogo da velha</h2>
+<p><a id="o-minimax"></a></p>
+<h2>O Minimax</h2>
+<p><a id="implementando-a-abordagem-ingenua"></a></p>
+<h3>Implementando a abordagem ingênua</h3>
+<p><a id="otimizando-com-a-poda-alfa-beta"></a></p>
+<h3>Otimizando com a poda Alfa-Beta</h3>
+<p><a id="aprimorando-ainda-mais-com-heuristicas"></a></p>
+<h3>Aprimorando ainda mais com heurísticas</h3>
+<p><a id="recapitulando"></a></p>
+<h2>Recapitulando...</h2>
+<p>O que fizemos hoje:</p>
+<ul>
+<li>Criamos o nosso bot no telegram</li>
+<li>Implementamos a conexão do nosso chatbot com a interface do telegram</li>
+<li>Finalizamos o nosso projeto :)</li>
+</ul>
+<p>Finalmente o nosso chatbot está no ar respondendo através do telegram. E agora, fica por sua conta construir o conhecimento do seu bot. Divirta-se conversando com ele e quem sabe melhorando o projeto para que o bot fique cada vez mais inteligente.</p>
+<p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
+      </div>
+      <div class="back-to-top">
+          <a href="#top">voltar ao topo</a>
+      </div>
+      <div id="disqus_thread"></div>
+        <script>
+        (function() {
+              var d = document, s = d.createElement('script');
+              s.src = 'https://lemsantos-1.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+  </div>
+<!-- end article -->
                 <footer>
                     <div class="icons">
                         <a href="https://github.com/lemsantos" target="_blank"><div class="icon-github icon"></div></a>

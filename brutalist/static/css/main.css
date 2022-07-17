@@ -407,7 +407,7 @@ footer {
   margin-top: 2em;
 }
 footer p {
-  color: #abb4b9;
+  color: #7C8A98;
 }
 
 /* END FOOTER STYLES */
@@ -500,11 +500,13 @@ footer p {
   padding-bottom: 1em;
   font-weight: 900;
   text-align: center;
+  color: #3e464f !important;
 }
 .article article .content {
   font-size: 1.125em;
+  color: #3e464f;
   /* 18/16 = 1.125 */
-  font-weight: 300;
+  font-weight: 400;
   /* article headers */
   /* article lists */
   /* italics */
@@ -539,7 +541,18 @@ footer p {
   padding-bottom: 2em;
 }
 .article article .content ul {
-  list-style-type: square;
+  list-style-type: disc;
+}
+.article article .content ul li a {
+  text-decoration: none;
+  color: #1F86B2
+}
+.article article .content ul li a:hover {
+  color: #13526D
+}
+.article article .content li ul {
+  padding-bottom: 0;
+  list-style-type: circle;
 }
 .article article .content ol {
   list-style-type: decimal;

@@ -10,7 +10,7 @@ Status: published
 
 
 ![React: JavaScript library](/images/chatbot-banner.webp)
-<p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
+<p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot" target="_blank">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 
 Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesta série, vamos construir o nosso chatbot utilizando a linguagem **Python**. O nosso projeto, vai desde o planejamento até o ponto em que ele esteja respondendo para os nossos usuários, ou para nós mesmos, porque não?!
