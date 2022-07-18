@@ -1,6 +1,6 @@
 Title: Primeiro chatbot em Python - Parte 3: Provisionamento
-Date: 2022-07-15 14:06
-Modified: 2022-07-15 14:06
+Date: 2022-07-18 14:06
+Modified: 2022-07-18 14:06
 Category: NLP
 Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-3
