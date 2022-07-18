@@ -6,7 +6,7 @@ Tags: Chatterbot, Telegram, Python, Chatbot
 Slug: primeiro-chatbot-em-python-parte-3
 Authors: Lucas Eliaquim
 Description: Chegamos a última parte do nosso projeto de construção do primeiro chatbot em Python. Agora vamos finalmente construir uma estrutura que nos permita compartilhar ele com o mundo.
-Status: draft
+Status: published
 
 
 ![React: JavaScript library](/images/telegram-banner.webp)
