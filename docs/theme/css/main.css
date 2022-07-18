@@ -9,6 +9,8 @@
 /* MIXINS */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
 .highlight {
   background: #f8f8f8;
 }
@@ -259,6 +261,11 @@ table {
   border-spacing: 0;
 }
 
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: .825em;
+}
+
 /********HTML5 ELEMENT DECLARATIONS*******/
 section, article, header, footer, nav, aside, hgroup {
   display: block;
@@ -360,6 +367,7 @@ div#masthead nav#menu {
     display: block;
     font-weight: 400;
     font-size: 1.2em;
+    text-align: center;
   }
 }
 div#masthead nav#menu#menu.active {

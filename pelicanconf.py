@@ -68,3 +68,5 @@ MAIL='mailto:lemsantos.dev@gmail.com'
 ## Commenting mine out for this theme site
 DISQUS_SITENAME = 'lemsantos-1'
 DISPLAY_PAGES_ON_MENU = False
+
+STATIC_PATHS = ['images', 'docs']

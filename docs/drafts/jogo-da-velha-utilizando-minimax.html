@@ -152,10 +152,245 @@
 </ul>
 <p><a id="preparando-o-jogo-da-velha"></a></p>
 <h2>Preparando o jogo da velha</h2>
+<p>O jogo da velha, cerquilha, jogo do galo ou tic-tac-toe é um jogo/passatempo muito popular (joguei muito quando era pequeno). Ele possui regras bem simples. A ideia geral é que tendo um tabuleiro 3 x 3, cada jogador escolhe um símbolo, tipicamente "X" ou "O", e cada um dele faz uma jogada por turno. O jogador que conseguir colocar 3 símbolos iguais em linha, coluna ou diagonal vence o jogo. Caso isso não seja possível e as jogadas se esgotem, o jogo acaba em empate.</p>
+<p>Bom, para que possamos implementar o nosso algoritmo invencível no jogo da velha, precisamos primeiro ter um jogo da velha (hehehehe). Então, vamos contruir uma versão bem simples utilizando Python e deixá-lo pronto para que possamos enfrentar o computador.</p>
+<p>Vamos precisar de algumas funções úteis:</p>
+<ul>
+<li>Função para verificar se um determinado jogador venceu</li>
+<li>Função para verificar se houve empate</li>
+<li>Função para verificar se o jogo acabou</li>
+<li>Por último, uma função para imprimir na tela o nosso tabuleiro</li>
+</ul>
+<p>Após implementar-mos essas funções é só montar a lógica do nosso jogo.</p>
+<p>Vamos começar com a função para determinar um vencedor:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+    <span class="c1"># Verificando as Linhas do Tabuleiro</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Verificando as Colunas do Tabuleiro</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Verificando as Diagonais do Tabuleiro</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p>Eu sei que tem muitos IFs, mas eu tentei fazer da forma mais didática possível para facilitar o entendimento. Basicamente estamos verificando todas as linhas, colunas e diagornais, para checar se o <strong><code>player</code></strong> formou uma sequência. Em caso positivo retornamos <strong><code>True</code></strong>, e <strong><code>False</code></strong> caso contrário.</p>
+<p>Em seguida precisamos verificar o empate:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_draw</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">board</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39; &#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+
+<p>Para definir se houve empate ou não, basta ver todas as linha, se houver algum espaço em branco significa que o jogo ainda não acabou. Em seguida vamos definir uma função para verificar se o jogo foi finalizado:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_draw</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p>Essa função vai nos ajudar a simplificar o nosso código e também vai ser útil quando estivermos implementando o Minimax. Ainda não se preocupe com as variáveis <strong><code>CPU_PLAYER</code></strong> e <strong><code>HUMAN_PLAYER</code></strong>, elas serão definidas em outro momento, apenas pense nelas como o símbolo que identifica cada jogador, no nosso caso <strong><code>X</code></strong> e <strong><code>O</code></strong>.</p>
+<p>Por último, mas não menos importante, precisamos da função que vai desenhar o nosso tabuleiro:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">print_board</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">line</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; | &#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--+---+--&#39;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Com as funções necessárias já finalizadas, agora podemos montar a nossa lógica de jogo.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="c1"># ...</span>
+<span class="c1"># AQUI FICARIAM AS OUTRAS FUNÇÔES</span>
+<span class="c1"># ...</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">CPU_PLAYER</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+    <span class="n">HUMAN_PLAYER</span> <span class="o">=</span> <span class="s1">&#39;O&#39;</span>
+
+    <span class="n">human_play_first</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Você deseja começar o jogo [s|n]: &#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span>
+
+    <span class="k">if</span> <span class="n">human_play_first</span><span class="p">:</span>
+        <span class="n">HUMAN_PLAYER</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+        <span class="n">CPU_PLAYER</span> <span class="o">=</span> <span class="s1">&#39;O&#39;</span>
+
+    <span class="n">board</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">]]</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">human_play_first</span><span class="p">:</span>
+            <span class="n">print_board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+
+            <span class="n">position</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Insira a posição da jogada [1-9]: &#39;</span><span class="p">))</span>
+
+            <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">position</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">position</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+
+            <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">HUMAN_PLAYER</span>
+
+            <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+                <span class="k">break</span>
+
+        <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+            <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">CPU_PLAYER</span>
+        <span class="n">human_play_first</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">print_board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Com a lógica de jogo finalizada, sinta-se a vontade para testar. Nessa parte, enquanto não temos o nosso algoritmo inteligente, fazemos o computador realizar jogadas aleatórias com o trecho:</p>
+<div class="highlight"><pre><span></span><code><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">CPU_PLAYER</span>
+</code></pre></div>
+
+<p>Se for da sua preferência você ainda pode colocar um trecho, após a última função <strong><code>print_board</code></strong>, para entregar uma mensagem amigável ao usuário, como ilustrado abaixo.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Você venceu!!&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Você perdeu!!&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deu Empate!!&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O código completo dessa parte do jogo da velha você pode encontrar <a href="/docs/tic-tac-toe.py" target="_blank">nesse link</a>.</p>
+<p>Bom, código implementado e tudo funcional, ta na hora de pensar em deixar o nosso computador um pouco mais inteligênte.</p>
 <p><a id="o-minimax"></a></p>
 <h2>O Minimax</h2>
+<p>O Minimax é um algoritmo baseado em árvore que trabalha de forma recursiva e é utilizado em teoria da decisão e teoria dos jogos. Ele fornece um movimento ótimo para o jogador, considerando que o oponente também joga de forma ótima. Ele geralmente é utilizado para implementar IA em jogos, como Xadrez, Jogo da Velha, e vários outros jogos de dois jogadores.</p>
+<p>O Minimax intuitivamente constrói uma árvore para a tomada de decisão levando em consideração todas as jogadas possíveis. Essa árvore muitas vezes é difícil de ser percebida, dado que ela é feita através de recursividade, onde muita abstração é necessária.</p>
+<p>Todos os nossos exemplos de utilização do Minimax vão levar em consideração o jogo da velha.</p>
+<p>Imagine a seguinte situação, o seu nome é <strong>MAX</strong> e o seu oponente se chama <strong>MIN</strong>. Você está em um jogo bem complicado e é a sua vez. Uma forma comum de pensar seria: Se eu, MAX jogar na posição x, o MIN pode jogar em y ou z, e dai então eu...</p>
+<p>Esse tipo de pensamento pode ser modelado como uma árvore de decisão como visto abaixo.</p>
+<p><img alt="Árvore gerada pelo Minimax" src="/images/minimax-tree.png" width="75%"></p>
+<p>Olhando dessa forma, podemos escolher uma jogada e saber exatamente quais as consequências dessa escolha.</p>
+<p>Agora precisamos de alguma forma identificar onde o jogo termina e atribuir uma pontuação adequada. No nosso caso vamos colocar <strong><code>+1</code></strong> sempre que o <strong><code>MAX</code></strong> vencer, <strong><code>-1</code></strong> para o caso de vitória do <strong><code>MIN</code></strong> e <strong><code>0</code></strong> no empate. Essas pontuações podem ser alteradas, mas é importante de alguma forma fazer com que a vitória seja mais vantajosa que a derrota. Assim, para representar essa importância colocamos números positivos, negativos e neutros, introduzindo então, uma lógica matemática.</p>
+<p><img alt="Árvore gerada pelo Minimax com pontuação nas folhas" src="/images/minimax-tree-punctuation.png" width="75%"></p>
+<p>No caso do nosso exemplo não tivemos situações de empate, mas é importante sempre lembrar de colocar todas as pontuações corretas.</p>
+<p>Agora vamos propagar a nossa pontuação para os estados superiores para saber qual é a melhor jogada para escolher. Pense agora que sempre que o <strong><code>MAX</code></strong> vai fazer a jogada ele quer maximizar as suas chances e por isso sempre escolhemos a maior pontuação para ser propagada. Já no caso da jogada do <strong><code>MIN</code></strong>, ele quer minimizar as chances do <strong><code>MAX</code></strong> e assim sempre escolhe a menor pontuação a ser propagada.</p>
+<p><img alt="Árvore gerada pelo Minimax com propagação da pontuação" src="/images/minimax-tree-propagation.png" width="75%"></p>
+<p>Agora o <strong><code>MAX</code></strong> tem 3 possibilidades de escolha, uma com pontuação <strong><code>+1</code></strong> e duas com <strong><code>-1</code></strong>. Como o <strong><code>MAX</code></strong> é esperto e quer sempre escolher a melhor jogada possível, a jogada escolhida será a demonstrada abaixo. Assim, como consequência dessa escolha, o <strong><code>MAX</code></strong> vence o jogo.</p>
+<p><img alt="Jogada vencedora escolhida" src="/images/win-strategy.png" width="25%"></p>
+<p>Seguindo esse exemplo nós acabamos de definir o comportamento esperado do Minimax.</p>
+<p>Sendo uma pessoa esperta, imagino que você deve ter notado que se em algum estado a pontuação estiver negativa, significa que em algum momento na subárvore existe pelo menos uma possibilidade de derrota. Deve ter percebido também que só é interessante seguir esse caminho quando não temos nenhuma opção melhor como uma vitória ou um empate. De forma análoga, se existe um ramo com pontuação positiva, significa que naquela subárvore existe 100% de chance de vitória.</p>
+<p>Com a lógica de funcionamento já definida, podemos enfim tentar implementar esse algoritmo no nosso jogo.</p>
 <p><a id="implementando-a-abordagem-ingenua"></a></p>
 <h3>Implementando a abordagem ingênua</h3>
+<p>Como você deve ter notado, o algoritmo precisa sempre gerar as jogadas candidatas a partir de um estado inicial. Sendo assim, esse é um bom ponto de partida para a nossa implementação. Abaixo segue a implementação de uma função para gerar esses candidatos.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="c1"># ...</span>
+<span class="c1"># FUNÇÔES ANTERIORES FICAM AQUI</span>
+<span class="c1"># ...</span>
+
+
+<span class="k">def</span> <span class="nf">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+    <span class="n">candidate_moves</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">candidate</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+            <span class="n">candidate</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">player</span>
+
+            <span class="n">candidate_moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">candidate_moves</span>
+</code></pre></div>
+
+<p>O que fazemos é, para cada posição livre no tabuleiro, criamos uma cópia desse tabuleiro e ocupamos a próxima posição possível. Com isso criamos uma lista de possíveis movimentos a partir de um estado inicial que foi passado para a função.</p>
+<p>Em seguida precisamos de uma função para avaliar os nosso estados finais, ou seja, os estados onde o jogo acabou, seja por vitória, derrota ou empate.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p>Estamos considerando o <strong><code>CPU_PLAYER</code></strong> como o <strong><code>MAX</code></strong> já que precisamos da melhor jogada para ele.</p>
+<p>Com essa duas funções definidas já podemos começar a pensar na implementação do nosso Minimax. Como ele é resursivo, quem está familiarizado sabe, que a primeira coisa a ser definida é a condição de parada. No nosso caso verificamos se é um estado final e retornamos a avaliação.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Para os estados intermediários precisamos saber se está na vez do <strong><code>MIN</code></strong> ou na vez do <strong><code>MAX</code></strong>, para tal podemos passar um parâmetro chamado <strong><code>maximizing</code></strong>, assim saberemos se estamos maximizando ou minimizando. Colocaremos ele como <code>False</code> por padrão, apenas por fins de praticidade.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">maximizing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Agora precisamos definir o que o algoritmo vai fazer em cada turno. No caso do <strong><code>MAX</code></strong> temos que analisar as possibilidades e pegar a maior pontuação. A recursividade atrapalha um pouco esse processo já que não temos acesso a pontuação dos outros estados. Uma forma simples de fazer isso seria atribuir o menor valor possível para uma variável e sempre que uma pontuação for maior que ela nós atualizamos esse valor. Dessa forma vamos garantir que no retorno vamos manter sempre a maior prontuação. Essa implementação está ilustrado abaixo.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">maximizing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">maximizing</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+</code></pre></div>
+
+<p>Note que quando o valor do <strong><code>maximizing</code></strong> for <strong><code>True</code></strong> precisamos passar para a próxima chamada o <strong><code>False</code></strong> para garantir que todos os turnos serão avaliados corretamente.</p>
+<p>Para finalizar só precisamos fazer o mesmo para o <strong><code>MIN</code></strong>, só que com a lógica contrária, dessa vez vamos iniciar o valor com o número mais alto possível e pegar o mínimo entre as pontuações.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">maximizing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">maximizing</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">minimax</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;+inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">minimax</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+</code></pre></div>
+
 <p><a id="otimizando-com-a-poda-alfa-beta"></a></p>
 <h3>Otimizando com a poda Alfa-Beta</h3>
 <p><a id="aprimorando-ainda-mais-com-heuristicas"></a></p>
@@ -164,11 +399,13 @@
 <h2>Recapitulando...</h2>
 <p>O que fizemos hoje:</p>
 <ul>
-<li>Criamos o nosso bot no telegram</li>
-<li>Implementamos a conexão do nosso chatbot com a interface do telegram</li>
-<li>Finalizamos o nosso projeto :)</li>
+<li>Constuímos o nosso jogo da velha</li>
+<li>Entendemos o que é o Minimax e como ele pode ser utilizado</li>
+<li>Implementamos o Minimax padrão para o jogo</li>
+<li>Vimos que a implementação ingênua do Minimax tem certos problemas</li>
+<li>Implementamos otimizações</li>
 </ul>
-<p>Finalmente o nosso chatbot está no ar respondendo através do telegram. E agora, fica por sua conta construir o conhecimento do seu bot. Divirta-se conversando com ele e quem sabe melhorando o projeto para que o bot fique cada vez mais inteligente.</p>
+<p>Conseguimos fazer o nosso algoritmo super inteligente para jogar o jogo da velha. Vimos que ele tem alguns problemas, mas com a técnica correta eles podem ser contornados. Sinta-se a vontade para procurar outras otimizações e quem sabe aplicar até em outros jogos. Um exercício interessante é pensar quais são os jogos em que ele pode ser aplicado.</p>
 <p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
       </div>
       <div class="back-to-top">
