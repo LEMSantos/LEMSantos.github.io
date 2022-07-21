@@ -140,7 +140,19 @@
          <p><img alt="React: JavaScript library" src="/images/tictactoe.png"></p>
 <p style="text-align: center; margin-top: -27px"><em><a href="https://www.freepik.com/vectors/robot-chatbot" target="_blank">Robot chatbot vector created by upklyak - www.freepik.com</a></em></p>
 
-<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo),</p>
+<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesse post vamos entender um pouco melhor o algoritmo Minimax. Vamos também ver como ele funciona com um exemplo prático de aplicação ao jogo da velha.</p>
+<p>Antes de tudo, para que você possa aproveitar melhor o centeúdo, é interessante que você tenha o interpretador de Python instalado no seu computador e entenda:</p>
+<ol>
+<li>O básico da linguagem Python:<ul>
+<li>Variáveis e tipos de dados</li>
+<li>Estruturas de condição e repetição</li>
+<li>Funções</li>
+</ul>
+</li>
+<li>Sobre recursividade e como funciona</li>
+<li>O básico sobre árvores e estrutura de dados</li>
+</ol>
+<p>Se interessou? Pois, segue o fio e vamos em frente porque atrás vem gente.</p>
 <h2>Vá direto ao assunto...</h2>
 <ul>
 <li><a href="#preparando-o-jogo-da-velha">Preparando o jogo da velha</a></li>
@@ -288,7 +300,7 @@
 </code></pre></div>
 
 <p>O código completo dessa parte do jogo da velha você pode encontrar <a href="/docs/tic-tac-toe.py" target="_blank">nesse link</a>.</p>
-<p>Bom, código implementado e tudo funcional, ta na hora de pensar em deixar o nosso computador um pouco mais inteligênte.</p>
+<p>Bom, código implementado e tudo funcional, está na hora de pensar em deixar o nosso computador um pouco mais inteligente.</p>
 <p><a id="o-minimax"></a></p>
 <h2>O Minimax</h2>
 <p>O Minimax é um algoritmo baseado em árvore que trabalha de forma recursiva e é utilizado em teoria da decisão e teoria dos jogos. Ele fornece um movimento ótimo para o jogador, considerando que o oponente também joga de forma ótima. Ele geralmente é utilizado para implementar IA em jogos, como Xadrez, Jogo da Velha, e vários outros jogos de dois jogadores.</p>
@@ -336,24 +348,24 @@
 
 <p>O que fazemos é, para cada posição livre no tabuleiro, criamos uma cópia desse tabuleiro e ocupamos a próxima posição possível. Com isso criamos uma lista de possíveis movimentos a partir de um estado inicial que foi passado para a função.</p>
 <p>Em seguida precisamos de uma função para avaliar os nosso estados finais, ou seja, os estados onde o jogo acabou, seja por vitória, derrota ou empate.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
         <span class="k">return</span> <span class="mi">1</span>
 
-    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
     <span class="k">return</span> <span class="mi">0</span>
 </code></pre></div>
 
 <p>Estamos considerando o <strong><code>CPU_PLAYER</code></strong> como o <strong><code>MAX</code></strong> já que precisamos da melhor jogada para ele.</p>
-<p>Com essa duas funções definidas já podemos começar a pensar na implementação do nosso Minimax. Como ele é resursivo, quem está familiarizado sabe, que a primeira coisa a ser definida é a condição de parada. No nosso caso verificamos se é um estado final e retornamos a avaliação.</p>
+<p>Com essa duas funções definidas já podemos começar a pensar na implementação do nosso Minimax. Como ele é recursivo, quem está familiarizado sabe, que a primeira coisa a ser definida é a condição de parada. No nosso caso verificamos se é um estado final e retornamos a avaliação.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Para os estados intermediários precisamos saber se está na vez do <strong><code>MIN</code></strong> ou na vez do <strong><code>MAX</code></strong>, para tal podemos passar um parâmetro chamado <strong><code>maximizing</code></strong>, assim saberemos se estamos maximizando ou minimizando. Colocaremos ele como <code>False</code> por padrão, apenas por fins de praticidade.</p>
+<p>Para os estados intermediários precisamos saber se está na vez do <strong><code>MIN</code></strong> ou na vez do <strong><code>MAX</code></strong>, para tal, podemos passar um parâmetro chamado <strong><code>maximizing</code></strong>, assim saberemos se estamos maximizando ou minimizando. Colocaremos ele como <code>False</code> por padrão, apenas por fins de praticidade.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">maximizing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
@@ -393,10 +405,158 @@
     <span class="k">return</span> <span class="n">value</span>
 </code></pre></div>
 
+<p>Agora que já temos o nosso Minimax implementado e pronto para uso, só precisamos editar a nossa lógica de jogo. Para fazer isso é só substituir essa parte do código:</p>
+<div class="highlight"><pre><span></span><code><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">CPU_PLAYER</span>
+</code></pre></div>
+
+<p>por esta outra parte:</p>
+<div class="highlight"><pre><span></span><code><span class="n">candidate_moves</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">)</span>
+<span class="n">board</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">candidate_moves</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">minimax</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O que estamos fazendo é gerar os candidatos para a próxima jogada do computador. Essas jogadas vão passar pela função <strong><code>max</code></strong>, que é nativa do Python. Com o parâmetro <strong><code>key</code></strong> ela vai calcular a pontuação de cada um dos candidatos e retornar o candidato com a maior pontuação. Dessa forma, nós vamos conseguir deixar o computador mais inteligente.</p>
+<p>Você pode encontrar o <a href="/docs/tic-tac-toe_minimax.py" target="_blank">código completo aqui</a>. Esse arquivo já possui tanto o jogo da velha quanto o Minimax.</p>
 <p><a id="otimizando-com-a-poda-alfa-beta"></a></p>
 <h3>Otimizando com a poda Alfa-Beta</h3>
+<p>Você, possivelmente, está se perguntando porque chamamos a implementação anterior de ingênua. Se você executou o código da seção anterior deve ter notado uma demora para o computador executar a primeira jogada, principalmente se ele começar o jogo. Isso acontence por causa da quantidade de chamadas que ele faz para avaliar a árvore inteira. No jogo da velha para a primeira jogada, são mais de <strong>500 mil</strong> chamadas executadas à função <strong><code>minimax</code></strong>. Acredito que você tenha percebido o problema nessa abordagem. No caso do Xadrez que para apenas 10 lances tem quase <strong>70 trilhões</strong> de jogos possíveis, torna-se inviável de explorar toda a árvore de decisão.</p>
+<p>Existem algumas formas de atenuar esse problema. Uma delas seria, sempre que detectarmos uma jogada que não vai acrescentar em nada a nossa solução, não precisamos expandir a partir dela, eliminando assim algum trabalho desnecessário. Mas como podemos detectar esse tipo de jogada? Nesse ponto entra a poda Alfa-Beta.</p>
+<p>A <strong>poda Alfa-Beta</strong> é uma variação do algoritmo Minimax que visa reduzir a quantidade de estados que serão avaliados na árvore de busca.</p>
+<p>A linha de pensamento é simples, Introduzimos duas novas variáveis <strong><code>alfa</code></strong> e <strong><code>beta</code></strong>, onde alfa é a melhor pontuação que já foi garantida para o <strong>MAX</strong> ao longo do caminho até o estado raiz, e beta é a melhor pontuação que já foi garantida para o <strong>MIN</strong>. Se estamos em um nível de MAX e ao longo de um caminho eu vejo que a pontuação gerada ao finalizar as verificações será menor que a garantida para o MAX, não faz sentido continuar expandindo dado que nunca vamos utilizá-la.</p>
+<p>Achou difícil entender? Eu também! Talvez a implementação ajude você.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax_alpha_beta</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">),</span> <span class="n">beta</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;+inf&#39;</span><span class="p">),</span> <span class="n">maximizing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">maximizing</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">minimax_alpha_beta</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="n">beta</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">alpha</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;+inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">minimax_alpha_beta</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">alpha</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">beta</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+</code></pre></div>
+
+<p>Não mudamos muito em relação ao código da seção anterior. A variáveis <strong><code>alfa</code></strong> e <strong><code>beta</code></strong> iniciam sempre com as piores pontuações possíveis para cada jogador, Infinito negativo e Infinito positivo respectivamente. Além disso inserimos novas verificações utilizando alfa e beta para quebar a cadeia recursiva quando não for vantajoso continuar expandido a partir dali.</p>
+<p>Apenas com essas mudanças simples, conseguiremos reduzir a quantidade de chamadas recursivas de mais de <strong>500 mil</strong> para pouco mais de <strong>30 mil</strong>. Essa mudança reduziu em 94% o valor original.</p>
+<p>Você pode encontrar o <a href="/docs/tic-tac-toe_alfa-beta.py" target="_blank">código completo aqui.</a></p>
 <p><a id="aprimorando-ainda-mais-com-heuristicas"></a></p>
 <h3>Aprimorando ainda mais com heurísticas</h3>
+<p>Mesmo conseguindo reduzir drasticamente a quantidade de nós expandidos, podemos tentar reduzir ainda mais o trabalho que o nosso algoritmo terá. Uma das formas mais simples de fazer isso seria utilizando uma limitação de profundidade. Essa limitação seria algo como uma fronteira, onde o nosso algoritmo só conseguiria olhar algumas jogadas a frente.</p>
+<p>Essa solução é simples, mas nos trás um problema que não tinhamos antes, como avaliar estados que ainda não finalizaram?</p>
+<p>Essa pergunta é bem plausível, dado que se limitarmos a nossa visão, podemos não chegar até uma vitória, derrota ou empate. Que bom que temos uma solução para esse problema. Vamos utilizar uma <strong>heurística</strong>.</p>
+<p>Uma <strong>heurística</strong> é qualquer abordagem ou método que não é garantidamente ótimo, perfeito ou racional, mas geralmente é o suficiente para atingir uma apoximação imediata de curto prazo. Quando uma solução perfeita é impossível ou impaticável, ela pode ser utilizada para otimizar o processo de encontrar uma solução satisfatória. A heurística pode ser um atalho mental que ajude na tomada de decisão.</p>
+<p>Para o jogo da velha podemos elaborar uma heurística simples que vai nos dar uma pontuação para estados intermediários. Seria ela:</p>
+<ul>
+<li>Se o computador venceu, retorne Infinito positivo.</li>
+<li>Se o computador perdeu, retorne Infinito negativo.</li>
+<li>Para cada 2 símbolos na linha, coluna ou diagonal em favor do computador (uma posição vazia) soma +10</li>
+<li>Para 1 símbolo na linha, coluna ou diagonal em favor do computador (duas posições vazia) soma +1</li>
+<li>Pontuações negativas, -10 e -1 considerando as mesmas situações, só que a favor do oponente</li>
+<li>Caso contrário soma 0 (sequências vazias ou com simbolos do computador e do oponente ao mesmo tempo)</li>
+</ul>
+<p>Com essa heurística podemos saber que, se a pontuação for positiva, quer dizer que o computador está em vantagem, se for negativa, o oponente está em vantagem, e no caso de ser 0 o jogo está empatado.</p>
+<p>Segue a implementação para a nossa função heurística:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate_heuristic_sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">):</span>
+    <span class="n">number_of_blank</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">has_two_simbols</span> <span class="o">=</span> <span class="p">(</span><span class="n">CPU_PLAYER</span> <span class="ow">in</span> <span class="n">sequence</span> <span class="ow">and</span> <span class="n">HUMAN_PLAYER</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">number_of_blank</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">has_two_simbols</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">number_of_blank</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">CPU_PLAYER</span> <span class="ow">in</span> <span class="n">sequence</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="mi">10</span> <span class="k">if</span> <span class="n">CPU_PLAYER</span> <span class="ow">in</span> <span class="n">sequence</span> <span class="k">else</span> <span class="o">-</span><span class="mi">10</span>
+
+
+<span class="k">def</span> <span class="nf">heuristic</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;+inf&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_win</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">)</span>
+
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Avaliando as linhas do tabuleiro</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">board</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="n">evaluate_heuristic_sequence</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="c1"># Avaliando as colunas do tabuleiro</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)):</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="p">[</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">))]</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="n">evaluate_heuristic_sequence</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+
+    <span class="c1"># Avaliando as diagonais do tabuleiro</span>
+    <span class="n">main_diag</span> <span class="o">=</span> <span class="p">[</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">))]</span>
+    <span class="n">secondary_diag</span> <span class="o">=</span> <span class="p">[</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))]</span>
+
+    <span class="n">score</span> <span class="o">+=</span> <span class="n">evaluate_heuristic_sequence</span><span class="p">(</span><span class="n">main_diag</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">+=</span> <span class="n">evaluate_heuristic_sequence</span><span class="p">(</span><span class="n">secondary_diag</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">score</span>
+</code></pre></div>
+
+<p>Dividimos a nossa implementação em duas funções apenas para fins de praticidade. A ideia é que a função <strong><code>evaluate_heuristic_sequence</code></strong> vai definir as regras da nossa heurística e a função <strong><code>heuristic</code></strong> vai verificar linhas colunas e diagonais para retornar a pontuação do estado que foi passado.</p>
+<p>As mudanças dessa versão em relação a da seção Alfa-Beta são bem simples. Vamos adicionar uma variável para controlar a profundidade de expansão da árvore e trocar a função <strong><code>evaluate</code></strong> pela função <strong><code>heuristic</code></strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">minimax_heuristic</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">),</span>
+                      <span class="n">beta</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;+inf&#39;</span><span class="p">),</span> <span class="n">maximizing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">depth</span><span class="o">==</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">is_terminal</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">heuristic</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">maximizing</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">CPU_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="n">value</span><span class="p">,</span>
+                <span class="n">minimax_heuristic</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="n">beta</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">alpha</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;+inf&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">HUMAN_PLAYER</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+                <span class="n">value</span><span class="p">,</span>
+                <span class="n">minimax_heuristic</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">alpha</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">beta</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+</code></pre></div>
+
+<p>Nesse trecho de código você vai notar que colocamos a verificação <strong><code>depth==0</code></strong> para finalizar a execução quando atingirmos a profundidade máxima. Para garantir essa finalização precisamos decrementar essa variável nas próximas chamadas da função <strong><code>minimax_heuristic</code></strong>. Com essas mudanças vamos conseguir reduzir as chamadas recursivas ainda mais. Das <strong>30 mil</strong> da seção anterior, passamos para pouco mais de <strong>300</strong> chamadas.</p>
+<p>Uma coisa interessante de apontar é que, se você é um jogador entusiasta de jogo da velha, saberá que um jogador ótimo sempre começará o jogo nos cantos. No Minimax ingênuo e na abordagem com Alfa-Beta percebemos que isso fica bem visível quando deixamos o computador começar. Já nessa abordagem utilizando heurística e considerando a profundidade igual a 2, vemos que isso não acontece, porém o computador ainda é invencível. Essa é uma característica intrigante da utilização de heurísticas, nem sempre é garantido que vamos encontrar a solução ótima, dado que estamos flexibilizando o problema para poder resolvê-lo.</p>
+<p>Você pode encontrar o <a href="/docs/tic-tac-toe_heuristic.py" target="_blank">código completo aqui.</a></p>
 <p><a id="recapitulando"></a></p>
 <h2>Recapitulando...</h2>
 <p>O que fizemos hoje:</p>

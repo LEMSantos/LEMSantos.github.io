@@ -13,8 +13,18 @@ Status: draft
 <p style="text-align: center; margin-top: -27px"><em><a href="https://www.freepik.com/vectors/robot-chatbot" target="_blank">Robot chatbot vector created by upklyak - www.freepik.com</a></em></p>
 
 
-Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo),
+Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesse post vamos entender um pouco melhor o algoritmo Minimax. Vamos também ver como ele funciona com um exemplo prático de aplicação ao jogo da velha.
 
+Antes de tudo, para que você possa aproveitar melhor o centeúdo, é interessante que você tenha o interpretador de Python instalado no seu computador e entenda:
+
+1. O básico da linguagem Python:
+    - Variáveis e tipos de dados
+    - Estruturas de condição e repetição
+    - Funções
+2. Sobre recursividade e como funciona
+3. O básico sobre árvores e estrutura de dados
+
+Se interessou? Pois, segue o fio e vamos em frente porque atrás vem gente.
 
 ## Vá direto ao assunto...
 
@@ -24,7 +34,6 @@ Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse a
     - [Otimizando com a poda Alfa-Beta](#otimizando-com-a-poda-alfa-beta)
     - [Aprimorando ainda mais com heurísticas](#aprimorando-ainda-mais-com-heuristicas)
 - [Recapitulando](#recapitulando)
-
 
 <a id="preparando-o-jogo-da-velha"></a>
 
@@ -184,8 +193,7 @@ else:
 
 O código completo dessa parte do jogo da velha você pode encontrar [nesse link](/docs/tic-tac-toe.py){target="_blank"}.
 
-Bom, código implementado e tudo funcional, ta na hora de pensar em deixar o nosso computador um pouco mais inteligênte.
-
+Bom, código implementado e tudo funcional, está na hora de pensar em deixar o nosso computador um pouco mais inteligente.
 
 <a id="o-minimax"></a>
 
@@ -225,9 +233,6 @@ Sendo uma pessoa esperta, imagino que você deve ter notado que se em algum esta
 
 Com a lógica de funcionamento já definida, podemos enfim tentar implementar esse algoritmo no nosso jogo.
 
-
-
-
 <a id="implementando-a-abordagem-ingenua"></a>
 
 ### Implementando a abordagem ingênua
@@ -263,11 +268,11 @@ O que fazemos é, para cada posição livre no tabuleiro, criamos uma cópia des
 Em seguida precisamos de uma função para avaliar os nosso estados finais, ou seja, os estados onde o jogo acabou, seja por vitória, derrota ou empate.
 
 ```python
-def evaluate(node):
-    if is_win(node, CPU_PLAYER):
+def evaluate(board):
+    if is_win(board, CPU_PLAYER):
         return 1
 
-    if is_win(node, HUMAN_PLAYER):
+    if is_win(board, HUMAN_PLAYER):
         return -1
 
     return 0
@@ -275,7 +280,7 @@ def evaluate(node):
 
 Estamos considerando o **`CPU_PLAYER`** como o **`MAX`** já que precisamos da melhor jogada para ele.
 
-Com essa duas funções definidas já podemos começar a pensar na implementação do nosso Minimax. Como ele é resursivo, quem está familiarizado sabe, que a primeira coisa a ser definida é a condição de parada. No nosso caso verificamos se é um estado final e retornamos a avaliação.
+Com essa duas funções definidas já podemos começar a pensar na implementação do nosso Minimax. Como ele é recursivo, quem está familiarizado sabe, que a primeira coisa a ser definida é a condição de parada. No nosso caso verificamos se é um estado final e retornamos a avaliação.
 
 ```python
 def minimax(board):
@@ -283,7 +288,7 @@ def minimax(board):
         return evaluate(board)
 ```
 
-Para os estados intermediários precisamos saber se está na vez do **`MIN`** ou na vez do **`MAX`**, para tal podemos passar um parâmetro chamado **`maximizing`**, assim saberemos se estamos maximizando ou minimizando. Colocaremos ele como `False` por padrão, apenas por fins de praticidade.
+Para os estados intermediários precisamos saber se está na vez do **`MIN`** ou na vez do **`MAX`**, para tal, podemos passar um parâmetro chamado **`maximizing`**, assim saberemos se estamos maximizando ou minimizando. Colocaremos ele como `False` por padrão, apenas por fins de praticidade.
 
 ```python
 def minimax(board, maximizing=False):
@@ -330,13 +335,78 @@ def minimax(board, maximizing=False):
     return value
 ```
 
+Agora que já temos o nosso Minimax implementado e pronto para uso, só precisamos editar a nossa lógica de jogo. Para fazer isso é só substituir essa parte do código:
+
+```python
+i, j = randint(0, 2), randint(0, 2)
+
+while board[i][j] != ' ':
+    i, j = randint(0, 2), randint(0, 2)
+
+board[i][j] = CPU_PLAYER
+```
+
+por esta outra parte:
+
+```python
+candidate_moves = candidates(board, CPU_PLAYER)
+board = max(candidate_moves, key=minimax)
+```
+
+O que estamos fazendo é gerar os candidatos para a próxima jogada do computador. Essas jogadas vão passar pela função **`max`**, que é nativa do Python. Com o parâmetro **`key`** ela vai calcular a pontuação de cada um dos candidatos e retornar o candidato com a maior pontuação. Dessa forma, nós vamos conseguir deixar o computador mais inteligente.
+
+Você pode encontrar o [código completo aqui](/docs/tic-tac-toe_minimax.py){target="_blank"}. Esse arquivo já possui tanto o jogo da velha quanto o Minimax.
+
 
 <a id="otimizando-com-a-poda-alfa-beta"></a>
 
 ### Otimizando com a poda Alfa-Beta
 
 
+Você, possivelmente, está se perguntando porque chamamos a implementação anterior de ingênua. Se você executou o código da seção anterior deve ter notado uma demora para o computador executar a primeira jogada, principalmente se ele começar o jogo. Isso acontence por causa da quantidade de chamadas que ele faz para avaliar a árvore inteira. No jogo da velha para a primeira jogada, são mais de **500 mil** chamadas executadas à função **`minimax`**. Acredito que você tenha percebido o problema nessa abordagem. No caso do Xadrez que para apenas 10 lances tem quase **70 trilhões** de jogos possíveis, torna-se inviável de explorar toda a árvore de decisão.
 
+Existem algumas formas de atenuar esse problema. Uma delas seria, sempre que detectarmos uma jogada que não vai acrescentar em nada a nossa solução, não precisamos expandir a partir dela, eliminando assim algum trabalho desnecessário. Mas como podemos detectar esse tipo de jogada? Nesse ponto entra a poda Alfa-Beta.
+
+A **poda Alfa-Beta** é uma variação do algoritmo Minimax que visa reduzir a quantidade de estados que serão avaliados na árvore de busca.
+
+A linha de pensamento é simples, Introduzimos duas novas variáveis **`alfa`** e **`beta`**, onde alfa é a melhor pontuação que já foi garantida para o **MAX** ao longo do caminho até o estado raiz, e beta é a melhor pontuação que já foi garantida para o **MIN**. Se estamos em um nível de MAX e ao longo de um caminho eu vejo que a pontuação gerada ao finalizar as verificações será menor que a garantida para o MAX, não faz sentido continuar expandindo dado que nunca vamos utilizá-la.
+
+Achou difícil entender? Eu também! Talvez a implementação ajude você.
+
+```python
+def minimax_alpha_beta(board, alpha=float('-inf'), beta=float('+inf'), maximizing=False):
+    if is_terminal(board):
+        return evaluate(board)
+
+    if maximizing:
+        value = float('-inf')
+
+        for child in candidates(board, CPU_PLAYER):
+            value = max(value, minimax_alpha_beta(child, alpha, beta, False))
+
+            if value >= beta:
+                break
+
+            alpha = max(alpha, value)
+    else:
+        value = float('+inf')
+
+        for child in candidates(board, HUMAN_PLAYER):
+            value = min(value, minimax_alpha_beta(child, alpha, beta, True))
+
+            if value <= alpha:
+                break
+
+            beta = min(beta, value)
+
+    return value
+```
+
+Não mudamos muito em relação ao código da seção anterior. A variáveis **`alfa`** e **`beta`** iniciam sempre com as piores pontuações possíveis para cada jogador, Infinito negativo e Infinito positivo respectivamente. Além disso inserimos novas verificações utilizando alfa e beta para quebar a cadeia recursiva quando não for vantajoso continuar expandido a partir dali.
+
+Apenas com essas mudanças simples, conseguiremos reduzir a quantidade de chamadas recursivas de mais de **500 mil** para pouco mais de **30 mil**. Essa mudança reduziu em 94% o valor original.
+
+Você pode encontrar o [código completo aqui.](/docs/tic-tac-toe_alfa-beta.py){target="_blank"}
 
 
 <a id="aprimorando-ainda-mais-com-heuristicas"></a>
@@ -344,7 +414,114 @@ def minimax(board, maximizing=False):
 ### Aprimorando ainda mais com heurísticas
 
 
+Mesmo conseguindo reduzir drasticamente a quantidade de nós expandidos, podemos tentar reduzir ainda mais o trabalho que o nosso algoritmo terá. Uma das formas mais simples de fazer isso seria utilizando uma limitação de profundidade. Essa limitação seria algo como uma fronteira, onde o nosso algoritmo só conseguiria olhar algumas jogadas a frente.
 
+Essa solução é simples, mas nos trás um problema que não tinhamos antes, como avaliar estados que ainda não finalizaram?
+
+Essa pergunta é bem plausível, dado que se limitarmos a nossa visão, podemos não chegar até uma vitória, derrota ou empate. Que bom que temos uma solução para esse problema. Vamos utilizar uma **heurística**.
+
+Uma **heurística** é qualquer abordagem ou método que não é garantidamente ótimo, perfeito ou racional, mas geralmente é o suficiente para atingir uma apoximação imediata de curto prazo. Quando uma solução perfeita é impossível ou impaticável, ela pode ser utilizada para otimizar o processo de encontrar uma solução satisfatória. A heurística pode ser um atalho mental que ajude na tomada de decisão.
+
+Para o jogo da velha podemos elaborar uma heurística simples que vai nos dar uma pontuação para estados intermediários. Seria ela:
+
+- Se o computador venceu, retorne Infinito positivo.
+- Se o computador perdeu, retorne Infinito negativo.
+- Para cada 2 símbolos na linha, coluna ou diagonal em favor do computador (uma posição vazia) soma +10
+- Para 1 símbolo na linha, coluna ou diagonal em favor do computador (duas posições vazia) soma +1
+- Pontuações negativas, -10 e -1 considerando as mesmas situações, só que a favor do oponente
+- Caso contrário soma 0 (sequências vazias ou com simbolos do computador e do oponente ao mesmo tempo)
+
+Com essa heurística podemos saber que, se a pontuação for positiva, quer dizer que o computador está em vantagem, se for negativa, o oponente está em vantagem, e no caso de ser 0 o jogo está empatado.
+
+Segue a implementação para a nossa função heurística:
+
+```python
+def evaluate_heuristic_sequence(sequence):
+    number_of_blank = sequence.count(' ')
+    has_two_simbols = (CPU_PLAYER in sequence and HUMAN_PLAYER in sequence)
+
+    if number_of_blank == 3 or has_two_simbols:
+        return 0
+
+    if number_of_blank == 2:
+        return 1 if CPU_PLAYER in sequence else -1
+
+    return 10 if CPU_PLAYER in sequence else -10
+
+
+def heuristic(board):
+    if is_win(board, CPU_PLAYER):
+        return float('+inf')
+
+    if is_win(board, HUMAN_PLAYER):
+        return float('-inf')
+
+    score = 0
+
+    # Avaliando as linhas do tabuleiro
+    for line in board:
+        score += evaluate_heuristic_sequence(line)
+
+    # Avaliando as colunas do tabuleiro
+    for j in range(len(board)):
+        column = [board[i][j] for i in range(len(board))]
+        score += evaluate_heuristic_sequence(column)
+
+    # Avaliando as diagonais do tabuleiro
+    main_diag = [board[i][i] for i in range(len(board))]
+    secondary_diag = [board[i][j] for i, j in zip(range(3), range(2, -1, -1))]
+
+    score += evaluate_heuristic_sequence(main_diag)
+    score += evaluate_heuristic_sequence(secondary_diag)
+
+    return score
+```
+
+Dividimos a nossa implementação em duas funções apenas para fins de praticidade. A ideia é que a função **`evaluate_heuristic_sequence`** vai definir as regras da nossa heurística e a função **`heuristic`** vai verificar linhas colunas e diagonais para retornar a pontuação do estado que foi passado.
+
+As mudanças dessa versão em relação a da seção Alfa-Beta são bem simples. Vamos adicionar uma variável para controlar a profundidade de expansão da árvore e trocar a função **`evaluate`** pela função **`heuristic`**.
+
+```python
+def minimax_heuristic(board, depth=2, alpha=float('-inf'),
+                      beta=float('+inf'), maximizing=False):
+    if depth==0 or is_terminal(board):
+        return heuristic(board)
+
+    if maximizing:
+        value = float('-inf')
+
+        for child in candidates(board, CPU_PLAYER):
+            value = max(
+                value,
+                minimax_heuristic(child, depth - 1, alpha, beta, False)
+            )
+
+            if value >= beta:
+                break
+
+            alpha = max(alpha, value)
+    else:
+        value = float('+inf')
+
+        for child in candidates(board, HUMAN_PLAYER):
+            value = min(
+                value,
+                minimax_heuristic(child, depth - 1, alpha, beta, True)
+            )
+
+            if value <= alpha:
+                break
+
+            beta = min(beta, value)
+
+    return value
+```
+
+Nesse trecho de código você vai notar que colocamos a verificação **`depth==0`** para finalizar a execução quando atingirmos a profundidade máxima. Para garantir essa finalização precisamos decrementar essa variável nas próximas chamadas da função **`minimax_heuristic`**. Com essas mudanças vamos conseguir reduzir as chamadas recursivas ainda mais. Das **30 mil** da seção anterior, passamos para pouco mais de **300** chamadas.
+
+Uma coisa interessante de apontar é que, se você é um jogador entusiasta de jogo da velha, saberá que um jogador ótimo sempre começará o jogo nos cantos. No Minimax ingênuo e na abordagem com Alfa-Beta percebemos que isso fica bem visível quando deixamos o computador começar. Já nessa abordagem utilizando heurística e considerando a profundidade igual a 2, vemos que isso não acontece, porém o computador ainda é invencível. Essa é uma característica intrigante da utilização de heurísticas, nem sempre é garantido que vamos encontrar a solução ótima, dado que estamos flexibilizando o problema para poder resolvê-lo.
+
+Você pode encontrar o [código completo aqui.](/docs/tic-tac-toe_heuristic.py){target="_blank"}
 
 
 <a id="recapitulando"></a>
