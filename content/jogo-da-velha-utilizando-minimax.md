@@ -416,7 +416,7 @@ Você pode encontrar o [código completo aqui.](/docs/tic-tac-toe_alfa-beta.py){
 
 Mesmo conseguindo reduzir drasticamente a quantidade de nós expandidos, podemos tentar minimizar ainda mais o trabalho que o nosso algoritmo terá. Uma das formas mais simples de fazer isso seria utilizando uma limitação de profundidade. Essa limitação seria algo como uma fronteira, onde o nosso algoritmo só conseguiria olhar algumas jogadas a frente.
 
-Essa solução é simples, mas nos trás um problema que não tinhamos antes, como avaliar estados que ainda não finalizaram?
+Essa solução é simples, mas nos trás um problema que não tinhamos antes. Como avaliar estados que ainda não finalizaram?
 
 Essa pergunta é bem plausível, dado que se limitarmos a nossa visão, podemos não chegar até uma vitória, derrota ou empate. Que bom que temos uma solução para esse problema. Vamos utilizar uma **heurística**.
 
