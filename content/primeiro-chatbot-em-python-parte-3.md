@@ -9,7 +9,7 @@ Description: Chegamos a última parte do nosso projeto de construção do primei
 Status: published
 
 
-![React: JavaScript library](/images/telegram-banner.webp)
+![Imagem de uma mão segurando um celular detacando conversas](/images/telegram-banner.webp)
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot" target="_blank">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), vamos, em fim, terminar o projeto que começamos na [Parte 1](/primeiro-chatbot-em-python-parte-1.html) e na [Parte 2](/primeiro-chatbot-em-python-parte-2.html) dessa série. Depois do planejamento que fizemos e da implementação efetiva do nosso chatbot, temos que mostrá-lo ao mundo, ou quem sabe só a parentes próximos (hehehe). Para tal, vamos utilizar o Telegram, dado que permite disponibilizar os nossos bots gratuitamente.

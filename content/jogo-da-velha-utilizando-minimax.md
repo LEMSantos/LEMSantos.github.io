@@ -9,7 +9,7 @@ Description: Nesse artigo vamos aprender a construir o algorítimo minimax para 
 Status: draft
 
 
-![React: JavaScript library](/images/tictactoe.png)
+![Imagem do bot jogando o jogo da velha](/images/tictactoe.png)
 <p style="text-align: center; margin-top: -27px"><em><a href="https://www.freepik.com/vectors/robot-chatbot" target="_blank">Robot chatbot vector created by upklyak - www.freepik.com</a></em></p>
 
 

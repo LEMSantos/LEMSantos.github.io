@@ -9,7 +9,7 @@ Description: Continuando a nossa série de artigos sobre o primeiro chatbot em p
 Status: published
 
 
-![React: JavaScript library](/images/coding-banner.webp)
+![Imagem de pessoas sentadas ao redor de um computador](/images/coding-banner.webp)
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/fundo" target="_blank">Fundo vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), voltamos para continuar a empreitada que começamos no [artigo anterior](/primeiro-chatbot-em-python-parte-1.html), de construir o nosso primeiro chatbot com python. Dessa vez vamos realmente implementar o nosso chatbot e testa-lo com a base de conhecimento que vamos construir.

@@ -9,7 +9,7 @@ Description: Nesse artigo vamos iniciar o projeto para a construção do nosso c
 Status: published
 
 
-![React: JavaScript library](/images/chatbot-banner.webp)
+![Imagem de uma mulher sentada conversando com um chatbot](/images/chatbot-banner.webp)
 <p style="text-align: center; margin-top: -27px"><em><a href="https://br.freepik.com/fotos-vetores-gratis/chatbot" target="_blank">Chatbot vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 
