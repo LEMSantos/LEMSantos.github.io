@@ -1,6 +1,6 @@
 Title: Criando um corretor ortográfico simples utilizando Python
-Date: 2022-07-23 08:36
-Modified: 2022-07-27 08:24
+Date: 2022-07-26 08:36
+Modified: 2022-07-26 08:24
 Category: NLP
 Tags: Corretor ortográfico, NLP, Python
 Slug: corretor-ortografico-em-python
@@ -275,7 +275,7 @@ A variável **`VOCABULARY`** será definida posteriormente.
 
 #### Colocando tudo junto
 
-Agora que temos todas as funções necessárias para gerar os candidatos para a efetuar a correção, podemos enfim definir a função que de fato faz a correção.
+Agora que temos todas as funções necessárias para efetuar a correção, podemos enfim definir a função que de fato faz isto.
 
 ```python
 def correct(misspelled_word):

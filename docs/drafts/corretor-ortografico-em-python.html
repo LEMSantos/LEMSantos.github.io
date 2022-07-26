@@ -125,8 +125,8 @@
         <footer>
             <a name="top"></a>
             <p>
-              <time datetime=" 2022-07-23 08:36:00-03:00">
-                <script>document.write(moment('2022-07-23 08:36:00-03:00').format('LL'));</script>
+              <time datetime=" 2022-07-26 08:36:00-03:00">
+                <script>document.write(moment('2022-07-26 08:36:00-03:00').format('LL'));</script>
               </time>
             </p>
         </footer>
@@ -344,7 +344,7 @@ e 7345808
 <p>A variável <strong><code>VOCABULARY</code></strong> será definida posteriormente.</p>
 <p><a id="colocando-tudo-junto"></a></p>
 <h4>Colocando tudo junto</h4>
-<p>Agora que temos todas as funções necessárias para gerar os candidatos para a efetuar a correção, podemos enfim definir a função que de fato faz a correção.</p>
+<p>Agora que temos todas as funções necessárias para efetuar a correção, podemos enfim definir a função que de fato faz isto.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">correct</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">candidates</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">probability_of_word</span><span class="p">)</span>
 </code></pre></div>
