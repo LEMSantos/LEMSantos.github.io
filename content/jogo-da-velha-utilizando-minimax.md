@@ -1,4 +1,4 @@
-Title: Jogo da velha com o Minimax
+Title: Entendendo o algoritmo Minimax com o Jogo da Velha
 Date: 2022-07-17 09:03
 Modified: 2022-07-17 09:03
 Category: Inteligência Artificial
