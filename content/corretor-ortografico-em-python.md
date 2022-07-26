@@ -255,8 +255,8 @@ def candidates(misspelled_word):
 Para definir quem é um candidato adequado, precisamos definir um modelo de seleção. Como não temos nenhum banco de erros ortográficos para analisar, podemos pensar em algumas regrinhas simples.
 
 - Se a palavra que foi passada para ser corrigida já existe no nosso vocabulário, então provavelmente ela não precisa ser corrigida. Retornamos ela;
-- Ou se, ao gerar variações considerando a distância igual a 1 encontrarmos palavras existentes no vacabulário, então provavelmente elas são os candidatos corretos;
-- Ou se, ao gerar variações considerando a distância igual a 2 encontrarmos palavras existentes no vacabulário, então provavelmente elas são os candidatos corretos;
+- Ou se, ao gerar variações considerando a distância igual a 1 encontrarmos palavras existentes no vocabulário, então provavelmente elas são os candidatos corretos;
+- Ou se, ao gerar variações considerando a distância igual a 2 encontrarmos palavras existentes no vocabulário, então provavelmente elas são os candidatos corretos;
 - Se não, retornamos a própria palavra que foi passada, dado que não encontramos correção para ela.
 
 Nesse caso estamos levando em consideração que errar apenas uma vez é mais provável do que errar duas vezes.
