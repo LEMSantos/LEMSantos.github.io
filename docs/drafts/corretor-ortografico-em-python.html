@@ -139,58 +139,237 @@
          <p><img alt="React: JavaScript library" src="/images/spell-checker-2.jpg"></p>
 <p style="text-align: center; margin-top: -27px"><em><a href='https://br.freepik.com/fotos-vetores-gratis/ilustracao'>Ilustração vetor criado por pch.vector - br.freepik.com</a></em></p>
 
-<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesse post vamos tentar resolver o problema de criar um corretor ortográfico simples utilizando Python. O conteúdo desse post foi baseado em um atigo criado pelo Peter Novig em 2007, com o título <strong><a href="https://norvig.com/spell-correct.html">How to Write a Spelling Corrector</a></strong>. Pensei em falar um pouco sobre isso, porque considero esse assunto muito interessante e acredito que existem outras pessoas que, como eu, pensam o mesmo.</p>
+<p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesse post vamos tentar resolver o problema de criar um corretor ortográfico simples utilizando Python. O conteúdo desse post foi baseado em um atigo criado pelo Peter Norvig em 2007, com o título <strong><a href="https://norvig.com/spell-correct.html" target="_blank">How to Write a Spelling Corrector</a></strong>. Pensei em falar um pouco sobre isso, porque considero esse assunto muito interessante e acredito que existem outras pessoas que, como eu, pensam o mesmo.</p>
 <p>O objetivo desse artigo é ajudar as pessoas que não estão tão familiarizadas com a lingua inglesa, ou mesmo não entenderam muito bem o que o Norvig quis dizer. A minha ideia geral é tentar simplificar o máximo possível a parte estatística e matemática, e quem sabe simplificar um pouco do código.</p>
 <p>Como eu faço sempre em meus artigos, segue uma lista de requisitos para ajudar você a aproveitar melhor o conteúdo:</p>
 <ol>
-<li>O primeiro requisito é ter o interpretador de Python instalado</li>
+<li>O primeiro requisito é ter o interpretador de Python instalado;</li>
 <li>O segundo é entender o básico da linguagem Python:<ul>
-<li>Variáveis e tipos de dados</li>
-<li>Estruturas de condição e repetição</li>
-<li>Funções</li>
+<li>Variáveis e tipos de dados;</li>
+<li>Estruturas de condição e repetição;</li>
+<li>Funções.</li>
 </ul>
 </li>
 </ol>
 <p>Bom, agora que definimos o que precisamos, vamos começar os trabalhos. A primeira coisa que precisamos entender é como esse corretor funciona.</p>
 <h2>Vá direto ao assunto...</h2>
 <ul>
-<li><a href="#como-o-corretor-funciona">Como o corretor funciona</a></li>
-<li><a href="#a-implementacao">A Implementação</a><ul>
-<li><a href="#vocabulario">Lendo o vocabulário</a></li>
-<li><a href="#operacoes-basicas">Operações básicas</a></li>
-<li><a href="#gerando-candidatos">Gerando candidatos</a></li>
-<li><a href="#colocando-tudo-junto">Colocando tudo junto</a></li>
+<li><a href="#como-o-corretor-funciona">Como o corretor funciona</a>;</li>
+<li><a href="#a-implementacao">A Implementação</a>;<ul>
+<li><a href="#vocabulario">Lendo o vocabulário</a>;</li>
+<li><a href="#operacoes-basicas">Operações básicas</a>;</li>
+<li><a href="#gerando-candidatos">Gerando candidatos</a>;</li>
+<li><a href="#colocando-tudo-junto">Colocando tudo junto</a>.</li>
 </ul>
 </li>
-<li><a href="#executando-testes">Executando testes</a></li>
-<li><a href="#sugestoes-de-melhoria">Sugestões de melhoria</a></li>
-<li><a href="#recapitulando">Recapitulando</a></li>
+<li><a href="#executando-testes">Executando testes</a>;</li>
+<li><a href="#sugestoes-de-melhoria">Sugestões de melhoria</a>;</li>
+<li><a href="#recapitulando">Recapitulando</a>.</li>
 </ul>
 <p><a id="como-o-corretor-funciona"></a></p>
 <h2>Como o corretor funciona</h2>
 <p>Um corretor ortográfico é uma pessoa ou programa de computador que faz a verificação de um texto ou uma palavra para achar e corrigir erros tipográficos ocasionais.</p>
 <p>Na lingua portuguesa, alguns erros comuns podem acontecer quando estamos digitando. Podemos, por exemplo:</p>
 <ul>
-<li>Adicionar uma ou mais letra em uma palavra</li>
-<li>"Engolir" uma letra quando estamos digitando</li>
-<li>Trocar duas ou mais letras de uma palavra</li>
+<li>Adicionar uma ou mais letras em uma palavra;</li>
+<li>"Engolir" letras quando estamos digitando;</li>
+<li>Trocar duas ou mais letras de uma palavra;</li>
 <li>Colocar letras que não fazem parte da palavra, como por exemplo, confundir <strong>s</strong> e <strong>z</strong>.</li>
 </ul>
 <p>Existem outros erros que podem acontecer, porém vamos nos forcar apenas nesses quatro.</p>
 <p>Sendo uma pessoa esperta, acredito que uma certa pergunta pode ter surgido na sua mente: Como fazemos para corrigir esse tipo de erro?</p>
 <p>Uma forma bem intuitiva de pensar seria: Podemos gerar todas as palavras possíveis, inserindo, removendo, trocando ou colocando novas letras, e selecionar a palavra que tem a maior chance de ser a correção da palavra original. Muito bem, é exatamente o que vamos fazer. A nossa linha de pensamento pode ser dividida em quatro operações distintas:</p>
 <ul>
-<li>Gerar os possíveis candidatos</li>
-<li>Definir quais candidatos podem ser uma correção para a nossa palavra</li>
-<li>Definir a chance de cada candidato</li>
-<li>Escolher o candidato que tem a maior chance de ser a correção</li>
+<li>Gerar os possíveis candidatos;</li>
+<li>Definir quais candidatos podem ser uma correção para a nossa palavra;</li>
+<li>Definir a chance de cada candidato;</li>
+<li>Escolher o candidato que tem a maior chance de ser a correção.</li>
 </ul>
 <p><strong>Gerar os possíveis candidatos</strong>: Vamos apenas criar variações da nossa palavra, inserindo, removendo, trocando ou colocando novas letras. Cada variação precisa ser gerada, dado que não sabemos qual é a correta.</p>
 <p><strong>Definir os cadidados plausíveis</strong>: Se pensarmos bem, uma palavra de <code>N</code> letras vai ter <code>N</code> remoções, <code>N - 1</code> trocas entre as letras já existentes, <code>26N</code> trocas por novas letras e por fim <code>26(N - 1)</code> inserções, totalizando <code>54N + 25</code> variações (muitas delas podem ser duplicadas). Para uma palavra de 10 letras, ou seja <code>N=10</code>, teríamos 565 variações. Como esse número é grande, talvez uma das formas de reduzir seja eliminando as variações que não fazem parte do nosso vocabulário.</p>
 <p><strong>Definir a chance de cada candidato</strong>: Para definir a chance de cada candidato precisamos saber qual a probabilidade de cada palavra aparecer em um texto. Imagino que você já deve ter pensado nisso, mas uma das formas é pegar um texto, ou vários textos e contar quantas vezes cada palavra aparece. Dessa forma, saberemos qual palavra é mais provável de aparecer.</p>
 <p><strong>Escolher o candidato</strong>: Se já temos os candidatos e a chance de cada candidato de ser a correção para a palavra, só precisamos selecionar aquele que tem a maior chance.</p>
+<p>Essas operações compõem as etapas que o nosso corretor precisa executar sempre que a correção de uma nova palavra for solicitada. Agora que definimos toda a linha de prensamento que precisamos, podemos partir para a implementação.</p>
 <p><a id="a-implementacao"></a></p>
 <h2>A implementação</h2>
+<p>Podemos dividir a nossa implementação em algumas etapas. Essa divisão vai nos ajudar a entender melhor cada parte do nosso corretor. Dentre as fases, temos: a leitura do vocabulário, ou seja, a frenquência das palavras, a criação das operações básicas para gerar os candidatos, gerar de fato os candidatos e por fim, colocar tudo junto para finalizar o corretor.</p>
+<p><a id="vocabulario"></a></p>
+<h4>Lendo o vocabulário</h4>
+<p>O nosso vocabulário vai ser basicamente um arquivo <code>.txt</code> em que vamos colocar cada palavra e sua respectiva frequência. Para ilustrar, esse arquivo vai estar no formato abaixo:</p>
+<div class="highlight"><pre><span></span><code>que 15044152
+não 12169729
+o 12005035
+de 10121551
+a 8992538
+é 8594955
+você 7817147
+e 7345808
+</code></pre></div>
+
+<p>Esse arquivo que vamos utilizar é uma contagem de palavras gerada a partir do <a href="https://www.opensubtitles.org/pt" target="_blank">OpenSubtitles</a>, que é a maior base de dados de legendas em diversas linguas. O arquivo do vocabulário <a href="/docs/vocabulary.txt" target="_blank">pode ser encontrado aqui</a>. Vamos chamá-lo de <strong><code>vocabulary.txt</code></strong>. Você pode conferir também o <a href="https://github.com/hermitdave/FrequencyWords/blob/master/content/2018/pt_br/pt_br_50k.txt">aquivo original</a> está no github.</p>
+<p>Como o nosso arquivo vai ter a palavra e a respectiva frequência separadas por um espaço, podemos modelar o nosso código com os seguintes passos:</p>
+<ul>
+<li>Abrir o arquivo <strong><code>vocabulary.txt</code></strong>;</li>
+<li>Ler o texto completo e separar cada uma das linhas;</li>
+<li>Para cada linha, separar a palavra da frequência;</li>
+<li>Criar um <strong><code>Counter</code></strong> para armazenar essas frequências;</li>
+<li>Somar as frequências para saber o total de palavras consideradas. Vamos utilizar isso para calcular a probabilidade de cada palavra;</li>
+<li>Retornar tanto a soma, quanto o <strong><code>Counter</code></strong>.</li>
+</ul>
+<p>O código a seguir ilustra a definição de uma função para realizar essas ações.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+
+<span class="k">def</span> <span class="nf">read_vocabulary</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;vocabulary.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vocab_file</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">vocab_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="n">full_vocab</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+    <span class="n">words_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="n">word</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">full_vocab</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">words_counter</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">words_counter</span>
+</code></pre></div>
+
+<p>O <strong><code>Counter</code></strong> é apenas uma estrutura nativa do Python para guardar frequências. É uma estrutura semelhante a um dicionário, onde teremos a palavra como chave e a frequência como valor. Algo como:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;que&#39;</span><span class="p">:</span> <span class="mi">15044152</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">counter</span><span class="p">[</span><span class="s1">&#39;que&#39;</span><span class="p">]</span>
+<span class="mi">15044152</span>
+</code></pre></div>
+
+<p><a id="operacoes-basicas"></a></p>
+<h4>Operações básicas</h4>
+<p>Agora que definimos como será a leitura do nosso vocabulário, vamos partir para as operações básicas de inserção, remoção, troca e substituição. Começameros com a função para criar candidatos a partir de inserção.</p>
+<div class="highlight"><pre><span></span><code><span class="n">LETTERS</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyzàáâãèéêìíîòóôõùúûç&#39;</span>
+
+<span class="c1"># &lt;FUNÇÕES DEFINIDAS ANTERIORMENTE FICAM AQUI&gt;</span>
+
+
+<span class="k">def</span> <span class="nf">generate_by_insert</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">generated_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">LETTERS</span><span class="p">:</span>
+            <span class="n">generated_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">letter</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">generated_words</span>
+</code></pre></div>
+
+<p>Basicamente a função de gerar candidatos por inserção recebe a palavra como parâmetro e para cada posição inserimos cada uma das letras possíveis. Essa operação divide a palavra em duas partes, lado direito e lado esquerdo. Então ela insere entre as duas partes uma nova letra.</p>
+<p>Seguindo, vamos definir a função para gerar candidatos através de remoção.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generated_by_delete</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">generated_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">generated_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">generated_words</span>
+</code></pre></div>
+
+<p>Mesmo esquema da função de inserção, com a diferença de retirar as letras ao invés de inserir. Essa remoção pode ser vista quando descartamos uma das letras da parte direita com o trecho <strong><code>word[pos + 1:]</code></strong>.</p>
+<p>A próxima operação é para gerar candidatos através de substituição.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_by_replace</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">generated_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">LETTERS</span><span class="p">:</span>
+            <span class="n">generated_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">letter</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">generated_words</span>
+</code></pre></div>
+
+<p>A ideia dessa operação é muito similar a de remoção, com a diferença que ao invés de descartar uma letra, colocamos outra no lugar.</p>
+<p>Por último, mas não menos importante, precisamos definir uma função para gerar candidatos através de troca.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_by_swap</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">generated_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">generated_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">word</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">generated_words</span>
+</code></pre></div>
+
+<p>Essa operação simplesmente troca letras dentro da própria palavra, considerando que podem existir erros de digitação onde invertemos a ordem das letras.</p>
+<p>Com as operações básicas definidas, podemos finalmente partir para a geração de candidatos.</p>
+<p><a id="gerando-candidatos"></a></p>
+<h4>Gerando candidatos</h4>
+<p>Para gerar os candidatos que servirão para corrigir a palavra, precisamos pensar que nem sempre erramos apenas uma vez quando estamos digitando uma palavra. Assim, pode ser que seja necessário criar variações onde um ou mais erros possam ser corridos. Primeiramente vamos resolver o problema de gerar os candidatos para apenas um erro, ou falando de outra forma, com distância igual a 1 em relação a palavra original.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">words_generator_1_dist</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">inserts</span> <span class="o">=</span> <span class="n">generate_by_insert</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">deletes</span> <span class="o">=</span> <span class="n">generated_by_delete</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">replaces</span> <span class="o">=</span> <span class="n">generate_by_replace</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">swaps</span> <span class="o">=</span> <span class="n">generate_by_swap</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">inserts</span> <span class="o">|</span> <span class="n">deletes</span> <span class="o">|</span> <span class="n">replaces</span> <span class="o">|</span> <span class="n">swaps</span>
+</code></pre></div>
+
+<p>Nessa função, simplesmente geramos as variações baseadas em cada uma das operações e depois fazemos a união de todas elas. Assim, teremos um conjunto com todas as palavras com distância igual 1 em relação a palavra passada como parâmetro.</p>
+<p>Para resolver o problema da distância igual a 2, ou seja, com a possibilidade de 2 erros sendo cometidos ao mesmo tempo, podemos definir a função como segue:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">words_generator_2_dist</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">words_2_dist</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">new_word</span> <span class="ow">in</span> <span class="n">words_generator_1_dist</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+        <span class="n">words_2_dist</span> <span class="o">|=</span> <span class="n">words_generator_1_dist</span><span class="p">(</span><span class="n">new_word</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">words_2_dist</span>
+</code></pre></div>
+
+<p>Basicamente estamos considerando que, se para cada palavra com distância igual a 1, gerarmos outra palavra com distância igual a 1, conseguimos gerar palavras com distância total igual a 2 em relação a palavra original.</p>
+<p>Podemos continuar gerando palavras com mais distâncias para cobrir a maior quantidade possível de erros, porém para cada nova possibilidade que pensamos, a quantidade de palavras aumenta vertiginosamente. Dessa forma, em algum momento podemos não conseguir mais lidar com a quantidade imensa de palavras e acabar eliminando a eficiência do nosso corretor.</p>
+<p>Você vai ver que para a grande maioria dos casos, a distância máxima igual a 2 já é o suficiente.</p>
+<p>Bom, agora que definimos funções auxiliares para gerar as variações das palavras, podemos enfim selecionar os candidatos mais adequados.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">candidates</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">known_words</span><span class="p">({</span><span class="n">misspelled_word</span><span class="p">})</span> <span class="ow">or</span>
+            <span class="n">known_words</span><span class="p">(</span><span class="n">words_generator_1_dist</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">))</span> <span class="ow">or</span>
+            <span class="n">known_words</span><span class="p">(</span><span class="n">words_generator_2_dist</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">))</span> <span class="ow">or</span>
+            <span class="p">{</span><span class="n">misspelled_word</span><span class="p">})</span>
+</code></pre></div>
+
+<p>Para definir quem é um candidato adequado, precisamos definir um modelo de seleção. Como não temos nenhum banco de erros ortográficos para analisar, podemos pensar em algumas regrinhas simples.</p>
+<ul>
+<li>Se a palavra que foi passada para ser corrigida já existe no nosso vocabulário, então provavelmente ela não precisa ser corrigida. Retornamos ela;</li>
+<li>Ou se, ao gerar variações considerando a distância igual a 1 encontrarmos palavras existentes no vacabulário, então provavelmente elas são os candidatos corretos;</li>
+<li>Ou se, ao gerar variações considerando a distância igual a 2 encontrarmos palavras existentes no vacabulário, então provavelmente elas são os candidatos corretos;</li>
+<li>Se não, retornamos a própria palavra que foi passada, dado que não encontramos correção para ela.</li>
+</ul>
+<p>Nesse caso estamos levando em consideração que errar apenas uma vez é mais provável do que errar duas vezes.</p>
+<p>Apenas uma coisa faltou, definir a função <strong><code>known_words</code></strong>, que nos retorna quais palavras de um conjunto estão presentes no nosso vocabulário.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">known_words</span><span class="p">(</span><span class="n">words_set</span><span class="p">):</span>
+    <span class="n">vocabulary_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">VOCABULARY</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">words_set</span> <span class="o">&amp;</span> <span class="n">vocabulary_words</span>
+</code></pre></div>
+
+<p>A variável <strong><code>VOCABULARY</code></strong> será definida posteriormente.</p>
+<p><a id="colocando-tudo-junto"></a></p>
+<h4>Colocando tudo junto</h4>
+<p>Agora que temos todas as funções necessárias para gerar os candidatos para a efetuar a correção, podemos enfim definir a função que de fato faz a correção.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">correct</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">candidates</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">probability_of_word</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Nesse caso estamos pegando o candidato que apresenta a maior probabilidade de ser a opção correta. Essa probabilidade é basicamente a chance de uma das palavras aparecer baseado na sua frequência. Esse cálculo pode ser feito levando em consideração a quantidade de vezes que a palavra aparece, dividido pela quantidade de palavras consideradas.</p>
+<p>A implementação da função de probabilidade pode ser vista abaixo.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">probability_of_word</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">VOCABULARY</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">/</span> <span class="n">TOTAL_WORDS</span>
+</code></pre></div>
+
+<p>Por fim, vamos fazer a leitura do vocabulário e do total de palavras utilizando a função <strong><code>read_vocabulary</code></strong> que definimos no início. Depois disso podemos esperar que o usuário insira a palavra, e logo em seguida devolver a correção.</p>
+<div class="highlight"><pre><span></span><code><span class="n">TOTAL_WORDS</span><span class="p">,</span> <span class="n">VOCABULARY</span> <span class="o">=</span> <span class="n">read_vocabulary</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">misspelled_word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Digite a palavra incorreta: &#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correção:&#39;</span><span class="p">,</span> <span class="n">correct</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Ao rodar o código completo com todas as funções necessárias, vamos ter uma execução igual ao que você pode ver abaixo.</p>
+<div class="highlight"><pre><span></span><code>Digite a palavra incorreta: lgica
+Correção: lógica
+</code></pre></div>
+
+<p>O código completo do nosso corretor ortográfico <a href="/docs/spell-corrector.py" target="_blank">pode ser encontrado aqui</a>. Apenas coloque o arquivo <strong><code>vocabulary.txt</code></strong> na mesma pasta do arquivo com o código.</p>
 <p><a id="executando-testes"></a></p>
 <h2>Executando testes</h2>
 <p><a id="sugestoes-de-melhoria"></a></p>
@@ -198,12 +377,6 @@
 <p><a id="recapitulando"></a></p>
 <h2>Recapitulando...</h2>
 <p>O que aprendemos hoje:</p>
-<ul>
-<li>O que são chatbots e os seus tipos;</li>
-<li>Definimos os pacotes que vamos utilizar para desenvolver o nosso software;</li>
-<li>Definimos a organização do nosso projeto.</li>
-</ul>
-<p>No próximo artigo vamos de fato desenvolver o nosso chatbot e torna-lo funcional.</p>
 <p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
       </div>
       <div class="back-to-top">
