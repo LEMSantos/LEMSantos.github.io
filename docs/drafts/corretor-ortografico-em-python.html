@@ -114,6 +114,7 @@
                     </div>
 
                     <ul>
+                            <li><a href="/category/inteligencia-artificial.html">Inteligência Artificial</a></li>
                             <li class="active"><a href="/category/nlp.html">NLP</a></li>
                     </ul>
             </nav>
@@ -372,8 +373,74 @@ Correção: lógica
 <p>O código completo do nosso corretor ortográfico <a href="/docs/spell-corrector.py" target="_blank">pode ser encontrado aqui</a>. Apenas coloque o arquivo <strong><code>vocabulary.txt</code></strong> na mesma pasta do arquivo com o código.</p>
 <p><a id="executando-testes"></a></p>
 <h2>Executando testes</h2>
+<p>Tendo o nosso corretor ortográfico finalizado, precisamos saber se ele possui uma boa performance. Para executar esse teste vamos precisar de uma banco de dados de palavras incorretas, assim como a sua correção. Assim, podemos verificar algumas coisas interessantes:</p>
+<ul>
+<li><strong>Acurácia</strong>: Quanto de acerto o nosso corretor possui em relação às palavras de teste;</li>
+<li><strong>Eficiência</strong>: Quantas palavras conseguimos corrigir em um determinado período de tempo, no caso, segundos;</li>
+<li><strong>Palavras desconhecidas</strong>: Quanto do erro do nosso corretor é devido a palavras que ele não conhece, ou seja, não está presente no vocabulário.</li>
+</ul>
+<p>Segue abaixo o código utilizado para executar os testes mencionados acima. O arquivo com as palavras incorretas e corretas que foi utilizado com conjunto de testes <a href="/docs/misspelled.txt" target="_blank">pode ser encontrado aqui</a>. Esse arquivo é baseado na <a href="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Lista_de_erros_comuns/M%C3%A1quinas" target="_blank">lista de erros comuns</a> disponibilizada pela Wikipédia.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">main</span> <span class="kn">import</span> <span class="n">correct</span><span class="p">,</span> <span class="n">VOCABULARY</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;misspelled.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">test_file</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">test_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+
+<span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">begin</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">wrong</span><span class="p">,</span> <span class="n">true</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">correct</span><span class="p">(</span><span class="n">wrong</span><span class="p">)</span> <span class="o">==</span> <span class="n">true</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">hits</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="n">efficiency</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="p">)</span>
+<span class="n">unknown</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VOCABULARY</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Acurácia = </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eficiência = </span><span class="si">%d</span><span class="s1"> palavras/segundo&#39;</span> <span class="o">%</span> <span class="n">efficiency</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Palavras desconhecidas = </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unknown</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Ao executar esse teste, considerando que todos os arquivos de código estão na mesma pasta, vamos ter uma execução muito próxima da encontrada abaixo.</p>
+<div class="highlight"><pre><span></span><code>Acurácia = 57.58%
+Eficiência = 4 palavras/segundo
+Palavras desconhecidas = 17.97%
+</code></pre></div>
+
+<p>A primeira vista podemos constatar que a nossa acurácia não está tão boa. Isso pode ter acontecido levando em consideração que o nosso modelo para selecionar os melhores candidatos é muito trivial.</p>
+<p>Outra coisa interessante de observar é a eficiência. Ela está muito baixa, por isso, talvez seja interessante pensar em algumas otimizações para o nosso código.</p>
+<p>Por último, mas não menos importante, podemos observar as palavras desconhecidas. Se pensarmos bem, é possível que o corretor não conheça muitas das plavras da língua portuguesa. Ela é muito extensa, com bem mais do que 300 mil palavras, considerando que temos apenas 50 mil no nosso vocabulário.</p>
 <p><a id="sugestoes-de-melhoria"></a></p>
 <h2>Sugestões de melhoria</h2>
+<p>Verificamos através dos testes que temos alguns pontos interessantes de melhoria, que podemos aplicar no nosso corretor, são eles:</p>
+<h4>1. Otimizar o código</h4>
+<p>Uma otimização importante que pode ser feita, é modificar todos os loop que geraram conjuntos para utilizar o <a href="https://python-reference.readthedocs.io/en/latest/docs/comprehensions/set_comprehension.html" target="_blank">Set Comprehension</a>. Podemos, por exemplo, modificar o código de geração de cadidatos de inserção:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_by_insert</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">generated_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">LETTERS</span><span class="p">:</span>
+            <span class="n">generated_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">letter</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">generated_words</span>
+</code></pre></div>
+
+<p>por essa outra abordagem:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_by_insert</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="n">word</span><span class="p">[:</span><span class="n">pos</span><span class="p">]</span> <span class="o">+</span> <span class="n">letter</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="n">pos</span><span class="p">:]</span>
+        <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">LETTERS</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>Só com essa alteração, feita em todo o código, é possível dobrar a eficiência do corretor. A primeira abordagem foi utilizada ao longo de todo o artigo, para facilitar o entendimento.</p>
+<p>Outra otimizações ainda podem ser elaboradas, mas deixo isso como dever de casa para você.</p>
+<h4>2.</h4>
 <p><a id="recapitulando"></a></p>
 <h2>Recapitulando...</h2>
 <p>O que aprendemos hoje:</p>

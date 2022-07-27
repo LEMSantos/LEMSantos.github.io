@@ -315,14 +315,92 @@ O código completo do nosso corretor ortográfico [pode ser encontrado aqui](/do
 
 ## Executando testes
 
+Tendo o nosso corretor ortográfico finalizado, precisamos saber se ele possui uma boa performance. Para executar esse teste vamos precisar de uma banco de dados de palavras incorretas, assim como a sua correção. Assim, podemos verificar algumas coisas interessantes:
 
+- **Acurácia**: Quanto de acerto o nosso corretor possui em relação às palavras de teste;
+- **Eficiência**: Quantas palavras conseguimos corrigir em um determinado período de tempo, no caso, segundos;
+- **Palavras desconhecidas**: Quanto do erro do nosso corretor é devido a palavras que ele não conhece, ou seja, não está presente no vocabulário.
+
+Segue abaixo o código utilizado para executar os testes mencionados acima. O arquivo com as palavras incorretas e corretas que foi utilizado com conjunto de testes [pode ser encontrado aqui](/docs/misspelled.txt){target="_blank"}. Esse arquivo é baseado na [lista de erros comuns](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Lista_de_erros_comuns/M%C3%A1quinas){target="_blank"} disponibilizada pela Wikipédia.
+
+```python
+from main import correct, VOCABULARY
+from time import time
+
+
+with open('misspelled.txt') as test_file:
+    lines = test_file.read().splitlines()
+
+words = [line.split() for line in lines]
+
+hits = 0
+
+begin = time()
+for wrong, true in words:
+    hits += 1 if correct(wrong) == true else 0
+end = time()
+
+accuracy = hits * 100 / len(words)
+efficiency = len(words) / (end - begin)
+unknown = sum([word not in VOCABULARY for _, word in words]) / len(words)
+
+print('Acurácia = %.2f%%' % accuracy)
+print('Eficiência = %d palavras/segundo' % efficiency)
+print('Palavras desconhecidas = %.2f%%' % (unknown * 100))
+```
+
+Ao executar esse teste, considerando que todos os arquivos de código estão na mesma pasta, vamos ter uma execução muito próxima da encontrada abaixo.
+
+```
+Acurácia = 57.58%
+Eficiência = 4 palavras/segundo
+Palavras desconhecidas = 17.97%
+```
+
+A primeira vista podemos constatar que a nossa acurácia não está tão boa. Isso pode ter acontecido levando em consideração que o nosso modelo para selecionar os melhores candidatos é muito trivial.
+
+Outra coisa interessante de observar é a eficiência. Ela está muito baixa, por isso, talvez seja interessante pensar em algumas otimizações para o nosso código.
+
+Por último, mas não menos importante, podemos observar as palavras desconhecidas. Se pensarmos bem, é possível que o corretor não conheça muitas das plavras da língua portuguesa. Ela é muito extensa, com bem mais do que 300 mil palavras, considerando que temos apenas 50 mil no nosso vocabulário.
 
 
 <a id="sugestoes-de-melhoria"></a>
 
 ## Sugestões de melhoria
 
+Verificamos através dos testes que temos alguns pontos interessantes de melhoria, que podemos aplicar no nosso corretor, são eles:
 
+#### 1. Otimizar o código
+
+Uma otimização importante que pode ser feita, é modificar todos os loop que geraram conjuntos para utilizar o [Set Comprehension](https://python-reference.readthedocs.io/en/latest/docs/comprehensions/set_comprehension.html){target="_blank"}. Podemos, por exemplo, modificar o código de geração de cadidatos de inserção:
+
+```python
+def generate_by_insert(word):
+    generated_words = set()
+
+    for pos in range(len(word) + 1):
+        for letter in LETTERS:
+            generated_words.add(word[:pos] + letter + word[pos:])
+
+    return generated_words
+```
+
+por essa outra abordagem:
+
+```python
+def generate_by_insert(word):
+    return {
+        word[:pos] + letter + word[pos:]
+        for pos in range(len(word) + 1)
+        for letter in LETTERS
+    }
+```
+
+Só com essa alteração, feita em todo o código, é possível dobrar a eficiência do corretor. A primeira abordagem foi utilizada ao longo de todo o artigo, para facilitar o entendimento.
+
+Outra otimizações ainda podem ser elaboradas, mas deixo isso como dever de casa para você.
+
+#### 2.
 
 
 

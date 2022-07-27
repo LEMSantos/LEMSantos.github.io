@@ -1,12 +1,12 @@
 Title: Entendendo o algoritmo Minimax com o Jogo da Velha
-Date: 2022-07-17 09:03
-Modified: 2022-07-17 09:03
+Date: 2022-07-27 09:03
+Modified: 2022-07-27 09:03
 Category: Inteligência Artificial
 Tags: Minimax, Python, Busca, Inteligência Artificial
 Slug: jogo-da-velha-utilizando-minimax
 Authors: Lucas Eliaquim
 Description: Nesse artigo vamos aprender a construir o algorítimo minimax para jogar o jogo da velha, e além disso, vamos aprender como otimizar a abordagem ingênua através da poda alfa-beta e da utilização de heurísticas.
-Status: draft
+Status: published
 
 
 ![Imagem do bot jogando o jogo da velha](/images/tictactoe.png)
