@@ -18,11 +18,11 @@
 <meta name="twitter:image" content="/images/avatar.webp">
 <meta name="twitter:site" content="">
 <meta name="twitter:title" content="Criando um corretor ortográfico simples utilizando Python">
-<meta name="twitter:description" content="Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig.">
+<meta name="twitter:description" content="Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta, em geral, uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig.">
         <!-- OG Tags -->
-<meta property="og:url" content="/drafts/corretor-ortografico-em-python.html"/>
+<meta property="og:url" content="/corretor-ortografico-em-python.html"/>
 <meta property="og:title" content="LEMSantos | Criando um corretor ortográfico simples utilizando Python" />
-<meta property="og:description" content="Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig." />
+<meta property="og:description" content="Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta, em geral, uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig." />
         <!-- favicon -->
         <link rel="icon" type="image/png" href="/images/pelly.png">
         <!-- moment.js for date formatting -->
@@ -58,7 +58,7 @@
             };
         </script>
 
-    <meta name="description" content="Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig." />
+    <meta name="description" content="Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta, em geral, uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig." />
 
     <meta name="tags" content="Corretor ortográfico" />
     <meta name="tags" content="NLP" />
@@ -126,8 +126,8 @@
         <footer>
             <a name="top"></a>
             <p>
-              <time datetime=" 2022-07-26 08:36:00-03:00">
-                <script>document.write(moment('2022-07-26 08:36:00-03:00').format('LL'));</script>
+              <time datetime=" 2022-08-20 09:29:00-03:00">
+                <script>document.write(moment('2022-08-20 09:29:00-03:00').format('LL'));</script>
               </time>
             </p>
         </footer>
@@ -141,7 +141,7 @@
 <p style="text-align: center; margin-top: -27px"><em><a href='https://br.freepik.com/fotos-vetores-gratis/ilustracao'>Ilustração vetor criado por pch.vector - br.freepik.com</a></em></p>
 
 <p>Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesse post vamos tentar resolver o problema de criar um corretor ortográfico simples utilizando Python. O conteúdo desse post foi baseado em um atigo criado pelo Peter Norvig em 2007, com o título <strong><a href="https://norvig.com/spell-correct.html" target="_blank">How to Write a Spelling Corrector</a></strong>. Pensei em falar um pouco sobre isso, porque considero esse assunto muito interessante e acredito que existem outras pessoas que, como eu, pensam o mesmo.</p>
-<p>O objetivo desse artigo é ajudar as pessoas que não estão tão familiarizadas com a lingua inglesa, ou mesmo não entenderam muito bem o que o Norvig quis dizer. A minha ideia geral é tentar simplificar o máximo possível a parte estatística e matemática, e quem sabe simplificar um pouco do código.</p>
+<p>O objetivo desse artigo é ajudar as pessoas que não estão tão familiarizadas com a língua inglesa, ou mesmo não entenderam muito bem o que o Norvig quis dizer. A minha ideia geral é tentar simplificar o máximo possível a parte estatística e matemática, e quem sabe simplificar um pouco do código.</p>
 <p>Como eu faço sempre em meus artigos, segue uma lista de requisitos para ajudar você a aproveitar melhor o conteúdo:</p>
 <ol>
 <li>O primeiro requisito é ter o interpretador de Python instalado;</li>
@@ -377,9 +377,9 @@ Correção: lógica
 <ul>
 <li><strong>Acurácia</strong>: Quanto de acerto o nosso corretor possui em relação às palavras de teste;</li>
 <li><strong>Eficiência</strong>: Quantas palavras conseguimos corrigir em um determinado período de tempo, no caso, segundos;</li>
-<li><strong>Palavras desconhecidas</strong>: Quanto do erro do nosso corretor é devido a palavras que ele não conhece, ou seja, não está presente no vocabulário.</li>
+<li><strong>Palavras desconhecidas</strong>: Quanto do erro do nosso corretor é devido a palavras que ele não conhece, ou seja, não estão presentes no vocabulário.</li>
 </ul>
-<p>Segue abaixo o código utilizado para executar os testes mencionados acima. O arquivo com as palavras incorretas e corretas que foi utilizado com conjunto de testes <a href="/docs/misspelled.txt" target="_blank">pode ser encontrado aqui</a>. Esse arquivo é baseado na <a href="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Lista_de_erros_comuns/M%C3%A1quinas" target="_blank">lista de erros comuns</a> disponibilizada pela Wikipédia.</p>
+<p>Segue abaixo o código utilizado para executar os testes mencionados acima. O arquivo com as palavras incorretas e corretas que foi utilizado como conjunto de testes <a href="/docs/misspelled.txt" target="_blank">pode ser encontrado aqui</a>. Esse arquivo é baseado na <a href="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Lista_de_erros_comuns/M%C3%A1quinas" target="_blank">lista de erros comuns</a> disponibilizada pela Wikipédia.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">main</span> <span class="kn">import</span> <span class="n">correct</span><span class="p">,</span> <span class="n">VOCABULARY</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
@@ -405,7 +405,7 @@ Correção: lógica
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Palavras desconhecidas = </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unknown</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 </code></pre></div>
 
-<p>Ao executar esse teste, considerando que todos os arquivos de código estão na mesma pasta, vamos ter uma execução muito próxima da encontrada abaixo.</p>
+<p>Ao executar esse teste, considerando que todos os arquivos de código estão na mesma pasta, vamos ver mensagens muito próximas das encontradas abaixo.</p>
 <div class="highlight"><pre><span></span><code>Acurácia = 57.58%
 Eficiência = 4 palavras/segundo
 Palavras desconhecidas = 17.97%
@@ -413,10 +413,10 @@ Palavras desconhecidas = 17.97%
 
 <p>A primeira vista podemos constatar que a nossa acurácia não está tão boa. Isso pode ter acontecido levando em consideração que o nosso modelo para selecionar os melhores candidatos é muito trivial.</p>
 <p>Outra coisa interessante de observar é a eficiência. Ela está muito baixa, por isso, talvez seja interessante pensar em algumas otimizações para o nosso código.</p>
-<p>Por último, mas não menos importante, podemos observar as palavras desconhecidas. Se pensarmos bem, é possível que o corretor não conheça muitas das plavras da língua portuguesa. Ela é muito extensa, com bem mais do que 300 mil palavras, considerando que temos apenas 50 mil no nosso vocabulário.</p>
+<p>Por último, mas não menos importante, podemos observar as palavras desconhecidas. Se pensarmos bem, é possível que o corretor não conheça muitas das plavras da língua portuguesa. A língua é muito extensa, com bem mais do que 300 mil palavras. O nosso vocabulário possui apenas 50 mil dessas palavras, e como ele foi feito utilizando textos não revisados, é possível que ainda existam palavras incorretas nele, ainda que possuam uma frequência mais baixa.</p>
 <p><a id="sugestoes-de-melhoria"></a></p>
 <h2>Sugestões de melhoria</h2>
-<p>Verificamos através dos testes que temos alguns pontos interessantes de melhoria, que podemos aplicar no nosso corretor, são eles:</p>
+<p>Verificamos através dos testes que temos alguns pontos interessantes de melhoria, que podemos aplicar no nosso corretor. São eles:</p>
 <h4>1. Otimizar o código</h4>
 <p>Uma otimização importante que pode ser feita, é modificar todos os loop que geraram conjuntos para utilizar o <a href="https://python-reference.readthedocs.io/en/latest/docs/comprehensions/set_comprehension.html" target="_blank">Set Comprehension</a>. Podemos, por exemplo, modificar o código de geração de cadidatos de inserção:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_by_insert</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
@@ -439,11 +439,31 @@ Palavras desconhecidas = 17.97%
 </code></pre></div>
 
 <p>Só com essa alteração, feita em todo o código, é possível dobrar a eficiência do corretor. A primeira abordagem foi utilizada ao longo de todo o artigo, para facilitar o entendimento.</p>
-<p>Outra otimizações ainda podem ser elaboradas, mas deixo isso como dever de casa para você.</p>
-<h4>2.</h4>
+<p>Outras otimizações ainda podem ser elaboradas, mas deixo isso como dever de casa para você.</p>
+<h4>2. Melhorar o vocabulário do corretor</h4>
+<p>Ficou bem claro, com o resultado do teste, que palavras desconhecidas podem ser um problema para o corretor. Se a correção da palavra não existe no vocabulário, nunca será possível produzir o resultado desejado. Nós podemos construir um vocabulário melhor apenas coletando mais dados.</p>
+<p>Outra forma de lidar com palavras desconhecidas, é permitindo que o corretor possa produzir um resultado que não existe no vocabulário. Podemos considerar utilizar regras mais simples para gerar candidatos plausíveis, como por exemplo, substituir <code>s</code> por <code>z</code> ou <code>ç</code> por <code>ss</code>, mesmo que a palavra resultante não exista no vocabulário. Assim, a ideia geral é utilizar regras presentes na língua portuguesa para suprir a deficiência da base de conhecimento do corretor.</p>
+<h4>3. Considerar o contexto das palavras</h4>
+<p>Essa, provavelmente, é a melhor forma de aperfeiçoar a performance do corretor. Para realizar essa melhoria, precisamos utilizar uma técnica que ainda não vimos, o <strong>N-grama</strong>.</p>
+<p>Um N-grama é uma sequência contínua de <em>N</em> items de uma determinada amostra de texto ou fala. Ficou confuso? Eu explico melhor.</p>
+<p>Imagine que podemos considerar apenas a probabilidade da palavra <strong><code>de</code></strong> aparecer em um diálogo. Sabemos por exemplo que ela pode aparecer em 30% das vezes. Mas, se eu te disser que antes dela existe a palavra <strong><code>corte</code></strong> e depois dela existe a palavra <strong><code>cabelo</code></strong>, qual a probabilidade da frase <strong><code>corte de cabelo</code></strong> aparecer em um diálogo?</p>
+<p>A frase <strong><code>corte de cabelo</code></strong> é um exemplo de N-grama, onde <em>N</em> é igual a 3. Assim com a informação de que a frase <strong><code>corte de cabelo</code></strong> aparece, por exemplo, 3% das vezes em um diálogo, temos a possibilidade de corrigir a frase <strong><code>corte di cabelo</code></strong>, onde podemos nos perguntar o seguinte:</p>
+<p>Dado que as palavras <strong><code>corte</code></strong> e <strong><code>cabelo</code></strong> apareceram antes e depois da palavra <strong><code>di</code></strong>, qual é a chance da correção ser a palavra <strong><code>de</code></strong>?</p>
+<p>Com essa linha de pensamento passamos a considerar o contexto das conversações, mesmo que esse contexto seja limitado. O número ideal para o <em>N</em> é definido experimentalmente e pode variar de acordo com os dados. Quanto maior o número de <em>N</em> maior será o nosso vocabulário e consequentemente mais operações o nosso corretor terá que fazer.</p>
+<p>Fica como tarefinha para casa tentar implementar essa melhoria, apenas considerando o contexto o seu corretor ortográfico tem o potencial de acertar a correção de muito mais palavras.</p>
+<h4>4. Implementar em uma linguagem compilada</h4>
+<p>Finalmente, é possível otimizar a implementação tornando ela muito mais rápida, sem mudar os resultados. Podemos simplesmente refazer o código utilizando uma linguagem compilada ao invés de uma linguagem interpretada, como é o caso do Python. Implementar utilizando linguagens como C ou C++ pode aumentar muitas vezes a eficiência do corretor.</p>
+<p>O próprio artigo do Peter Norvig, citado no início, traz diversos exemplos de implementações utilizando outras linguagens, como Go, Erlang, Clojure, Haskell, etc. Vale a pena dar uma conferida.</p>
 <p><a id="recapitulando"></a></p>
 <h2>Recapitulando...</h2>
 <p>O que aprendemos hoje:</p>
+<ul>
+<li>Entendemos como o corretor proposto pelo Peter Norvig funciona;</li>
+<li>Implementamos uma versão dele utilizando Python;</li>
+<li>Executamos testes para descobrir quão eficiente é esse corretor em cenários reais;</li>
+<li>Vimos que existem melhorias que podem ser feitas para que o corretor performe melhor.</li>
+</ul>
+<p>O corretor que implementamos, é uma versão bem simplificada em relação ao que existe no mercado hoje. Algumas empresas utilizam, inclusive, modelos de Machine Learning para melhorar a acurácia das correções. Ainda que simples, o nosso corretor pode ser aplicado em cenários reais, mesmo que necessite de uma atenção especial na hora de construir o nosso vocabulário e implementar algumas melhorias.</p>
 <p>Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye</p>
       </div>
       <div class="back-to-top">

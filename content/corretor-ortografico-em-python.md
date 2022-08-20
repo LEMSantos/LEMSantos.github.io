@@ -1,12 +1,12 @@
 Title: Criando um corretor ortográfico simples utilizando Python
-Date: 2022-07-26 08:36
-Modified: 2022-07-26 08:24
+Date: 2022-08-20 09:29
+Modified: 2022-08-20 09:29
 Category: NLP
 Tags: Corretor ortográfico, NLP, Python
 Slug: corretor-ortografico-em-python
 Authors: Lucas Eliaquim
-Description: Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig.
-Status: draft
+Description: Nesse post vamos construir um corretor ortográfico simples utilizando Python, que apresenta, em geral, uma boa performance. Esse corretor é baseado na versão desenvolvida pelo Peter Norvig.
+Status: published
 
 
 ![React: JavaScript library](/images/spell-checker-2.jpg)
@@ -15,7 +15,7 @@ Status: draft
 
 Bom dia, Boa tarde ou Boa noite (dependendo da hora que você está lendo esse artigo), nesse post vamos tentar resolver o problema de criar um corretor ortográfico simples utilizando Python. O conteúdo desse post foi baseado em um atigo criado pelo Peter Norvig em 2007, com o título **[How to Write a Spelling Corrector](https://norvig.com/spell-correct.html){target="_blank"}**. Pensei em falar um pouco sobre isso, porque considero esse assunto muito interessante e acredito que existem outras pessoas que, como eu, pensam o mesmo.
 
-O objetivo desse artigo é ajudar as pessoas que não estão tão familiarizadas com a lingua inglesa, ou mesmo não entenderam muito bem o que o Norvig quis dizer. A minha ideia geral é tentar simplificar o máximo possível a parte estatística e matemática, e quem sabe simplificar um pouco do código.
+O objetivo desse artigo é ajudar as pessoas que não estão tão familiarizadas com a língua inglesa, ou mesmo não entenderam muito bem o que o Norvig quis dizer. A minha ideia geral é tentar simplificar o máximo possível a parte estatística e matemática, e quem sabe simplificar um pouco do código.
 
 Como eu faço sempre em meus artigos, segue uma lista de requisitos para ajudar você a aproveitar melhor o conteúdo:
 
@@ -319,9 +319,9 @@ Tendo o nosso corretor ortográfico finalizado, precisamos saber se ele possui u
 
 - **Acurácia**: Quanto de acerto o nosso corretor possui em relação às palavras de teste;
 - **Eficiência**: Quantas palavras conseguimos corrigir em um determinado período de tempo, no caso, segundos;
-- **Palavras desconhecidas**: Quanto do erro do nosso corretor é devido a palavras que ele não conhece, ou seja, não está presente no vocabulário.
+- **Palavras desconhecidas**: Quanto do erro do nosso corretor é devido a palavras que ele não conhece, ou seja, não estão presentes no vocabulário.
 
-Segue abaixo o código utilizado para executar os testes mencionados acima. O arquivo com as palavras incorretas e corretas que foi utilizado com conjunto de testes [pode ser encontrado aqui](/docs/misspelled.txt){target="_blank"}. Esse arquivo é baseado na [lista de erros comuns](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Lista_de_erros_comuns/M%C3%A1quinas){target="_blank"} disponibilizada pela Wikipédia.
+Segue abaixo o código utilizado para executar os testes mencionados acima. O arquivo com as palavras incorretas e corretas que foi utilizado como conjunto de testes [pode ser encontrado aqui](/docs/misspelled.txt){target="_blank"}. Esse arquivo é baseado na [lista de erros comuns](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Lista_de_erros_comuns/M%C3%A1quinas){target="_blank"} disponibilizada pela Wikipédia.
 
 ```python
 from main import correct, VOCABULARY
@@ -349,7 +349,7 @@ print('Eficiência = %d palavras/segundo' % efficiency)
 print('Palavras desconhecidas = %.2f%%' % (unknown * 100))
 ```
 
-Ao executar esse teste, considerando que todos os arquivos de código estão na mesma pasta, vamos ter uma execução muito próxima da encontrada abaixo.
+Ao executar esse teste, considerando que todos os arquivos de código estão na mesma pasta, vamos ver mensagens muito próximas das encontradas abaixo.
 
 ```
 Acurácia = 57.58%
@@ -361,14 +361,14 @@ A primeira vista podemos constatar que a nossa acurácia não está tão boa. Is
 
 Outra coisa interessante de observar é a eficiência. Ela está muito baixa, por isso, talvez seja interessante pensar em algumas otimizações para o nosso código.
 
-Por último, mas não menos importante, podemos observar as palavras desconhecidas. Se pensarmos bem, é possível que o corretor não conheça muitas das plavras da língua portuguesa. Ela é muito extensa, com bem mais do que 300 mil palavras, considerando que temos apenas 50 mil no nosso vocabulário.
+Por último, mas não menos importante, podemos observar as palavras desconhecidas. Se pensarmos bem, é possível que o corretor não conheça muitas das plavras da língua portuguesa. A língua é muito extensa, com bem mais do que 300 mil palavras. O nosso vocabulário possui apenas 50 mil dessas palavras, e como ele foi feito utilizando textos não revisados, é possível que ainda existam palavras incorretas nele, ainda que possuam uma frequência mais baixa.
 
 
 <a id="sugestoes-de-melhoria"></a>
 
 ## Sugestões de melhoria
 
-Verificamos através dos testes que temos alguns pontos interessantes de melhoria, que podemos aplicar no nosso corretor, são eles:
+Verificamos através dos testes que temos alguns pontos interessantes de melhoria, que podemos aplicar no nosso corretor. São eles:
 
 #### 1. Otimizar o código
 
@@ -398,11 +398,35 @@ def generate_by_insert(word):
 
 Só com essa alteração, feita em todo o código, é possível dobrar a eficiência do corretor. A primeira abordagem foi utilizada ao longo de todo o artigo, para facilitar o entendimento.
 
-Outra otimizações ainda podem ser elaboradas, mas deixo isso como dever de casa para você.
+Outras otimizações ainda podem ser elaboradas, mas deixo isso como dever de casa para você.
 
-#### 2.
+#### 2. Melhorar o vocabulário do corretor
 
+Ficou bem claro, com o resultado do teste, que palavras desconhecidas podem ser um problema para o corretor. Se a correção da palavra não existe no vocabulário, nunca será possível produzir o resultado desejado. Nós podemos construir um vocabulário melhor apenas coletando mais dados.
 
+Outra forma de lidar com palavras desconhecidas, é permitindo que o corretor possa produzir um resultado que não existe no vocabulário. Podemos considerar utilizar regras mais simples para gerar candidatos plausíveis, como por exemplo, substituir `s` por `z` ou `ç` por `ss`, mesmo que a palavra resultante não exista no vocabulário. Assim, a ideia geral é utilizar regras presentes na língua portuguesa para suprir a deficiência da base de conhecimento do corretor.
+
+#### 3. Considerar o contexto das palavras
+
+Essa, provavelmente, é a melhor forma de aperfeiçoar a performance do corretor. Para realizar essa melhoria, precisamos utilizar uma técnica que ainda não vimos, o **N-grama**.
+
+Um N-grama é uma sequência contínua de _N_ items de uma determinada amostra de texto ou fala. Ficou confuso? Eu explico melhor.
+
+Imagine que podemos considerar apenas a probabilidade da palavra **`de`** aparecer em um diálogo. Sabemos por exemplo que ela pode aparecer em 30% das vezes. Mas, se eu te disser que antes dela existe a palavra **`corte`** e depois dela existe a palavra **`cabelo`**, qual a probabilidade da frase **`corte de cabelo`** aparecer em um diálogo?
+
+A frase **`corte de cabelo`** é um exemplo de N-grama, onde _N_ é igual a 3. Assim com a informação de que a frase **`corte de cabelo`** aparece, por exemplo, 3% das vezes em um diálogo, temos a possibilidade de corrigir a frase **`corte di cabelo`**, onde podemos nos perguntar o seguinte:
+
+Dado que as palavras **`corte`** e **`cabelo`** apareceram antes e depois da palavra **`di`**, qual é a chance da correção ser a palavra **`de`**?
+
+Com essa linha de pensamento passamos a considerar o contexto das conversações, mesmo que esse contexto seja limitado. O número ideal para o _N_ é definido experimentalmente e pode variar de acordo com os dados. Quanto maior o número de _N_ maior será o nosso vocabulário e consequentemente mais operações o nosso corretor terá que fazer.
+
+Fica como tarefinha para casa tentar implementar essa melhoria, apenas considerando o contexto o seu corretor ortográfico tem o potencial de acertar a correção de muito mais palavras.
+
+#### 4. Implementar em uma linguagem compilada
+
+Finalmente, é possível otimizar a implementação tornando ela muito mais rápida, sem mudar os resultados. Podemos simplesmente refazer o código utilizando uma linguagem compilada ao invés de uma linguagem interpretada, como é o caso do Python. Implementar utilizando linguagens como C ou C++ pode aumentar muitas vezes a eficiência do corretor.
+
+O próprio artigo do Peter Norvig, citado no início, traz diversos exemplos de implementações utilizando outras linguagens, como Go, Erlang, Clojure, Haskell, etc. Vale a pena dar uma conferida.
 
 <a id="recapitulando"></a>
 
@@ -411,6 +435,11 @@ Outra otimizações ainda podem ser elaboradas, mas deixo isso como dever de cas
 
 O que aprendemos hoje:
 
+- Entendemos como o corretor proposto pelo Peter Norvig funciona;
+- Implementamos uma versão dele utilizando Python;
+- Executamos testes para descobrir quão eficiente é esse corretor em cenários reais;
+- Vimos que existem melhorias que podem ser feitas para que o corretor performe melhor.
 
+O corretor que implementamos, é uma versão bem simplificada em relação ao que existe no mercado hoje. Algumas empresas utilizam, inclusive, modelos de Machine Learning para melhorar a acurácia das correções. Ainda que simples, o nosso corretor pode ser aplicado em cenários reais, mesmo que necessite de uma atenção especial na hora de construir o nosso vocabulário e implementar algumas melhorias.
 
 Para você que acompanhou esse artigo até o final, muito obrigado pela sua atenção e até o próximo... bye bye
