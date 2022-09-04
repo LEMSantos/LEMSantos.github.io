@@ -27,9 +27,9 @@ Experiência
 
 #### Sysvale Softgroup Tecnologia:
 
-3 anos e 3 meses
+3 anos e 6 meses
 
-> *Janeiro de 2021 - Atualmente (1 ano e 6 meses)*
+> *Janeiro de 2021 - Atualmente (1 ano e 8 meses)*
 > :   **Desenvolvedor full stack**<br>
 > Juazeiro, Bahia, Brasil
 >
@@ -47,6 +47,11 @@ Licenças e certificados
     Alura
 </h4>
 
+> *Emitido em Setembro de 2022*
+> :   **Formação Machine Learning para Negócios Digitais**<br>
+> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/41c9dcf0-2499-4a70-a04e-a66fdb02d3bd)
+>
+> <br>
 > *Emitido em Julho de 2022*
 > :   **Formação Técnicas de processamento de linguagem natural**<br>
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/ec743417-fa5e-45b4-8a2c-c4d6de945f42)
