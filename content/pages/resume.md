@@ -48,6 +48,11 @@ Licenças e certificados
 </h4>
 
 > *Emitido em Setembro de 2022*
+> :   **Formação Machine Learning Avançada**<br>
+> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/da68948e-ee1a-4680-aeb4-e05318d89ad7)
+>
+> <br>
+> *Emitido em Setembro de 2022*
 > :   **Formação Machine Learning para Negócios Digitais**<br>
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/41c9dcf0-2499-4a70-a04e-a66fdb02d3bd)
 >
@@ -62,9 +67,18 @@ Licenças e certificados
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/51b5894c-9c8e-438d-8a40-cd4cace71122)
 >
 > <br>
-> *Emitido em Junho de 2022*
-> :   **Formação Engenharia de software**<br>
-> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/64592457-0c0d-4571-bcc4-788405e65391)
+
+<details>
+    <summary>Mais formações da ALura</summary>
+
+    <blockquote>
+        <dt><em>Emitido em Junho de 2022</em></dt>
+        <dd><strong>Formação Engenharia de software</strong><br>
+            <a href="https://cursos.alura.com.br/degree/certificate/64592457-0c0d-4571-bcc4-788405e65391">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+    </blockquote>
+</details>
 
 <h4 style="display: flex; align-items: center; margin-left: 8px">
     <img src="/images/udemy-logo.png" alt="udemy logo" width="18" style="display: inline-block; margin-right: 16px; margin-left: 0px"/>
@@ -86,14 +100,24 @@ Licenças e certificados
 > [Acesse o certificado](https://ude.my/UC-5e491e34-2b6b-49dd-be87-2c929c914c88)
 >
 > <br>
-> *Emitido em Abril de 2021*
-> :   **R Programming A-Z™: R For Data Science With Real Exercises!**<br>
-> [Acesse o certificado](http://ude.my/UC-d36f9053-3c59-4d1b-9fa2-7439db63e3ef)
->
-> <br>
-> *Emitido em Março de 2021*
-> :   **REST APIs with Flask and Python**<br>
-> [Acesse o certificado](http://ude.my/UC-ddc53ede-360c-42d5-af7f-3a8ef2506fa8)
+
+<details>
+    <summary>Mais cursos da Udemy</summary>
+
+    <blockquote>
+        <dt><em>Emitido em Abril de 2021</em></dt>
+        <dd><strong>R Programming A-Z™: R For Data Science With Real Exercises!</strong><br>
+            <a href="http://ude.my/UC-d36f9053-3c59-4d1b-9fa2-7439db63e3ef">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+
+        <dt><em>Emitido em Março de 2021</em></dt>
+        <dd><strong>REST APIs with Flask and Python</strong><br>
+            <a href="http://ude.my/UC-ddc53ede-360c-42d5-af7f-3a8ef2506fa8">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+    </blockquote>
+</details>
 
 Idiomas
 ---
