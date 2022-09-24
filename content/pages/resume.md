@@ -39,7 +39,7 @@ Experiência
 > Juazeiro, Bahia, Brasil
 
 
-Licenças e certificados
+Certificados
 ---
 
 <h4 style="display: flex; align-items: center; margin-left: 8px">
