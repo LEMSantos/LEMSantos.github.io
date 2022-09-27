@@ -47,6 +47,12 @@ Certificados
     Alura
 </h4>
 
+
+> *Emitido em Setembro de 2022*
+> :   **Formação Deep Learning com Pytorch**<br>
+> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/369d77ab-261b-4585-883b-84db5a6ef5cf)
+>
+> <br>
 > *Emitido em Setembro de 2022*
 > :   **Formação Machine Learning Avançada**<br>
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/da68948e-ee1a-4680-aeb4-e05318d89ad7)
