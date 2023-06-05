@@ -9,7 +9,8 @@
 /* MIXINS */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 .highlight {
   background: #f8f8f8;
@@ -262,7 +263,7 @@ table {
 }
 
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: .825em;
 }
 
@@ -277,7 +278,7 @@ section, article, header, footer, nav, aside, hgroup {
 /* END VARIABLES */
 /* FONTS */
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 /* END FONTS */
@@ -627,11 +628,11 @@ footer p {
   -webkit-transition: color 0.2s;
 }
 .tag:hover {
-  background-color: crimson;
+  background-color: #18698B;
   color: white;
 }
 .tag:hover::after {
-  border-left-color: crimson;
+  border-left-color: #18698B;
 }
 
 .category-tag {
