@@ -27,9 +27,9 @@ Experiência
 
 #### Sysvale Softgroup Tecnologia:
 
-3 anos e 6 meses
+4 anos e 2 meses
 
-> *Janeiro de 2021 - Atualmente (1 ano e 8 meses)*
+> *Janeiro de 2021 - Atualmente (2 anos e 4 meses)*
 > :   **Desenvolvedor full stack**<br>
 > Juazeiro, Bahia, Brasil
 >
