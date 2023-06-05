@@ -58,26 +58,29 @@ Certificados
 > [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/da68948e-ee1a-4680-aeb4-e05318d89ad7)
 >
 > <br>
-> *Emitido em Setembro de 2022*
-> :   **Formação Machine Learning para Negócios Digitais**<br>
-> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/41c9dcf0-2499-4a70-a04e-a66fdb02d3bd)
->
-> <br>
-> *Emitido em Julho de 2022*
-> :   **Formação Técnicas de processamento de linguagem natural**<br>
-> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/ec743417-fa5e-45b4-8a2c-c4d6de945f42)
->
-> <br>
-> *Emitido em Julho de 2022*
-> :   **Formação Machine Learning**<br>
-> [Acesse o certificado](https://cursos.alura.com.br/degree/certificate/51b5894c-9c8e-438d-8a40-cd4cace71122)
->
-> <br>
 
 <details>
     <summary>Mais formações da ALura</summary>
 
     <blockquote>
+        <dt><em>Emitido em Setembro de 2022</em></dt>
+        <dd><strong>Formação Machine Learning para Negócios Digitais</strong><br>
+            <a href="https://cursos.alura.com.br/degree/certificate/41c9dcf0-2499-4a70-a04e-a66fdb02d3bd">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+
+        <dt><em>Emitido em Julho de 2022</em></dt>
+        <dd><strong>Formação Técnicas de processamento de linguagem natural</strong><br>
+            <a href="https://cursos.alura.com.br/degree/certificate/ec743417-fa5e-45b4-8a2c-c4d6de945f42">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+
+        <dt><em>Emitido em Julho de 2022</em></dt>
+        <dd><strong>Formação Machine Learning</strong><br>
+            <a href="https://cursos.alura.com.br/degree/certificate/51b5894c-9c8e-438d-8a40-cd4cace71122">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+
         <dt><em>Emitido em Junho de 2022</em></dt>
         <dd><strong>Formação Engenharia de software</strong><br>
             <a href="https://cursos.alura.com.br/degree/certificate/64592457-0c0d-4571-bcc4-788405e65391">Acesse o certificado</a>
@@ -101,16 +104,17 @@ Certificados
 > [Acesse o certificado](https://ude.my/UC-b05ba1f4-5429-4a58-b3ae-86fae8f2452a)
 >
 > <br>
-> *Emitido em Maio de 2021*
-> :   **Advanced REST APIs with Flask and Python**<br>
-> [Acesse o certificado](https://ude.my/UC-5e491e34-2b6b-49dd-be87-2c929c914c88)
->
-> <br>
 
 <details>
     <summary>Mais cursos da Udemy</summary>
 
     <blockquote>
+        <dt><em>Emitido em Maio de 2021</em></dt>
+        <dd><strong>Advanced REST APIs with Flask and Python</strong><br>
+            <a href="https://ude.my/UC-5e491e34-2b6b-49dd-be87-2c929c914c88">Acesse o certificado</a>
+        </dd>
+        <dt><br></dt>
+
         <dt><em>Emitido em Abril de 2021</em></dt>
         <dd><strong>R Programming A-Z™: R For Data Science With Real Exercises!</strong><br>
             <a href="http://ude.my/UC-d36f9053-3c59-4d1b-9fa2-7439db63e3ef">Acesse o certificado</a>
