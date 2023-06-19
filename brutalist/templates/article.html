@@ -46,6 +46,25 @@
               <time datetime=" {{ article.date }}">
                 <script>document.write(moment('{{ article.date }}').format('LL'));</script>
               </time>
+              &nbsp;&nbsp;•&nbsp;&nbsp;
+              <span id="reading-time-container">
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var wordsPerMinute = 200;
+
+                    var content = [...document.querySelectorAll('.content p, .content ul')].map((e) => e.textContent)
+                    content = content.join(' ');
+
+                    var words = [
+                      ...content.matchAll(/[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+/g)
+                    ].map((w) => w[0]);
+
+                    var readingTime = Math.trunc(words.length / 200);
+
+                    document.getElementById("reading-time-container").innerHTML = `${readingTime} min de leitura`;
+                  }, false);
+                </script>
+              <span>
             </p>
         </footer>
       {% endif %}
@@ -53,6 +72,12 @@
           <h2>
             {{ article.title }}
           </h2>
+
+          <footer>
+            <p>
+
+            </p>
+          </footer>
         </header>
       <div class="content">
          {{ article.content|safe }}

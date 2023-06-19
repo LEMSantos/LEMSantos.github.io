@@ -127,12 +127,37 @@
               <time datetime=" 2010-12-03 10:20:00-02:00">
                 <script>document.write(moment('2010-12-03 10:20:00-02:00').format('LL'));</script>
               </time>
+              &nbsp;&nbsp;•&nbsp;&nbsp;
+              <span id="reading-time-container">
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var wordsPerMinute = 200;
+
+                    var content = [...document.querySelectorAll('.content p, .content ul')].map((e) => e.textContent)
+                    content = content.join(' ');
+
+                    var words = [
+                      ...content.matchAll(/[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+/g)
+                    ].map((w) => w[0]);
+
+                    var readingTime = Math.trunc(words.length / 200);
+
+                    document.getElementById("reading-time-container").innerHTML = `${readingTime} min de leitura`;
+                  }, false);
+                </script>
+              <span>
             </p>
         </footer>
         <header>
           <h2>
             React: JavaScript library
           </h2>
+
+          <footer>
+            <p>
+
+            </p>
+          </footer>
         </header>
       <div class="content">
          <p><img alt="React: JavaScript library" src="/images/react.webp"></p>
