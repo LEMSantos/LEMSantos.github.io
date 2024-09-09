@@ -3,33 +3,41 @@ Slug: resume
 
 <h1 style="font-size:2em; margin-bottom: 1em;">Lucas Eliaquim</h1>
 
-Me chamo Lucas Eliaquim, sou natural do interior da Bahia, cientista de dados
-em formação, e curioso nas horas vagas. Acredito que os dados podem mudar o
-mundo e gostaria de participar dessa empreitada na linha de frente do estado
-da arte, e além disso, prestar minhas contribuições para o avanço da ciência e
-da tecnologia, de forma ética e sustentável.
+Desenvolvedor de Software Full Stack com mais de 5 anos de experiência, especializado no desenvolvimento de soluções
+robustas e escaláveis. Entusiasta de Inteligência Artificial, Ciência de Dados e Engenharia de Dados, com expertise
+na manipulação de bancos de dados SQL e NoSQL, além da criação de pipelines de ETL e desenvolvimento de chatbots.
+Possuo um forte domínio em front-end e back-end, sempre focado em entregar soluções eficientes e integradas para os
+desafios do negócio.
 
 Formação acadêmica
 ---
 
-*Junho de 2021 - Julho de 2023 (**expectativa**)*
-:   **Bacharelado em Ciência da Computação**<br>
-Faculdade de Ciências Aplicadas e Sociais de Petrolina - FACAPE
+#### Graduações
 
-<br>
+> *Junho de 2021 - Agosto de 2023*
+> :   **Bacharelado em Ciência da Computação**<br>
+> Faculdade de Petrolina - FACAPE
+> 
+> <br>
+> 
+> *Setembro de 2014 - Junho de 2021 (**curso pausado**)*
+> :   **Bacharelado em Engenharia de Computação**<br>
+> Universidade Federal do Vale do São Francisco - UNIVASF
 
-*Setembro de 2014 - Junho de 2021 (**curso pausado**)*
-:   **Bacharelado em Engenharia de Computação**<br>
-Universidade Federal do Vale do São Francisco - UNIVASF
+#### Pós-Graduações
+
+> *Janeiro de 2024 - Janeiro de 2025 (**Previsão**)*
+> :   **Pós-Graduação em Data Science**<br>
+> Pós Descomplica  - UNIAMÉRICA
 
 Experiência
 ---
 
 #### Sysvale Softgroup Tecnologia:
 
-4 anos e 2 meses
+5 anos e 6 meses
 
-> *Janeiro de 2021 - Atualmente (2 anos e 4 meses)*
+> *Janeiro de 2021 - Atualmente (3 anos e 8 meses)*
 > :   **Desenvolvedor full stack**<br>
 > Juazeiro, Bahia, Brasil
 >
@@ -128,6 +136,17 @@ Certificados
         <dt><br></dt>
     </blockquote>
 </details>
+
+Competências e Habilidades
+---
+
+- Desenvolvimento Full Stack (Front-end e Back-end)
+- Arquitetura de Software e Design de Sistemas
+- Integração de APIs e serviços web
+- Desenvolvimento e manutenção de pipelines de ETL
+- Manipulação e modelagem de dados (SQL e NoSQL)
+- Engenharia de Dados e Ciência de Dados
+
 
 Idiomas
 ---
