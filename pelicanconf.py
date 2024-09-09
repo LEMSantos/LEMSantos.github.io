@@ -44,7 +44,7 @@ RESUME_PANDOC = '/bin/pandoc'
 
 
 # Theme Settings
-THEME = 'themes/brutalist'
+THEME = 'brutalist'
 
 SITEIMAGE = 'site-cover.jpg'
 SITEDESCRIPTION = 'A simple, accessible, content-first Pelican theme inspired by David Bryant Copeland\'s https://brutalist-web.design/'
